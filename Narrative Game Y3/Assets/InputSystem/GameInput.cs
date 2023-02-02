@@ -28,13 +28,49 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
             ""id"": ""85ce029b-6177-4ad1-a2c8-ee0c40f4af1f"",
             ""actions"": [
                 {
-                    ""name"": ""Mouse"",
+                    ""name"": ""MousePosition"",
                     ""type"": ""Value"",
                     ""id"": ""91ca54dd-cbb0-4166-a97c-695dad6124b3"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Map"",
+                    ""type"": ""Button"",
+                    ""id"": ""cfb27851-68bf-4843-8503-d00bce77465e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LMB"",
+                    ""type"": ""Button"",
+                    ""id"": ""dd265b15-efb7-417d-b367-46c852791db6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Back"",
+                    ""type"": ""Button"",
+                    ""id"": ""374b4d94-c89a-4005-a2ae-b3fc6c2f528e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ScrollWheel"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""37c085b5-309a-4832-89e9-afdf254313c1"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -45,7 +81,51 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Mouse"",
+                    ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""43808d8a-cdb5-4941-b42a-ebc17b46ecf0"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Map"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4de352c3-fd4d-41fb-98c9-2147e5ebbbc4"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LMB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""26b0e2b1-c454-4244-a01e-53a31b7a659f"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c68ba96d-6cb5-42cc-b67f-4f640cecb934"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScrollWheel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -56,7 +136,11 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
 }");
         // GameInput
         m_GameInput = asset.FindActionMap("GameInput", throwIfNotFound: true);
-        m_GameInput_Mouse = m_GameInput.FindAction("Mouse", throwIfNotFound: true);
+        m_GameInput_MousePosition = m_GameInput.FindAction("MousePosition", throwIfNotFound: true);
+        m_GameInput_Map = m_GameInput.FindAction("Map", throwIfNotFound: true);
+        m_GameInput_LMB = m_GameInput.FindAction("LMB", throwIfNotFound: true);
+        m_GameInput_Back = m_GameInput.FindAction("Back", throwIfNotFound: true);
+        m_GameInput_ScrollWheel = m_GameInput.FindAction("ScrollWheel", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -116,12 +200,20 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     // GameInput
     private readonly InputActionMap m_GameInput;
     private IGameInputActions m_GameInputActionsCallbackInterface;
-    private readonly InputAction m_GameInput_Mouse;
+    private readonly InputAction m_GameInput_MousePosition;
+    private readonly InputAction m_GameInput_Map;
+    private readonly InputAction m_GameInput_LMB;
+    private readonly InputAction m_GameInput_Back;
+    private readonly InputAction m_GameInput_ScrollWheel;
     public struct GameInputActions
     {
         private @InputActions m_Wrapper;
         public GameInputActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Mouse => m_Wrapper.m_GameInput_Mouse;
+        public InputAction @MousePosition => m_Wrapper.m_GameInput_MousePosition;
+        public InputAction @Map => m_Wrapper.m_GameInput_Map;
+        public InputAction @LMB => m_Wrapper.m_GameInput_LMB;
+        public InputAction @Back => m_Wrapper.m_GameInput_Back;
+        public InputAction @ScrollWheel => m_Wrapper.m_GameInput_ScrollWheel;
         public InputActionMap Get() { return m_Wrapper.m_GameInput; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -131,22 +223,50 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_GameInputActionsCallbackInterface != null)
             {
-                @Mouse.started -= m_Wrapper.m_GameInputActionsCallbackInterface.OnMouse;
-                @Mouse.performed -= m_Wrapper.m_GameInputActionsCallbackInterface.OnMouse;
-                @Mouse.canceled -= m_Wrapper.m_GameInputActionsCallbackInterface.OnMouse;
+                @MousePosition.started -= m_Wrapper.m_GameInputActionsCallbackInterface.OnMousePosition;
+                @MousePosition.performed -= m_Wrapper.m_GameInputActionsCallbackInterface.OnMousePosition;
+                @MousePosition.canceled -= m_Wrapper.m_GameInputActionsCallbackInterface.OnMousePosition;
+                @Map.started -= m_Wrapper.m_GameInputActionsCallbackInterface.OnMap;
+                @Map.performed -= m_Wrapper.m_GameInputActionsCallbackInterface.OnMap;
+                @Map.canceled -= m_Wrapper.m_GameInputActionsCallbackInterface.OnMap;
+                @LMB.started -= m_Wrapper.m_GameInputActionsCallbackInterface.OnLMB;
+                @LMB.performed -= m_Wrapper.m_GameInputActionsCallbackInterface.OnLMB;
+                @LMB.canceled -= m_Wrapper.m_GameInputActionsCallbackInterface.OnLMB;
+                @Back.started -= m_Wrapper.m_GameInputActionsCallbackInterface.OnBack;
+                @Back.performed -= m_Wrapper.m_GameInputActionsCallbackInterface.OnBack;
+                @Back.canceled -= m_Wrapper.m_GameInputActionsCallbackInterface.OnBack;
+                @ScrollWheel.started -= m_Wrapper.m_GameInputActionsCallbackInterface.OnScrollWheel;
+                @ScrollWheel.performed -= m_Wrapper.m_GameInputActionsCallbackInterface.OnScrollWheel;
+                @ScrollWheel.canceled -= m_Wrapper.m_GameInputActionsCallbackInterface.OnScrollWheel;
             }
             m_Wrapper.m_GameInputActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Mouse.started += instance.OnMouse;
-                @Mouse.performed += instance.OnMouse;
-                @Mouse.canceled += instance.OnMouse;
+                @MousePosition.started += instance.OnMousePosition;
+                @MousePosition.performed += instance.OnMousePosition;
+                @MousePosition.canceled += instance.OnMousePosition;
+                @Map.started += instance.OnMap;
+                @Map.performed += instance.OnMap;
+                @Map.canceled += instance.OnMap;
+                @LMB.started += instance.OnLMB;
+                @LMB.performed += instance.OnLMB;
+                @LMB.canceled += instance.OnLMB;
+                @Back.started += instance.OnBack;
+                @Back.performed += instance.OnBack;
+                @Back.canceled += instance.OnBack;
+                @ScrollWheel.started += instance.OnScrollWheel;
+                @ScrollWheel.performed += instance.OnScrollWheel;
+                @ScrollWheel.canceled += instance.OnScrollWheel;
             }
         }
     }
     public GameInputActions @GameInput => new GameInputActions(this);
     public interface IGameInputActions
     {
-        void OnMouse(InputAction.CallbackContext context);
+        void OnMousePosition(InputAction.CallbackContext context);
+        void OnMap(InputAction.CallbackContext context);
+        void OnLMB(InputAction.CallbackContext context);
+        void OnBack(InputAction.CallbackContext context);
+        void OnScrollWheel(InputAction.CallbackContext context);
     }
 }

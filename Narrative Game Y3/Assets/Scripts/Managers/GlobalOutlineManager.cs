@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Global outline is just to make easier to setup every outline at the same time instead of one by one
+/// </summary>
 public class GlobalOutlineManager : MonoBehaviour
 {
     public static GlobalOutlineManager instance;
@@ -38,6 +41,9 @@ public class GlobalOutlineManager : MonoBehaviour
         UpdateOutlienIfChanges();
     }
 
+    /// <summary>
+    /// Updates the outline if something changed on the inspector mode (Only works play mode)
+    /// </summary>
     void UpdateOutlienIfChanges()
     {
         SetAllOutlineWidth(outlineWidth);
@@ -45,6 +51,9 @@ public class GlobalOutlineManager : MonoBehaviour
         SetAllOutlineMode(outlineMode);
     }
 
+    /// <summary>
+    /// Changes the Outline width (thicknes)
+    /// </summary>
     void SetAllOutlineWidth(float _width)
     {
         foreach (var item in outlines)
@@ -53,6 +62,9 @@ public class GlobalOutlineManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    ///  Changes the outline Color
+    /// </summary>
     void SetAllOutlineColor(Color _color)
     {
         foreach (var item in outlines)
@@ -61,6 +73,9 @@ public class GlobalOutlineManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Changes the outline Mode
+    /// </summary>
     void SetAllOutlineMode(Outline.Mode _mode)
     {
         foreach (var item in outlines)

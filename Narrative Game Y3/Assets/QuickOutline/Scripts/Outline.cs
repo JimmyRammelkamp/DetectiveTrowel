@@ -108,7 +108,7 @@ public class Outline : MonoBehaviour
         UpdateMaterialProperties();
     }
 
-    public void SetIsMouseOn(bool _bool) { isMouseOn = true; }
+    public void SetIsMouseOn(bool _bool) { isMouseOn = _bool; }
 
     void Awake()
     {
@@ -167,7 +167,11 @@ public class Outline : MonoBehaviour
 
     void Update()
     {
-        //if (!isMouseOn) SetOutlineWidth(0);
+        if (!isMouseOn)
+        {
+            SetOutlineWidth(0);
+            enabled = false;
+        }
 
         if (needsUpdate || isMouseOn)
         {
