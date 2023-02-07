@@ -46,10 +46,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        Initalize();
+        Initialize();
     }
 
-    private void Initalize()
+    private void Initialize()
     {
         SetStatus(GameStatus.Table);
 
@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
 
         DisableNPCElements();
 
-        NavigatationCamera.instance.ToggleMap();
+        NavigationCamera.instance.ToggleMap();
     }
 
     // Checks if Pointer is on a certain UI elements (Button here)
@@ -200,7 +200,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public bool ReadyToContinue()
     {
-        if (NavigatationCamera.instance.IsCameraTransitionOver()) return false;
+        if (NavigationCamera.instance.IsCameraTransitionOver()) return false;
         if (DioramaManager.instance.IsDioramaAnimationOver()) return false;
 
         return true;

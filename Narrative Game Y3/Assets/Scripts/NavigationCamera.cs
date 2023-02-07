@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-public class NavigatationCamera : MonoBehaviour
+public class NavigationCamera : MonoBehaviour
 {
-    public static NavigatationCamera instance;
+    public static NavigationCamera instance;
 
     [SerializeField] CinemachineVirtualCamera tableCamera;
     [SerializeField] CinemachineVirtualCamera mapCamera;
@@ -21,7 +21,7 @@ public class NavigatationCamera : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null) Debug.Log("Error: There are multiple instances exits at the same time (NavigatationCamera)");
+        if (instance != null) Debug.Log("Error: There are multiple instances exits at the same time (NavigationCamera)");
         instance = this;
     }
 

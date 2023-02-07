@@ -26,7 +26,7 @@ public class MapSelector : MonoBehaviour, IObjectInteraction, IOutline
     {
         if (DioramaManager.instance.GetAnimationTransform().GetChild(0) == mapPrefab.transform) return;
 
-        NavigatationCamera.instance.ToggleMap();
+        NavigationCamera.instance.ToggleMap();
         DioramaManager.instance.TriggerDioramaAnimation(mapPrefab);
     }
 

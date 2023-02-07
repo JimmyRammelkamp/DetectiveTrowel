@@ -44,7 +44,7 @@ public class DioramaManager : MonoBehaviour
     private IEnumerator DioramaAnimation()
     {
         yield return new WaitForSecondsRealtime(0.1f);
-        while (NavigatationCamera.instance.IsCameraTransitionOver()) yield return null;
+        while (NavigationCamera.instance.IsCameraTransitionOver()) yield return null;
 
         anim.SetTrigger("ChangeDiorama");
     }

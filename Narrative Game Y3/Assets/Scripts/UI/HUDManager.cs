@@ -69,7 +69,7 @@ public class HUDManager : MonoBehaviour
 
             DisableUIElements();
 
-        NavigatationCamera navigationC = NavigatationCamera.instance;
+        NavigationCamera navigationC = NavigationCamera.instance;
 
         switch (_status)
         {
