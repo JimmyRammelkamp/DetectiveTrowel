@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class NPCController : MonoBehaviour, IObjectInteraction, IOutline
 {
@@ -28,12 +29,72 @@ public class NPCController : MonoBehaviour, IObjectInteraction, IOutline
 
     private void OnDisable() // Hides the NPC icon when the NPC object is active
     {
-        statusIcons.gameObject.SetActive(false);
+        if (statusIcons) statusIcons.gameObject.SetActive(false);
     }
 
     private void Update()
     {
         IconPositionUpdate();
+    }
+
+    /// <summary>
+    /// Disable all icons
+    /// </summary>
+    private void DisableAllIcons()
+    {
+        for (int i = 0; i < statusIcons.childCount; i++)
+        {
+            statusIcons.GetChild(i).gameObject.SetActive(false);
+        }
+    }
+
+    /// <summary>
+    /// Instert here any code to trigger when the player clicks on the NPC
+    /// </summary>
+    public void Interact()
+    {
+        if (GameManager.instance.GetStatus() != GameManager.GameStatus.Diorama) return;
+
+        GameManager.instance.SetNPC(this);
+
+        if (transform.TryGetComponent(out Outline _outline))
+        {
+            _outline.enabled = true;
+            _outline.SetToggle(true);
+            _outline.SetOutlineWidth(GlobalOutlineManager.instance.GetOutlineWIdth());
+        }
+
+        HUDManager.instance.ActicateNPCInteractiveButtons(true);
+    }
+
+    public void Speak()
+    {
+        Debug.Log("NPC Speak");
+
+        ChangeStatus(InteractStatus.Interacted);
+    }
+
+    public void Inspect()
+    {
+        Debug.Log("NPC Inspect");
+    }
+
+    public void ShowObject()
+    {
+        Debug.Log("NPC Show Object");
+    }
+
+
+    public void ToggleOutline()
+    {
+        if (GameManager.instance.GetStatus() != GameManager.GameStatus.Diorama) return;
+
+        if (transform.TryGetComponent(out Outline _outline))
+        {
+            _outline.enabled = true;
+            _outline.SetIsMouseOn(true);
+            _outline.SetOutlineWidth(GlobalOutlineManager.instance.GetOutlineWIdth());
+        }
     }
 
     /// <summary>
@@ -55,42 +116,5 @@ public class NPCController : MonoBehaviour, IObjectInteraction, IOutline
         DisableAllIcons();
 
         statusIcons.GetChild((int)_status).gameObject.SetActive(true);
-    }
-
-    /// <summary>
-    /// Disable all icons
-    /// </summary>
-    private void DisableAllIcons()
-    {
-        for (int i = 0; i < statusIcons.childCount; i++)
-        {
-            statusIcons.GetChild(i).gameObject.SetActive(false);
-        }
-    }
-
-    /// <summary>
-    /// Instert here any code to trigger when the player clicks on the NPC
-    /// </summary>
-    public void Interact()
-    {
-        if (GameManager.instance.GetStatus() != GameManager.GameStatus.Diorama) return;
-
-        // Do stuff when you click on the NPC
-
-        ChangeStatus(InteractStatus.Interacted);
-
-        Debug.Log(transform.name);
-    }
-
-    public void ToggleOutline()
-    {
-        if (GameManager.instance.GetStatus() != GameManager.GameStatus.Diorama) return;
-
-        if (transform.TryGetComponent(out Outline _outline))
-        {
-            _outline.enabled = true;
-            _outline.SetIsMouseOn(true);
-            _outline.SetOutlineWidth(GlobalOutlineManager.instance.GetOutlineWIdth());
-        }
     }
 }

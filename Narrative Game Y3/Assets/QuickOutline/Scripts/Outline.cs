@@ -89,6 +89,7 @@ public class Outline : MonoBehaviour
 
     private bool needsUpdate;
     private bool isMouseOn = false;
+    private bool toggleOutline = false;
 
     public void SetOutlineWidth(float _width)
     {
@@ -109,6 +110,7 @@ public class Outline : MonoBehaviour
     }
 
     public void SetIsMouseOn(bool _bool) { isMouseOn = _bool; }
+    public void SetToggle(bool _bool) { toggleOutline = _bool; }
 
     void Awake()
     {
@@ -167,7 +169,7 @@ public class Outline : MonoBehaviour
 
     void Update()
     {
-        if (!isMouseOn)
+        if (!isMouseOn && !toggleOutline)
         {
             SetOutlineWidth(0);
             enabled = false;

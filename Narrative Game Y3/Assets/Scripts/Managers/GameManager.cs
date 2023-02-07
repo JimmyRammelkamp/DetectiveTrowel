@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,11 +18,25 @@ public class GameManager : MonoBehaviour
     }
 
     [SerializeField] private GameStatus gameStatus;
+    [SerializeField] private int stressLevel;
 
     private InputActions input;
 
+    private NPCController selectedNPC;
+
+    private LayerMask rayLayer;
+
+    public int GetStressLevel() { return stressLevel; }
+    public void SetStressLevel(int _stressLevel) { stressLevel = _stressLevel; }
+    public NPCController GetSelectedNPC() { return selectedNPC; }
+    public void SetNPC(NPCController _npc) { selectedNPC = _npc; }
     public GameStatus GetStatus() { return gameStatus; }
-    public void SetStatus(GameStatus _status) { gameStatus = _status; }
+    public void SetStatus(GameStatus _status) 
+    { 
+        gameStatus = _status;
+        HUDManager.instance.ActivateUIElementsAccordingToGameStatus(gameStatus);
+        LayerUpdate();
+    }
 
     private void Awake()
     {
@@ -46,6 +62,8 @@ public class GameManager : MonoBehaviour
 
         input.GameInput.ScrollWheel.performed += ScrollNavigation;
         input.GameInput.ScrollWheel.performed += ScrollNavigation;
+
+        LayerUpdate();
     }
 
     void Update()
@@ -69,7 +87,9 @@ public class GameManager : MonoBehaviour
     {
         if (!ReadyToContinue()) return;
 
-        gameStatus = GameStatus.Table;
+        SetStatus(GameStatus.Table);
+
+        DisableNPCElements();
     }
 
     /// <summary>
@@ -77,9 +97,36 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void MapToggle(InputAction.CallbackContext context)
     {
+        MapToggle();
+    }
+
+    public void MapToggle()
+    {
         if (!ReadyToContinue()) return;
 
+        DisableNPCElements();
+
         NavigatationCamera.instance.ToggleMap();
+    }
+
+    // Checks if Pointer is on a certain UI elements (Button here)
+    private bool IsPointerOverUIElement()
+    {
+        PointerEventData eventData = new PointerEventData(EventSystem.current);
+        eventData.position = input.GameInput.MousePosition.ReadValue<Vector2>();
+        List<RaycastResult> raysastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, raysastResults);
+
+        for (int index = 0; index < raysastResults.Count; index++)
+        {
+            RaycastResult curRaysastResult = raysastResults[index];
+
+            if (curRaysastResult.gameObject.transform.TryGetComponent(out Button _UIElement))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     /// <summary>
@@ -90,11 +137,14 @@ public class GameManager : MonoBehaviour
     {
         if (!ReadyToContinue()) return;
 
-        LayerMask rayLayer = LayerMask.GetMask("Table");
-
-        if (gameStatus != GameStatus.Table) rayLayer = LayerMask.GetMask("ZoomedIn");
-
         Ray ray = Camera.main.ScreenPointToRay(input.GameInput.MousePosition.ReadValue<Vector2>());
+
+        if (selectedNPC && !IsPointerOverUIElement())
+        {
+            DisableNPCElements();
+        }
+
+        if (IsPointerOverUIElement()) return;
 
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, rayLayer))
@@ -112,10 +162,7 @@ public class GameManager : MonoBehaviour
     private void MouseCheck()
     {
         if (!ReadyToContinue()) return;
-
-        LayerMask rayLayer = LayerMask.GetMask("Table");
-
-        if (gameStatus != GameStatus.Table) rayLayer = LayerMask.GetMask("ZoomedIn");
+        if (IsPointerOverUIElement()) return;
 
         Ray ray = Camera.main.ScreenPointToRay(input.GameInput.MousePosition.ReadValue<Vector2>());
 
@@ -127,6 +174,25 @@ public class GameManager : MonoBehaviour
                 _outline.ToggleOutline();
             }
         }
+    }
+
+    private void DisableNPCElements()
+    {
+        if (!selectedNPC) return;
+
+        selectedNPC.GetComponent<Outline>().SetToggle(false);
+        HUDManager.instance.ActicateNPCInteractiveButtons(false);
+        selectedNPC = null; 
+    }
+
+    /// <summary>
+    /// Updates the active layer (Mainly for which object is interactivable on the table)
+    /// </summary>
+    public void LayerUpdate()
+    {
+         rayLayer = LayerMask.GetMask("Table");
+
+        if (gameStatus != GameStatus.Table) rayLayer = LayerMask.GetMask("ZoomedIn");
     }
 
     /// <summary>
