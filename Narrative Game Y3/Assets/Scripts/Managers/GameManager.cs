@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
         Table = 0,
         Map = 1,
         Diorama = 2,
-        Newspapaer = 3
+        Newspaper = 3
     }
 
     [SerializeField] private GameStatus gameStatus;
@@ -149,9 +149,9 @@ public class GameManager : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, rayLayer))
         {
-            if (hit.transform.TryGetComponent(out IObjectInteraction interactivable))
+            if (hit.transform.TryGetComponent(out IObjectInteraction interactable))
             {
-                interactivable.Interact();
+                interactable.Interact();
             }
         }
     }
@@ -181,7 +181,7 @@ public class GameManager : MonoBehaviour
         if (!selectedNPC) return;
 
         selectedNPC.GetComponent<Outline>().SetToggle(false);
-        HUDManager.instance.ActicateNPCInteractiveButtons(false);
+        HUDManager.instance.ActivateNPCInteractiveButtons(false);
         selectedNPC = null; 
     }
 

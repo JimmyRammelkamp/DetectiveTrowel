@@ -1435,7 +1435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statusIcons: {fileID: 1821932015}
-  nPCInteractiveButtons: {fileID: 1026847338}
+  npcInteractiveButtons: {fileID: 1026847338}
   mapButton: {fileID: 603585853}
   cigUI: {fileID: 341861000}
 --- !u!114 &510696487

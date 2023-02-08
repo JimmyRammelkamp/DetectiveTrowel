@@ -8,7 +8,7 @@ public class HUDManager : MonoBehaviour
     public static HUDManager instance;
 
     [SerializeField] private RectTransform statusIcons;
-    [SerializeField] private RectTransform nPCInteractiveButtons;
+    [SerializeField] private RectTransform npcInteractiveButtons;
     [SerializeField] private RectTransform mapButton;
     [SerializeField] private RectTransform cigUI;
 
@@ -25,13 +25,13 @@ public class HUDManager : MonoBehaviour
 
     private void Start()
     {
-        Initalize();
+        Initialize();
     }
 
-    private void Initalize()
+    private void Initialize()
     {
         statusIcons.gameObject.SetActive(false);
-        nPCInteractiveButtons.gameObject.SetActive(false);
+        npcInteractiveButtons.gameObject.SetActive(false);
         cigUI.gameObject.SetActive(false);
     }
 
@@ -41,22 +41,22 @@ public class HUDManager : MonoBehaviour
     private void DisableUIElements()
     {
         statusIcons.gameObject.SetActive(false);
-        nPCInteractiveButtons.gameObject.SetActive(false);
+        npcInteractiveButtons.gameObject.SetActive(false);
         mapButton.gameObject.SetActive(false);
     }
 
-    public void ActicateNPCInteractiveButtons(bool _bool)
+    public void ActivateNPCInteractiveButtons(bool _bool)
     {
         if (_bool)
         {
-            nPCInteractiveButtons.position = Camera.main.WorldToScreenPoint(GameManager.instance.GetSelectedNPC().transform.position);
-            nPCInteractiveButtons.position += new Vector3(Screen.height / 8, 0, 0);
+            npcInteractiveButtons.position = Camera.main.WorldToScreenPoint(GameManager.instance.GetSelectedNPC().transform.position);
+            npcInteractiveButtons.position += new Vector3(Screen.height / 8, 0, 0);
 
-            nPCInteractiveButtons.gameObject.SetActive(true);
+            npcInteractiveButtons.gameObject.SetActive(true);
         }
         else
         {
-            nPCInteractiveButtons.gameObject.SetActive(false);
+            npcInteractiveButtons.gameObject.SetActive(false);
         }
     }
 
@@ -89,7 +89,7 @@ public class HUDManager : MonoBehaviour
                 navigationC.ActivateMapCamera(navigationC.GetDioramaCamera());
                 break;
 
-            case GameManager.GameStatus.Newspapaer:
+            case GameManager.GameStatus.Newspaper:
                 navigationC.ActivateMapCamera(navigationC.GetNewspaperCamera());
                 break;
 

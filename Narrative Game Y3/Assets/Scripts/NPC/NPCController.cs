@@ -9,7 +9,7 @@ public class NPCController : MonoBehaviour, IObjectInteraction, IOutline
 
     public enum InteractStatus // NPC status based on if the player already interacted with it or it has new dialogue active
     {
-        Unkown = 0,
+        Unknown = 0,
         Interacted = 1,
         NewDialogue = 2
     }
@@ -18,7 +18,7 @@ public class NPCController : MonoBehaviour, IObjectInteraction, IOutline
 
     void Start()
     {
-        ChangeStatus(InteractStatus.Unkown);
+        ChangeStatus(InteractStatus.Unknown);
         if (statusIcons) statusIcons = Instantiate(statusIcons, HUDManager.instance.GetStatusIconParent());
     }
 
@@ -49,7 +49,7 @@ public class NPCController : MonoBehaviour, IObjectInteraction, IOutline
     }
 
     /// <summary>
-    /// Instert here any code to trigger when the player clicks on the NPC
+    /// Insert here any code to trigger when the player clicks on the NPC
     /// </summary>
     public void Interact()
     {
@@ -64,7 +64,7 @@ public class NPCController : MonoBehaviour, IObjectInteraction, IOutline
             _outline.SetOutlineWidth(GlobalOutlineManager.instance.GetOutlineWIdth());
         }
 
-        HUDManager.instance.ActicateNPCInteractiveButtons(true);
+        HUDManager.instance.ActivateNPCInteractiveButtons(true);
     }
 
     public void Speak()
