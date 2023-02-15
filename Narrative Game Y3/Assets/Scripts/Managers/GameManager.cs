@@ -11,10 +11,12 @@ public class GameManager : MonoBehaviour
 
     public enum GameStatus
     {
-        Table = 0,
-        Map = 1,
-        Diorama = 2,
-        Newspaper = 3
+        None = 0,
+        Table = 1,
+        Map = 2,
+        Diorama = 3,
+        Newspaper = 4,
+        PlayingCard = 5
     }
 
     [SerializeField] private GameStatus gameStatus;
@@ -26,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     private LayerMask rayLayer;
 
+    public InputActions GetInputs() { return input; }
     public int GetStressLevel() { return stressLevel; }
     public void SetStressLevel(int _stressLevel) { stressLevel = _stressLevel; }
     public NPCController GetSelectedNPC() { return selectedNPC; }
@@ -35,7 +38,6 @@ public class GameManager : MonoBehaviour
     { 
         gameStatus = _status;
         HUDManager.instance.ActivateUIElementsAccordingToGameStatus(gameStatus);
-        LayerUpdate();
     }
 
     private void Awake()
@@ -47,6 +49,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Initialize();
+    }
+
+    private void Update()
+    {
+        MouseCheck();
     }
 
     private void Initialize()
@@ -62,13 +69,6 @@ public class GameManager : MonoBehaviour
 
         input.GameInput.ScrollWheel.performed += ScrollNavigation;
         input.GameInput.ScrollWheel.performed += ScrollNavigation;
-
-        LayerUpdate();
-    }
-
-    void Update()
-    {
-        MouseCheck();
     }
 
     /// <summary>
@@ -146,12 +146,14 @@ public class GameManager : MonoBehaviour
 
         if (IsPointerOverUIElement()) return;
 
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, rayLayer))
+        RaycastHit[] hits;
+        hits = Physics.RaycastAll(ray, Mathf.Infinity);
+
+        foreach (var item in hits)
         {
-            if (hit.transform.TryGetComponent(out IObjectInteraction interactable))
+            if (item.transform.TryGetComponent(out InteractableObjects interactable))
             {
-                interactable.Interact();
+                if (interactable.isObjectInteractivable()) interactable.Interact();
             }
         }
     }
@@ -166,12 +168,14 @@ public class GameManager : MonoBehaviour
 
         Ray ray = Camera.main.ScreenPointToRay(input.GameInput.MousePosition.ReadValue<Vector2>());
 
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, rayLayer))
+        RaycastHit[] hits;
+        hits = Physics.RaycastAll(ray, Mathf.Infinity);
+
+        foreach (var item in hits)
         {
-            if (hit.transform.TryGetComponent(out IOutline _outline))
+            if (item.transform.TryGetComponent(out InteractableObjects interactable))
             {
-                _outline.ToggleOutline();
+                if (interactable.isObjectInteractivable()) interactable.MouseEnter();
             }
         }
     }
@@ -186,16 +190,6 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Updates the active layer (Mainly for which object is interactivable on the table)
-    /// </summary>
-    public void LayerUpdate()
-    {
-         rayLayer = LayerMask.GetMask("Table");
-
-        if (gameStatus != GameStatus.Table) rayLayer = LayerMask.GetMask("ZoomedIn");
-    }
-
-    /// <summary>
     ///  Check is the Camera transition or the diorama animation is over or not
     /// </summary>
     public bool ReadyToContinue()
@@ -204,5 +198,26 @@ public class GameManager : MonoBehaviour
         if (DioramaManager.instance.IsDioramaAnimationOver()) return false;
 
         return true;
+    }
+
+    public void ToggleOutline(GameObject _object, bool _toggle)
+    {
+        if (_toggle)
+        {
+            if (_object.TryGetComponent(out Outline _childOutline))
+            {
+                _childOutline.enabled = true;
+                _childOutline.SetToggle(true);
+                _childOutline.SetOutlineWidth(GlobalOutlineManager.instance.GetOutlineWIdth());
+            }
+        }
+        else
+        {
+            if (_object.TryGetComponent(out Outline _childOutline))
+            {
+                _childOutline.enabled = false;
+                _childOutline.SetToggle(false);
+            }
+        }
     }
 }

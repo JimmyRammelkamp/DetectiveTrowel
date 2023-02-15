@@ -2,24 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CigUI : MonoBehaviour
+public class CigUI : MonoBehaviour, IMouseEnter, IMouseExit
 {
-    /// <summary>
-    /// Shows the stress level 
-    /// </summary>
-    private void OnMouseEnter()
+    public void MouseEnter()
     {
         if (!GameManager.instance.ReadyToContinue()) return;
 
         HUDManager.instance.ShowAndSetCigUI(GameManager.instance.GetStressLevel(), transform.position);
     }
 
-    /// <summary>
-    /// Disable it
-    /// </summary>
-    private void OnMouseExit()
+    public void MouseExit()
     {
         HUDManager.instance.DisableCigUI();
     }
-
 }
