@@ -50,6 +50,9 @@ public class PlayingCardManager : MonoBehaviour
     private bool isCardFaningDone = true;
     private bool isDragging = false;
 
+    private Transform currentSelectedCard;
+    private Transform tempCurrentSelectedCard;
+
     private CardType currentCardType;
 
     private IEnumerator fanOutCards;
@@ -73,7 +76,56 @@ public class PlayingCardManager : MonoBehaviour
         cardThickness = cardPrefab.GetComponent<MeshRenderer>().bounds.size.z;
 
         LoadCardsForTesting();
-        for (int i = 0; i < 15; i++) AddCardTest();
+        for (int i = 0; i < 50; i++) AddCardTest();
+    }
+
+    private void Update()
+    {
+        if (GameManager.instance.GetStatus() != GameManager.GameStatus.PlayingCard) return;
+
+        SelectCard();
+    }
+
+    private void SelectCard()
+    {
+        currentSelectedCard = ClosestCardToTheMouse();
+
+        if (currentSelectedCard && tempCurrentSelectedCard)
+        {
+            if (tempCurrentSelectedCard == currentSelectedCard) return;
+            else tempCurrentSelectedCard.GetComponent<PlayingCard>().MouseExit();
+        }
+
+        currentSelectedCard.GetComponent<PlayingCard>().MouseEnter();
+
+        tempCurrentSelectedCard = currentSelectedCard;
+    }
+
+    private Transform ClosestCardToTheMouse()
+    {
+        float distanceFromCamera = Vector3.Distance(ReturnCurrentCardList()[ReturnCurrentCardList().Count / 2].position, Camera.main.transform.position);
+        Vector2 mousePosition = GameManager.instance.GetInputs().GameInput.MousePosition.ReadValue<Vector2>();
+        Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, distanceFromCamera));
+        float distance = Mathf.Infinity;
+
+        Debug.Log(mouseWorldPosition);
+
+        int index = 0;
+
+        for (int i = 0; i < ReturnCurrentCardList().Count; i++)
+        {
+            Vector2 card2DPos = new Vector2(ReturnCurrentCardList()[i].position.x, 0);
+            Vector2 mousePos = mouseWorldPosition;
+            float currentDistance = Vector2.Distance(card2DPos, mousePos);
+
+            if (currentDistance < distance)
+            {
+                distance = currentDistance;
+                index = i;
+            }
+        }
+
+        return ReturnCurrentCardList()[index];
     }
 
     private void AddCardTest()
