@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using NarrativeGame.Dialogue;
 
 public class GameManager : MonoBehaviour
 {

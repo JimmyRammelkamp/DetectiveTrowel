@@ -1,16 +1,14 @@
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
-using UnityEngine;
 using UnityEditor.Callbacks;
-using UnityEditor.MPE;
-using System;
+using UnityEngine;
 
 namespace NarrativeGame.Dialogue.Editor
 {
     public class DialogueEditor : EditorWindow
     {
-        //Serialized variables are maintained the next time the editor window is opened
         Dialogue selectedDialogue = null;
         [NonSerialized]
         GUIStyle nodeStyle;
@@ -33,20 +31,19 @@ namespace NarrativeGame.Dialogue.Editor
         Vector2 draggingCanvasOffset;
 
         const float canvasSize = 4000;
+        const float backgroundSize = 50;
 
         [MenuItem("Window/Dialogue Editor")]
         public static void ShowEditorWindow()
         {
-            // Create Dialogue Editor window
             GetWindow(typeof(DialogueEditor), false, "Dialogue Editor");
         }
 
         [OnOpenAsset(1)]
         public static bool OnOpenAsset(int instanceID, int line)
         {
-            // Cast from instanceID to check if object is dialogue
             Dialogue dialogue = EditorUtility.InstanceIDToObject(instanceID) as Dialogue;
-            if(dialogue != null)
+            if (dialogue != null)
             {
                 ShowEditorWindow();
                 return true;
@@ -54,18 +51,15 @@ namespace NarrativeGame.Dialogue.Editor
             return false;
         }
 
-        private void OnEnable()
-        {
+        private void OnEnable() {
             Selection.selectionChanged += OnSelectionChanged;
-            
-            // Create node style settings
+
             nodeStyle = new GUIStyle();
             nodeStyle.normal.background = EditorGUIUtility.Load("node0") as Texture2D;
             nodeStyle.normal.textColor = Color.white;
             nodeStyle.padding = new RectOffset(20, 20, 20, 20);
             nodeStyle.border = new RectOffset(12, 12, 12, 12);
 
-            // Create player node style settings
             playerNodeStyle = new GUIStyle();
             playerNodeStyle.normal.background = EditorGUIUtility.Load("node1") as Texture2D;
             playerNodeStyle.normal.textColor = Color.white;
@@ -76,19 +70,17 @@ namespace NarrativeGame.Dialogue.Editor
         private void OnSelectionChanged()
         {
             Dialogue newDialogue = Selection.activeObject as Dialogue;
-            if(newDialogue != null)
+            if (newDialogue != null)
             {
                 selectedDialogue = newDialogue;
                 Repaint();
             }
         }
 
-        private void OnGUI()
-        {
-
-            if(selectedDialogue == null)
+        private void OnGUI() {
+            if (selectedDialogue == null)
             {
-                EditorGUILayout.LabelField("No Dialogue Selected");
+                EditorGUILayout.LabelField("No Dialogue Selected.");
             }
             else
             {
@@ -98,28 +90,26 @@ namespace NarrativeGame.Dialogue.Editor
 
                 Rect canvas = GUILayoutUtility.GetRect(canvasSize, canvasSize);
                 Texture2D backgroundTex = Resources.Load("background") as Texture2D;
-                Rect texCoords = new Rect(0, 0, canvasSize / backgroundTex.width, canvasSize / backgroundTex.height);
+                Rect texCoords = new Rect(0, 0, canvasSize / backgroundSize, canvasSize / backgroundSize);
                 GUI.DrawTextureWithTexCoords(canvas, backgroundTex, texCoords);
 
                 foreach (DialogueNode node in selectedDialogue.GetAllNodes())
                 {
-                    //Draw Node relationships
                     DrawConnections(node);
                 }
                 foreach (DialogueNode node in selectedDialogue.GetAllNodes())
                 {
-                    //Draw Node containers
                     DrawNode(node);
                 }
 
                 EditorGUILayout.EndScrollView();
 
-                if(creatingNode != null)
+                if (creatingNode != null) 
                 {
                     selectedDialogue.CreateNode(creatingNode);
                     creatingNode = null;
                 }
-                if(deletingNode != null)
+                if (deletingNode != null)
                 {
                     selectedDialogue.DeleteNode(deletingNode);
                     deletingNode = null;
@@ -129,12 +119,11 @@ namespace NarrativeGame.Dialogue.Editor
 
         private void ProcessEvents()
         {
-            if(Event.current.type == EventType.MouseDown && draggingNode == null)
+            if (Event.current.type == EventType.MouseDown && draggingNode == null)
             {
                 draggingNode = GetNodeAtPoint(Event.current.mousePosition + scrollPosition);
-                if(draggingNode != null)
+                if (draggingNode != null)
                 {
-                    //Store mouse offset on initial drag
                     draggingOffset = draggingNode.GetRect().position - Event.current.mousePosition;
                     Selection.activeObject = draggingNode;
                 }
@@ -145,27 +134,27 @@ namespace NarrativeGame.Dialogue.Editor
                     Selection.activeObject = selectedDialogue;
                 }
             }
-            else if(Event.current.type == EventType.MouseDrag && draggingNode != null)
+            else if (Event.current.type == EventType.MouseDrag && draggingNode != null)
             {
-                //Update new node position using new mousePosition and initial offset
                 draggingNode.SetPosition(Event.current.mousePosition + draggingOffset);
 
                 GUI.changed = true;
             }
-            else if(Event.current.type == EventType.MouseDrag && draggingCanvas)
+            else if (Event.current.type == EventType.MouseDrag && draggingCanvas)
             {
                 scrollPosition = draggingCanvasOffset - Event.current.mousePosition;
 
                 GUI.changed = true;
             }
-            else if(Event.current.type == EventType.MouseUp && draggingNode != null)
+            else if (Event.current.type == EventType.MouseUp && draggingNode != null)
             {
                 draggingNode = null;
             }
-            else if(Event.current.type == EventType.MouseUp && draggingCanvas)
+            else if (Event.current.type == EventType.MouseUp && draggingCanvas)
             {
                 draggingCanvas = false;
             }
+
         }
 
         private void DrawNode(DialogueNode node)
@@ -175,24 +164,24 @@ namespace NarrativeGame.Dialogue.Editor
             {
                 style = playerNodeStyle;
             }
-
             GUILayout.BeginArea(node.GetRect(), style);
+            EditorGUI.BeginChangeCheck();
 
             node.SetText(EditorGUILayout.TextField(node.GetText()));
 
             GUILayout.BeginHorizontal();
 
-            if (GUILayout.Button("Add Child Node"))
-            {
-                creatingNode = node;
-            }
-            if (GUILayout.Button("Remove Node"))
+            if (GUILayout.Button("x"))
             {
                 deletingNode = node;
             }
+            DrawLinkButtons(node);
+            if (GUILayout.Button("+"))
+            {
+                creatingNode = node;
+            }
 
             GUILayout.EndHorizontal();
-            DrawLinkButtons(node);
 
             GUILayout.EndArea();
         }
@@ -201,38 +190,37 @@ namespace NarrativeGame.Dialogue.Editor
         {
             if (linkingParentNode == null)
             {
-                if (GUILayout.Button("Change Child Link"))
+                if (GUILayout.Button("link"))
                 {
                     linkingParentNode = node;
                 }
             }
             else if (linkingParentNode == node)
             {
-                if (GUILayout.Button("Cancel Change"))
+                if (GUILayout.Button("cancel"))
                 {
                     linkingParentNode = null;
                 }
             }
             else if (linkingParentNode.GetChildren().Contains(node.name))
             {
-                if (GUILayout.Button("Unlink"))
+                if (GUILayout.Button("unlink"))
                 {
-                    
                     linkingParentNode.RemoveChild(node.name);
                     linkingParentNode = null;
                 }
             }
             else
             {
-                if (GUILayout.Button("Link"))
+                if (GUILayout.Button("child"))
                 {
-                        linkingParentNode.AddChild(node.name);
-                        linkingParentNode = null;
+                    Undo.RecordObject(selectedDialogue, "Add Dialogue Link");
+                    linkingParentNode.AddChild(node.name);
+                    linkingParentNode = null;
                 }
             }
         }
 
-        //Draw Bezier curves between each parent and child node
         private void DrawConnections(DialogueNode node)
         {
             Vector3 startPosition = new Vector2(node.GetRect().xMax, node.GetRect().center.y);
@@ -242,15 +230,18 @@ namespace NarrativeGame.Dialogue.Editor
                 Vector3 controlPointOffset = endPosition - startPosition;
                 controlPointOffset.y = 0;
                 controlPointOffset.x *= 0.8f;
-
-                Handles.DrawBezier(startPosition, endPosition, startPosition + controlPointOffset, endPosition - controlPointOffset, Color.white, null, 4f);
+                Handles.DrawBezier(
+                    startPosition, endPosition, 
+                    startPosition + controlPointOffset, 
+                    endPosition - controlPointOffset, 
+                    Color.white, null, 4f);
             }
         }
 
         private DialogueNode GetNodeAtPoint(Vector2 point)
         {
             DialogueNode foundNode = null;
-            foreach(DialogueNode node in selectedDialogue.GetAllNodes())
+            foreach (DialogueNode node in selectedDialogue.GetAllNodes())
             {
                 if (node.GetRect().Contains(point))
                 {

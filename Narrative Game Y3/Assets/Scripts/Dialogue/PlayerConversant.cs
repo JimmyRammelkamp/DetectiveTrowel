@@ -11,12 +11,12 @@ namespace NarrativeGame.Dialogue
         [SerializeField] string playerName;
         Dialogue currentDialogue;
         DialogueNode currentNode = null;
-        AIConversant currentConversant = null;
+        NPCController currentConversant = null;
         bool isChoosing = false;
 
         public event Action onConversationUpdated;
 
-        public void StartDialogue(AIConversant newConversant, Dialogue newDialogue)
+        public void StartDialogue(NPCController newConversant, Dialogue newDialogue)
         {
             currentConversant = newConversant;
             currentDialogue = newDialogue;
