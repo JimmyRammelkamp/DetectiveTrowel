@@ -18,6 +18,8 @@ public class GlobalOutlineManager : MonoBehaviour
     Outline[] outlines;
 
     public float GetOutlineWIdth() { return outlineWidth; }
+    public Color GetOutlineColor() { return outlineColor; }
+    public Outline.Mode GetOutlineMode() { return outlineMode; }
 
     private void Awake()
     {

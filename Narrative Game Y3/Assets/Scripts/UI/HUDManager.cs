@@ -76,6 +76,7 @@ public class HUDManager : MonoBehaviour
             case GameManager.GameStatus.Table:
                 mapButton.gameObject.SetActive(true);
                 navigationC.ActivateMapCamera(navigationC.GetTableCamera());
+                PlayingCardManager.instance.CloseCardMenu();
                 break;
 
             case GameManager.GameStatus.Map:
@@ -91,6 +92,9 @@ public class HUDManager : MonoBehaviour
 
             case GameManager.GameStatus.Newspaper:
                 navigationC.ActivateMapCamera(navigationC.GetNewspaperCamera());
+                break;
+
+            case GameManager.GameStatus.PlayingCard:
                 break;
 
             default:

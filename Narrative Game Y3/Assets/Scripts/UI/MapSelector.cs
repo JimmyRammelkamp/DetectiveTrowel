@@ -2,21 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapSelector : MonoBehaviour, IObjectInteraction, IOutline
+public class MapSelector : MonoBehaviour, IObjectInteraction, IMouseEnter, IMouseExit
 {
     [SerializeField] Transform mapPrefab;
     [SerializeField] Transform redCircle;
 
-    private bool isMouseOn;
-    void Start()
+    private void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        ShowRedCircle();
+        redCircle.gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -30,21 +23,14 @@ public class MapSelector : MonoBehaviour, IObjectInteraction, IOutline
         DioramaManager.instance.TriggerDioramaAnimation(mapPrefab);
     }
 
-    public void ToggleOutline()
+    public void MouseEnter()
     {
-        isMouseOn = true;
+        redCircle.gameObject.SetActive(true);
     }
 
-    /// <summary>
-    ///  Shows the red circle around the map trigger (temporary)
-    /// </summary>
-    private void ShowRedCircle()
+
+    public void MouseExit()
     {
-        if (!redCircle) return;
-
-        if (isMouseOn) redCircle.gameObject.SetActive(true);
-        else redCircle.gameObject.SetActive(false);
-
-        isMouseOn = false;
+        redCircle.gameObject.SetActive(false);
     }
 }

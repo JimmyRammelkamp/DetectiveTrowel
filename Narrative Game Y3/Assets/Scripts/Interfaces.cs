@@ -12,7 +12,12 @@ public interface IObjectInteraction // Trigger this when the player interact wit
     void Interact();
 }
 
-public interface IOutline // Outline when the mouse is on an interactable object
+public interface IMouseEnter
 {
-    void ToggleOutline();
+    void MouseEnter();
+}
+
+public interface IMouseExit // Outline when the mouse is on an interactable object
+{
+    void MouseExit();
 }

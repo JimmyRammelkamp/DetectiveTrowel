@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class NPCController : MonoBehaviour, IObjectInteraction, IOutline
+public class NPCController : MonoBehaviour, IObjectInteraction
 {
     [SerializeField] private RectTransform statusIcons;
 
@@ -82,19 +82,6 @@ public class NPCController : MonoBehaviour, IObjectInteraction, IOutline
     public void ShowObject()
     {
         Debug.Log("NPC Show Object");
-    }
-
-
-    public void ToggleOutline()
-    {
-        if (GameManager.instance.GetStatus() != GameManager.GameStatus.Diorama) return;
-
-        if (transform.TryGetComponent(out Outline _outline))
-        {
-            _outline.enabled = true;
-            _outline.SetIsMouseOn(true);
-            _outline.SetOutlineWidth(GlobalOutlineManager.instance.GetOutlineWIdth());
-        }
     }
 
     /// <summary>

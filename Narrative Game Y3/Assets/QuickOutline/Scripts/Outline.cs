@@ -83,6 +83,8 @@ public class Outline : MonoBehaviour
     [SerializeField, HideInInspector]
     private List<ListVector3> bakeValues = new List<ListVector3>();
 
+    [SerializeField] private bool isUnique;
+
     private Renderer[] renderers;
     private Material outlineMaskMaterial;
     private Material outlineFillMaterial;
@@ -93,18 +95,21 @@ public class Outline : MonoBehaviour
 
     public void SetOutlineWidth(float _width)
     {
+        if (isUnique) return;
         outlineWidth = Math.Min(_width, 10);
         UpdateMaterialProperties();
     }
 
     public void SetOutlineColor(Color _color)
     {
+        if (isUnique) return;
         outlineColor = _color;
         UpdateMaterialProperties();
     }
 
     public void SetOutlineMode(Mode _mode)
     {
+        if (isUnique) return;
         OutlineMode = _mode;
         UpdateMaterialProperties();
     }
@@ -130,6 +135,19 @@ public class Outline : MonoBehaviour
 
         // Apply material properties immediately
         needsUpdate = true;
+    }
+
+    private void Start()
+    {
+        UpdateMaterialProperties();
+        if (isUnique) return;
+
+        if (GlobalOutlineManager.instance)
+        {
+            SetOutlineMode(GlobalOutlineManager.instance.GetOutlineMode());
+            SetOutlineColor(GlobalOutlineManager.instance.GetOutlineColor());
+            SetOutlineWidth(GlobalOutlineManager.instance.GetOutlineWIdth());
+        }
     }
 
     void OnEnable()
@@ -339,7 +357,6 @@ public class Outline : MonoBehaviour
 
     void UpdateMaterialProperties()
     {
-
         // Apply properties according to mode
         outlineFillMaterial.SetColor("_OutlineColor", outlineColor);
 
