@@ -19,6 +19,7 @@ public class PlayingCard : MonoBehaviour
     public PlayCardsSObject GetCardData() { return cardData; }
 
     public CardType GetCardType() { return type; }
+    public void SetType(CardType _type) { type = _type; }
     public CardStatus GetCardStatus() { return status; }
     public void SetCardStatus(CardStatus _status) { status = _status; }
 
@@ -30,6 +31,7 @@ public class PlayingCard : MonoBehaviour
     private bool isMouseEnterWhileMoving = false;
 
     private bool isCardHovered = false;
+    private bool isEvidenceShowed = false;
 
     private Vector3 tempStartPos;
     private Vector3 startPosition;
@@ -42,6 +44,7 @@ public class PlayingCard : MonoBehaviour
 
     public void SetTempStartPos(Vector3 _pos) { tempStartPos = _pos; }
     public Vector3 getTempStartPos() { return tempStartPos; }
+    public void SetIsCardHovered(bool _bool) { isCardHovered = _bool; }
 
     private void Start()
     {
@@ -67,6 +70,7 @@ public class PlayingCard : MonoBehaviour
     private void OnMouseUp()
     {
         isDragging = false;
+        PlayingCardManager.instance.SetIsDragging(false);
 
         if (PlayingCardManager.instance.GetCurrentCardType() != type) return;
 
@@ -74,11 +78,15 @@ public class PlayingCard : MonoBehaviour
 
         CheckUnderMouse();
 
+        if (isEvidenceShowed)
+        {
+            isEvidenceShowed = false;
+            return;
+        }
+
         if (status == CardStatus.Drag) status = CardStatus.Hand;
 
         if (isLerping) return;
-
-        PlayingCardManager.instance.SetIsDragging(false);
 
         Vector3 mousePosition = GameManager.instance.GetInputs().GameInput.MousePosition.ReadValue<Vector2>();
 
@@ -104,7 +112,7 @@ public class PlayingCard : MonoBehaviour
     {
         if (PlayingCardManager.instance.GetCurrentCardType() != type) return;
 
-        if (GameManager.instance.GetStatus() != GameManager.GameStatus.PlayingCard) return;
+        //if (GameManager.instance.GetStatus() != GameManager.GameStatus.PlayingCard) return;
 
         PlayingCardManager.instance.ToggleSlotOutline(true);
 
@@ -150,6 +158,7 @@ public class PlayingCard : MonoBehaviour
         isCardHovered = true;
 
         if (PlayingCardManager.instance.GetCurrentCardType() != type) return;
+
 
         if (!PlayingCardManager.instance.IsCardFaningDone())
         {
@@ -292,6 +301,15 @@ public class PlayingCard : MonoBehaviour
 
         foreach (var item in hits)
         {
+            if (item.transform.TryGetComponent(out EvidenceSlot _evidenceSlot))
+            {
+                GameManager.instance.GetSelectedNPC().InspectEvidence(cardData);
+                GameManager.instance.SetStatus(GameManager.GameStatus.Diorama);
+                isEvidenceShowed = true;
+                PlayingCardManager.instance.SetIsDragging(false);
+                return;
+            }
+
             if (item.transform.TryGetComponent(out CardSlot _cardSlot))
             {
                 if (_cardSlot.GetSlotType() != type) return;

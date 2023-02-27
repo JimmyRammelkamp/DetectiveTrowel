@@ -46,6 +46,9 @@ public class HUDManager : MonoBehaviour
         statusIcons.gameObject.SetActive(false);
         npcInteractiveButtons.gameObject.SetActive(false);
         mapButton.gameObject.SetActive(false);
+        backButton.gameObject.SetActive(false);
+
+        PlayingCardManager.instance.CloseCardMenu();
     }
 
     public void ActivateNPCInteractiveButtons(bool _bool)
@@ -80,7 +83,6 @@ public class HUDManager : MonoBehaviour
                 backButton.gameObject.SetActive(false);
                 StartCoroutine(ShowAfterTransition(mapButton));
                 navigationC.ActivateMapCamera(navigationC.GetTableCamera());
-                PlayingCardManager.instance.CloseCardMenu();
                 break;
 
             case GameManager.GameStatus.Map:
@@ -105,7 +107,7 @@ public class HUDManager : MonoBehaviour
                 break;
 
             case GameManager.GameStatus.InspectEvidence:
-
+                backButton.gameObject.SetActive(true);
                 break;
 
             default:

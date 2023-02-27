@@ -32,6 +32,7 @@ public class PlayingCardManager : MonoBehaviour
     [SerializeField] private Transform fanOutCardsPosition;
     [SerializeField] private Transform closeUpCardPosition;
     [SerializeField] private Transform cardSlots;
+    [SerializeField] private Transform evidenceSlot;
     [SerializeField] private Transform selectedCardsOnTablePositions;
 
     public List<PlayCardsSObject> cardList = new();
@@ -75,6 +76,7 @@ public class PlayingCardManager : MonoBehaviour
     private void Start()
     {
         cardSlots.gameObject.SetActive(false);
+        evidenceSlot.gameObject.SetActive(false);
         cardThickness = cardPrefab.GetComponent<MeshRenderer>().bounds.size.z;
 
         LoadCardsForTesting();
@@ -83,7 +85,8 @@ public class PlayingCardManager : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance.GetStatus() != GameManager.GameStatus.PlayingCard) return;
+        if (GameManager.instance.GetStatus() != GameManager.GameStatus.PlayingCard &&
+           GameManager.instance.GetStatus() != GameManager.GameStatus.InspectEvidence) return;
 
         SelectCard();
     }
@@ -94,7 +97,9 @@ public class PlayingCardManager : MonoBehaviour
 
         Vector2 mousePosition = GameManager.instance.GetInputs().GameInput.MousePosition.ReadValue<Vector2>();
 
-        if (mousePosition.y > 300)
+        Debug.Log(mousePosition.x);
+
+        if (mousePosition.y > Screen.height / 3.6f || mousePosition.x < Screen.width / 5.5f || mousePosition.x > Screen.width - Screen.width / 5.5f)
         {
             tempCurrentSelectedCard.GetComponent<PlayingCard>().MouseExit();
             return;
@@ -172,6 +177,9 @@ public class PlayingCardManager : MonoBehaviour
             case CardType.Weapon:
                 return weaponList;
 
+            case CardType.All:
+                return allCardList;
+
             default:
                 return null;
         }
@@ -180,16 +188,19 @@ public class PlayingCardManager : MonoBehaviour
     public void CloseCardMenu()
     {
         cardSlots.gameObject.SetActive(false);
+        evidenceSlot.gameObject.SetActive(false);
         if (ReturnCurrentCardList() != null) SetCardsBack();
     }
 
     public void InteractWithDeck(CardType _type)
     {
-        cardSlots.gameObject.SetActive(true);
+        if (_type == CardType.All) evidenceSlot.gameObject.SetActive(true);
+        else cardSlots.gameObject.SetActive(true);
 
         if (ReturnCurrentCardList() != null) SetCardsBack();
 
         currentCardType = _type;
+        SetCardTypes();
         CheckCloseUpCards();
         RearrangeCards();
         FanOutCards(true);
@@ -198,17 +209,30 @@ public class PlayingCardManager : MonoBehaviour
         tempCurrentSelectedCard = ReturnCurrentCardList()[1];
     }
 
+    private void SetCardTypes()
+    {
+        foreach (var card in ReturnCurrentCardList())
+        {
+            if (GameManager.instance.GetStatus() == GameManager.GameStatus.InspectEvidence) card.GetComponent<PlayingCard>().SetType(CardType.All);
+            else card.GetComponent<PlayingCard>().SetType(card.GetComponent<PlayingCard>().GetCardData().Type);
+        }
+
+    }
+
     public void PlaceCardBack()
     {
         RearrangeCards();
         FanOutCards(false);
     }
 
-    private void SetCardsBack()
+    public void SetCardsBack()
     {
+        SetCardTypes();
+
         int counter = 0;
         foreach (var card in ReturnCurrentCardList())
         {
+            card.GetComponent<PlayingCard>().SetIsCardHovered(false);
             card.GetComponent<PlayingCard>().OutlineToggleOff();
             if (card.GetComponent<PlayingCard>().GetCardStatus() == CardStatus.CardSlot) continue;
 
@@ -216,7 +240,7 @@ public class PlayingCardManager : MonoBehaviour
 
             Transform _parent = GetCloseUpCardPosition();
 
-            switch (currentCardType)
+            switch (listCardType)
             {
                 case CardType.Character:
                     _parent = characterPosition;

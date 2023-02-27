@@ -30,7 +30,7 @@ namespace NarrativeGame.Dialogue
 
         void Awake()
         {
-            playerConversant = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerConversant>();
+            //playerConversant = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerConversant>();
         }
 
         private void OnEnable() // Shows the NPC icon when the NPC object is active
@@ -87,7 +87,7 @@ namespace NarrativeGame.Dialogue
         {
             Debug.Log("NPC Speak");
 
-            playerConversant.StartDialogue(this, dialogue);
+            //playerConversant.StartDialogue(this, dialogue);
 
             ChangeStatus(InteractStatus.Interacted);
         }
@@ -100,6 +100,13 @@ namespace NarrativeGame.Dialogue
         public void ShowObject()
         {
             Debug.Log("NPC Show Object");
+            GameManager.instance.SetStatus(GameManager.GameStatus.InspectEvidence);
+            PlayingCardManager.instance.InteractWithDeck(CardType.All);
+        }
+
+        public void InspectEvidence(PlayCardsSObject _card)
+        {
+            Debug.Log("Inspect this: " + _card + " -" + transform.name);
         }
 
         /// <summary>

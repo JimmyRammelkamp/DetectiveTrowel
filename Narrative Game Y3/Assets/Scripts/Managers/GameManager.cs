@@ -95,8 +95,7 @@ public class GameManager : MonoBehaviour
         if (!ReadyToContinue()) return;
 
         if (gameStatus == GameStatus.InspectEvidence) SetStatus(GameStatus.Diorama);
-
-        SetStatus(GameStatus.Table);
+        else SetStatus(GameStatus.Table);
 
         DisableNPCElements();
     }
@@ -191,6 +190,8 @@ public class GameManager : MonoBehaviour
 
     private void DisableNPCElements()
     {
+        if (gameStatus == GameStatus.InspectEvidence) return;
+
         if (!selectedNPC) return;
 
         selectedNPC.GetComponent<Outline>().SetToggle(false);
