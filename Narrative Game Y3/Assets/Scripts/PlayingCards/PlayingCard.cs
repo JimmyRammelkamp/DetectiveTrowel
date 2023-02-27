@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class PlayingCard : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class PlayingCard : MonoBehaviour
     public void SetCardData(PlayCardsSObject _data) { cardData = _data; }
     public PlayCardsSObject GetCardData() { return cardData; }
 
+    public CardType GetCardType() { return type; }
     public CardStatus GetCardStatus() { return status; }
     public void SetCardStatus(CardStatus _status) { status = _status; }
 
@@ -27,7 +29,10 @@ public class PlayingCard : MonoBehaviour
     private bool isDragging = false;
     private bool isMouseEnterWhileMoving = false;
 
+    private bool isCardHovered = false;
+
     private Vector3 tempStartPos;
+    private Vector3 startPosition;
     private Vector3 clickPosition;
 
     private float distanceFromCamera;
@@ -35,12 +40,15 @@ public class PlayingCard : MonoBehaviour
 
     IEnumerator lerpIE;
 
+    public void SetTempStartPos(Vector3 _pos) { tempStartPos = _pos; }
+    public Vector3 getTempStartPos() { return tempStartPos; }
+
     private void Start()
     {
         gameObject.AddComponent<Outline>();
 
         type = cardData.Type;
-        image.GetComponent<SpriteRenderer>().sprite = cardData.Image;
+        image.GetComponent<Image>().sprite = cardData.Image;
         title.GetComponent<TextMeshProUGUI>().text = cardData.Title;
         description.GetComponent<TextMeshProUGUI>().text = cardData.Description;
     }
@@ -64,23 +72,29 @@ public class PlayingCard : MonoBehaviour
 
         PlayingCardManager.instance.ToggleSlotOutline(false);
 
+        CheckUnderMouse();
+
+        if (status == CardStatus.Drag) status = CardStatus.Hand;
+
         if (isLerping) return;
 
         PlayingCardManager.instance.SetIsDragging(false);
 
-        CheckUnderMouse();
-
-        if (status == CardStatus.CardSlot) return;
-        if (status == CardStatus.Drag) status = CardStatus.Hand;
-
         Vector3 mousePosition = GameManager.instance.GetInputs().GameInput.MousePosition.ReadValue<Vector2>();
 
-        if (mousePosition == clickPosition)
+        if (mousePosition == clickPosition && status != CardStatus.CloseUp)
         {
+            if (status == CardStatus.CardSlot) PlayingCardManager.instance.RemoveCardFromSlot((int)type);
+
+            PlayingCardManager.instance.CheckCloseUpCards();
             transform.localRotation = Quaternion.Euler(Vector3.zero);
             transform.SetParent(PlayingCardManager.instance.GetCloseUpCardPosition());
             StartCoroutine(LerpCard(Vector3.zero, true));
             status = CardStatus.CloseUp;
+        }
+        else
+        {
+            if (status == CardStatus.CloseUp) PlayingCardManager.instance.CheckCloseUpCards();
         }
 
         PlayingCardManager.instance.PlaceCardBack();
@@ -112,8 +126,29 @@ public class PlayingCard : MonoBehaviour
         transform.position -= transform.up * deltaMouse.z;
     }
 
+    private void OnMouseEnter()
+    {
+        if (status == CardStatus.Hand) return;
+
+        if (transform.TryGetComponent(out Outline _outline))
+        {
+            _outline.enabled = true;
+            _outline.SetToggle(true);
+            _outline.SetOutlineWidth(GlobalOutlineManager.instance.GetOutlineWIdth());
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        OutlineToggleOff();
+    }
+
     public void MouseEnter()
     {
+        if (isCardHovered) return;
+
+        isCardHovered = true;
+
         if (PlayingCardManager.instance.GetCurrentCardType() != type) return;
 
         if (!PlayingCardManager.instance.IsCardFaningDone())
@@ -135,7 +170,7 @@ public class PlayingCard : MonoBehaviour
 
         if (status != CardStatus.Hand) return;
 
-        tempStartPos = transform.position;
+        startPosition = transform.position;
 
         isLerpingUP = true;
 
@@ -143,71 +178,11 @@ public class PlayingCard : MonoBehaviour
         StartCoroutine(lerpIE);
     }
 
-    private void OnMouseEnter()
-    {
-        return;
-
-        if (PlayingCardManager.instance.GetCurrentCardType() != type) return;
-
-        if (!PlayingCardManager.instance.IsCardFaningDone())
-        {
-            isMouseEnterWhileMoving = true;
-            return;
-        }
-
-        if (PlayingCardManager.instance.IsDragging()) return;
-
-        if (isLerpingDown || isLerpingUP) return;
-
-        if (transform.TryGetComponent(out Outline _outline))
-        {
-            _outline.enabled = true;
-            _outline.SetToggle(true);
-            _outline.SetOutlineWidth(GlobalOutlineManager.instance.GetOutlineWIdth());
-        }
-
-        if (status != CardStatus.Hand) return;
-
-        tempStartPos = transform.position;
-
-        isLerpingUP = true;
-
-        lerpIE = LerpCard(transform.position + transform.up * 0.2f + transform.forward * 0.02f, false);
-        StartCoroutine(lerpIE);
-    }
-
     public void MouseExit()
     {
-        OutlineToggleOff();
+        if (!isCardHovered) return;
 
-        if (isMouseEnterWhileMoving)
-        {
-            isMouseEnterWhileMoving = false;
-            return;
-        }
-
-        if (PlayingCardManager.instance.GetCurrentCardType() != type) return;
-
-        if (!PlayingCardManager.instance.IsCardFaningDone()) return;
-
-        if (PlayingCardManager.instance.IsDragging()) return;
-
-        if (status != CardStatus.Hand) return;
-
-        if (isLerpingDown) return;
-
-        if (tempStartPos == Vector3.zero) return;
-
-        isLerpingDown = true;
-
-        if (lerpIE != null) StopCoroutine(lerpIE);
-        lerpIE = LerpCard(tempStartPos, false);
-        StartCoroutine(lerpIE);
-    }
-
-    private void OnMouseExit()
-    {
-        return;
+        isCardHovered = false;
 
         OutlineToggleOff();
 
@@ -227,12 +202,12 @@ public class PlayingCard : MonoBehaviour
 
         if (isLerpingDown) return;
 
-        if (tempStartPos == Vector3.zero) return;
+        if (startPosition == Vector3.zero) return;
 
         isLerpingDown = true;
 
         if (lerpIE != null) StopCoroutine(lerpIE);
-        lerpIE = LerpCard(tempStartPos, false);
+        lerpIE = LerpCard(startPosition, false);
         StartCoroutine(lerpIE);
     }
 
@@ -298,7 +273,7 @@ public class PlayingCard : MonoBehaviour
 
         PlayingCardManager.instance.PlaceCardBack();
 
-        distanceFromCamera = Vector3.Distance(transform.position, Camera.main.transform.position);
+        distanceFromCamera = 1.66f;
 
         Vector3 mousePosition = GameManager.instance.GetInputs().GameInput.MousePosition.ReadValue<Vector2>();
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, distanceFromCamera));

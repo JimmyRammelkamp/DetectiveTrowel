@@ -10,6 +10,7 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private RectTransform statusIcons;
     [SerializeField] private RectTransform npcInteractiveButtons;
     [SerializeField] private RectTransform mapButton;
+    [SerializeField] private RectTransform backButton;
     [SerializeField] private RectTransform cigUI;
 
     private GameManager.GameStatus tempStatus; // for updating the UI elements
@@ -33,6 +34,7 @@ public class HUDManager : MonoBehaviour
         statusIcons.gameObject.SetActive(false);
         npcInteractiveButtons.gameObject.SetActive(false);
         cigUI.gameObject.SetActive(false);
+        backButton.gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -74,27 +76,35 @@ public class HUDManager : MonoBehaviour
         switch (_status)
         {
             case GameManager.GameStatus.Table:
-                mapButton.gameObject.SetActive(true);
+                backButton.gameObject.SetActive(false);
+                StartCoroutine(ShowAfterTransition(mapButton));
                 navigationC.ActivateMapCamera(navigationC.GetTableCamera());
                 PlayingCardManager.instance.CloseCardMenu();
                 break;
 
             case GameManager.GameStatus.Map:
-                mapButton.gameObject.SetActive(true);
+                StartCoroutine(ShowAfterTransition(backButton));
                 navigationC.ActivateMapCamera(navigationC.GetMapCamera());
                 break;
 
             case GameManager.GameStatus.Diorama:
-                mapButton.gameObject.SetActive(true);
+                StartCoroutine(ShowAfterTransition(backButton));
+                StartCoroutine(ShowAfterTransition(mapButton));
                 statusIcons.gameObject.SetActive(true);
                 navigationC.ActivateMapCamera(navigationC.GetDioramaCamera());
                 break;
 
             case GameManager.GameStatus.Newspaper:
+                StartCoroutine(ShowAfterTransition(backButton));
                 navigationC.ActivateMapCamera(navigationC.GetNewspaperCamera());
                 break;
 
             case GameManager.GameStatus.PlayingCard:
+                backButton.gameObject.SetActive(true);
+                break;
+
+            case GameManager.GameStatus.InspectEvidence:
+
                 break;
 
             default:
@@ -103,6 +113,14 @@ public class HUDManager : MonoBehaviour
         }
 
         tempStatus = GameManager.instance.GetStatus();
+    }
+
+    IEnumerator ShowAfterTransition(RectTransform _transform)
+    {
+        yield return new WaitForSeconds(0.1f);
+        _transform.gameObject.SetActive(false);
+        yield return new WaitUntil(() => GameManager.instance.ReadyToContinue());
+        _transform.gameObject.SetActive(true);
     }
 
     /// <summary>

@@ -15,7 +15,8 @@ public enum CardType
     None = 0,
     Character = 1,
     Motive = 2,
-    Weapon = 3
+    Weapon = 3,
+    All = 4
 }
 
 public class PlayingCardManager : MonoBehaviour
@@ -37,6 +38,7 @@ public class PlayingCardManager : MonoBehaviour
     private List<Transform> characterList = new();
     private List<Transform> weaponList = new();
     private List<Transform> motiveList = new();
+    private List<Transform> allCardList = new();
 
     private Transform[] slotCards = new Transform[3];
 
@@ -76,7 +78,7 @@ public class PlayingCardManager : MonoBehaviour
         cardThickness = cardPrefab.GetComponent<MeshRenderer>().bounds.size.z;
 
         LoadCardsForTesting();
-        for (int i = 0; i < 50; i++) AddCardTest();
+        for (int i = 0; i < 20; i++) AddCardTest();
     }
 
     private void Update()
@@ -90,13 +92,21 @@ public class PlayingCardManager : MonoBehaviour
     {
         currentSelectedCard = ClosestCardToTheMouse();
 
-        if (currentSelectedCard && tempCurrentSelectedCard)
+        Vector2 mousePosition = GameManager.instance.GetInputs().GameInput.MousePosition.ReadValue<Vector2>();
+
+        if (mousePosition.y > 300)
         {
-            if (tempCurrentSelectedCard == currentSelectedCard) return;
-            else tempCurrentSelectedCard.GetComponent<PlayingCard>().MouseExit();
+            tempCurrentSelectedCard.GetComponent<PlayingCard>().MouseExit();
+            return;
         }
 
+        if (!IsCardFaningDone()) return;
+
         currentSelectedCard.GetComponent<PlayingCard>().MouseEnter();
+
+        if (tempCurrentSelectedCard == currentSelectedCard) return;
+
+        tempCurrentSelectedCard.GetComponent<PlayingCard>().MouseExit();
 
         tempCurrentSelectedCard = currentSelectedCard;
     }
@@ -108,15 +118,15 @@ public class PlayingCardManager : MonoBehaviour
         Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, distanceFromCamera));
         float distance = Mathf.Infinity;
 
-        Debug.Log(mouseWorldPosition);
-
         int index = 0;
 
         for (int i = 0; i < ReturnCurrentCardList().Count; i++)
         {
-            Vector2 card2DPos = new Vector2(ReturnCurrentCardList()[i].position.x, 0);
+            if (ReturnCurrentCardList()[i].GetComponent<PlayingCard>().GetCardStatus() != CardStatus.Hand) continue;
+
+            Vector2 card2DPos = new Vector2(ReturnCurrentCardList()[i].GetComponent<PlayingCard>().getTempStartPos().x, 0);
             Vector2 mousePos = mouseWorldPosition;
-            float currentDistance = Vector2.Distance(card2DPos, mousePos);
+            float currentDistance = Vector2.Distance(card2DPos, mousePos) * 1000000;
 
             if (currentDistance < distance)
             {
@@ -132,12 +142,14 @@ public class PlayingCardManager : MonoBehaviour
     {
         AddCard(cardList[testIndex]);
         testIndex++;
+
+        if (testIndex > cardList.Count - 1) testIndex = 0;
     }
 
     private void LoadCardsForTesting()
     {
         Object[] Items = Resources.LoadAll("Cards", typeof(PlayCardsSObject));
-        for (int i = 0; i < 12; i++)
+        for (int i = 0; i < 3; i++)
         {
             foreach (PlayCardsSObject item in Items)
             {
@@ -165,38 +177,25 @@ public class PlayingCardManager : MonoBehaviour
         }
     }
 
-    private void PutCardsAaway(List<Transform> _cardList)
-    {
-        switch (currentCardType)
-        {
-            case CardType.Character:
-                SetCardsBack(ref _cardList, characterPosition);
-                break;
-            case CardType.Weapon:
-                SetCardsBack(ref _cardList, weaponPosition);
-                break;
-            case CardType.Motive:
-                SetCardsBack(ref _cardList, motivePosition);
-                break;
-        }
-    }
-
     public void CloseCardMenu()
     {
         cardSlots.gameObject.SetActive(false);
-        PutCardsAaway(ReturnCurrentCardList());
+        if (ReturnCurrentCardList() != null) SetCardsBack();
     }
 
     public void InteractWithDeck(CardType _type)
     {
         cardSlots.gameObject.SetActive(true);
 
-        if (ReturnCurrentCardList() != null) PutCardsAaway(ReturnCurrentCardList());
+        if (ReturnCurrentCardList() != null) SetCardsBack();
 
         currentCardType = _type;
         CheckCloseUpCards();
         RearrangeCards();
         FanOutCards(true);
+
+        currentSelectedCard = ReturnCurrentCardList()[0];
+        tempCurrentSelectedCard = ReturnCurrentCardList()[1];
     }
 
     public void PlaceCardBack()
@@ -205,19 +204,37 @@ public class PlayingCardManager : MonoBehaviour
         FanOutCards(false);
     }
 
-    private void SetCardsBack(ref List<Transform> _list, Transform _parent)
+    private void SetCardsBack()
     {
         int counter = 0;
-        foreach (var card in _list)
+        foreach (var card in ReturnCurrentCardList())
         {
+            card.GetComponent<PlayingCard>().OutlineToggleOff();
             if (card.GetComponent<PlayingCard>().GetCardStatus() == CardStatus.CardSlot) continue;
+
+            CardType listCardType = card.GetComponent<PlayingCard>().GetCardType();
+
+            Transform _parent = GetCloseUpCardPosition();
+
+            switch (currentCardType)
+            {
+                case CardType.Character:
+                    _parent = characterPosition;
+                    break;
+                case CardType.Weapon:
+                    _parent = weaponPosition;
+                    break;
+                case CardType.Motive:
+                    _parent = motivePosition;
+                    break;
+            }
 
             card.SetParent(_parent);
 
             card.transform.localPosition = Vector3.zero;
             card.transform.rotation = Quaternion.Euler(new Vector3(90, 180, _parent.eulerAngles.y + Random.Range(-10.0f, 10.0f)));
 
-            if (counter > 0) card.transform.localPosition = _list[counter - 1].localPosition + new Vector3(0, cardThickness, 0);
+            if (counter > 0) card.transform.localPosition = ReturnCurrentCardList()[counter - 1].localPosition + new Vector3(0, cardThickness, 0);
 
             counter++;
         }
@@ -228,6 +245,7 @@ public class PlayingCardManager : MonoBehaviour
         foreach (var card in ReturnCurrentCardList())
         {
             if (card.GetComponent<PlayingCard>().GetCardStatus() == CardStatus.CloseUp) card.GetComponent<PlayingCard>().SetCardStatus(CardStatus.Hand);
+            if (card.GetComponent<PlayingCard>().GetCardStatus() == CardStatus.Drag) card.GetComponent<PlayingCard>().SetCardStatus(CardStatus.Hand);
         }
     }
 
@@ -269,7 +287,8 @@ public class PlayingCardManager : MonoBehaviour
             cardRotationZ.Add(currentAngle - 90);
 
             currentAngle += angleStep;
-            startZ += cardThickness * 2.0f;
+            //startZ += cardThickness * 2.0f;
+            startZ += 0.001f;
         }
 
         LerpCards();
@@ -320,6 +339,12 @@ public class PlayingCardManager : MonoBehaviour
                 fanOutCardsPosition.GetChild(i).localRotation = Quaternion.Euler(new Vector3(0, 0, Mathf.LerpAngle(startRotation[i], cardRotationZ[i], lerp)));
             }
         }
+
+        for (int i = 0; i < fanOutCardsPosition.childCount; i++)
+        {
+            fanOutCardsPosition.GetChild(i).GetComponent<PlayingCard>().SetTempStartPos(fanOutCardsPosition.GetChild(i).position);
+        }
+
         isCardFaningDone = true;
     }
 
@@ -329,6 +354,8 @@ public class PlayingCardManager : MonoBehaviour
         GameObject go = Instantiate(cardPrefab);
 
         go.GetComponent<PlayingCard>().SetCardData(_playCards);
+
+        allCardList.Add(go.transform);
 
         switch (type)
         {

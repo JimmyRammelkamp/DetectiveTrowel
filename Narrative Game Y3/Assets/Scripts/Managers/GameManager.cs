@@ -16,7 +16,8 @@ public class GameManager : MonoBehaviour
         Map = 2,
         Diorama = 3,
         Newspaper = 4,
-        PlayingCard = 5
+        PlayingCard = 5,
+        InspectEvidence = 6
     }
 
     [SerializeField] private GameStatus gameStatus;
@@ -65,10 +66,10 @@ public class GameManager : MonoBehaviour
 
         input.GameInput.Map.performed += MapToggle;
         input.GameInput.LMB.performed += InteractWith;
-        input.GameInput.Back.performed += Back;
+        input.GameInput.Back.performed += BackToTableDelegate;
 
-        input.GameInput.ScrollWheel.performed += ScrollNavigation;
-        input.GameInput.ScrollWheel.performed += ScrollNavigation;
+        //input.GameInput.ScrollWheel.performed += ScrollNavigation;
+        //input.GameInput.ScrollWheel.performed += ScrollNavigation;
     }
 
     /// <summary>
@@ -76,16 +77,23 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void ScrollNavigation(InputAction.CallbackContext context)
     {
-        if (context.ReadValue<Vector2>().y < 0) Back(context);
+        if (context.ReadValue<Vector2>().y < 0) BackToTableDelegate(context);
         if (context.ReadValue<Vector2>().y > 0) InteractWith(context);
     }
 
     /// <summary>
     /// Back from the current GameMode to the table view
     /// </summary>
-    private void Back(InputAction.CallbackContext context)
+    private void BackToTableDelegate(InputAction.CallbackContext context)
+    {
+        BackToTable();
+    }
+
+    public void BackToTable()
     {
         if (!ReadyToContinue()) return;
+
+        if (gameStatus == GameStatus.InspectEvidence) SetStatus(GameStatus.Diorama);
 
         SetStatus(GameStatus.Table);
 
