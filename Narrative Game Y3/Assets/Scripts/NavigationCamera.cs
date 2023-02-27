@@ -35,9 +35,7 @@ public class NavigationCamera : MonoBehaviour
     /// </summary>
     public void ToggleMap()
     {
-        isMapActive = !isMapActive;
-
-        if (isMapActive) GameManager.instance.SetStatus(GameManager.GameStatus.Map);
+        if (GameManager.instance.GetStatus() != GameManager.GameStatus.Map) GameManager.instance.SetStatus(GameManager.GameStatus.Map);
         else GameManager.instance.SetStatus(GameManager.GameStatus.Table);
     }
 
