@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 102
   type: 1
-  image: {fileID: 21300000, guid: 70632ddfe8e71b04b8f90ef7e29a9e98, type: 3}
+  image: {fileID: 21300000, guid: c56cc77118c56a84cb7848c9a0bf2e46, type: 3}
   title: What On Earth
   description: 'She is in charge of the internal and external affairs of the Kamisato
     Clan and is the younger sister of Kamisato Ayato. Beautiful, dignified, and noble,
