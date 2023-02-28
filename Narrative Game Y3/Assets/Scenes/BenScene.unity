@@ -499,7 +499,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 304809527}
-  m_LocalRotation: {x: -2.2792486e-10, y: 0.9999124, z: 0.013240068, w: 0.00000001721327}
+  m_LocalRotation: {x: 2.2792518e-10, y: 0.9999124, z: 0.013240088, w: -0.000000017213269}
   m_LocalPosition: {x: 0, y: 5, z: -13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8164,6 +8164,7 @@ GameObject:
   - component: {fileID: 7754171745635400545}
   - component: {fileID: 6317578924583726974}
   - component: {fileID: 8632055958495730916}
+  - component: {fileID: 8632055958495730919}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -8482,7 +8483,7 @@ MonoBehaviour:
   statusIcons: {fileID: 6243902107820977552, guid: f33fee12271fab847a03a8bcd8ce6d8d,
     type: 3}
   dialogue: {fileID: 11400000, guid: e5d1eb524607bde4ca3a5d39b6d7cdbd, type: 2}
-  conversantName: Character 1
+  conversantName: ???
 --- !u!114 &8632055958495730918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8497,6 +8498,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeStatusToThis: 0
   thisObjectSAlaviable: 03000000
+--- !u!114 &8632055958495730919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8204707763686708626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f153ddbe7edb8224d8f9648ac3076562, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: SetName
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8632055958495730917}
+        m_TargetAssemblyTypeName: NarrativeGame.Dialogue.NPCController, Assembly-CSharp
+        m_MethodName: SetName
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Mrs Foxglove
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8707273952638421524
 GameObject:
   m_ObjectHideFlags: 0

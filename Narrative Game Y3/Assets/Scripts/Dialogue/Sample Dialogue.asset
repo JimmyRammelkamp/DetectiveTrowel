@@ -70,7 +70,11 @@ MonoBehaviour:
   text: Don't you worry about me Mr Detective I'm having a very pleasant time out
     here. It might do you well to spend some time here away from the masses of people
     in the city.
-  children: []
+  children:
+  - 4f2e86e2-726d-4dff-b97e-99645de8b474
+  - 727a00b3-d4cb-4b0b-b3ef-e21ad287a6af
+  - e2d1ff92-c784-4418-ad87-9dbb8b5e11bd
+  - 69c8da44-d94c-46d7-9fd6-af011e65ab6c
   rect:
     serializedVersion: 2
     x: 2568
@@ -364,7 +368,7 @@ MonoBehaviour:
     y: 261
     width: 250
     height: 100
-  onEnterAction: 
+  onEnterAction: SetName
   onExitAction: 
 --- !u!114 &4689045800212985881
 MonoBehaviour:

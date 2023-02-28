@@ -9,7 +9,7 @@ namespace NarrativeGame.Dialogue
     {
         [SerializeField] private RectTransform statusIcons;
         [SerializeField] Dialogue dialogue = null;
-        [SerializeField] string conversantName;
+        string conversantName = "???";
         PlayerConversant playerConversant;
 
         public enum InteractStatus // NPC status based on if the player already interacted with it or it has new dialogue active
@@ -76,6 +76,11 @@ namespace NarrativeGame.Dialogue
         public string GetName()
         {
             return conversantName;
+        }
+
+        public void SetName(string name)
+        {
+            conversantName = name;
         }
 
         public void Speak()
