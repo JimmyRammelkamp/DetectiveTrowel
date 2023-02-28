@@ -16,6 +16,7 @@ namespace NarrativeGame.Dialogue
 
         public event Action onConversationUpdated;
 
+        // Start Dialogue (Called from the NPCController when hitting "Speak")
         public void StartDialogue(NPCController newConversant, Dialogue newDialogue)
         {
             currentConversant = newConversant;
@@ -25,6 +26,7 @@ namespace NarrativeGame.Dialogue
             onConversationUpdated();
         }
 
+        // Quit Dialogue (Called from the Quit button when no more dialogue texts in the sequence)
         public void Quit()
         {
             currentDialogue = null;
@@ -35,17 +37,19 @@ namespace NarrativeGame.Dialogue
             onConversationUpdated();
         }
 
+        // Checks if there is an active dialogue in the scene
         public bool IsActive()
         {
             return currentDialogue != null;
         }
 
+        // Returns true when there are multiple children for the next node
         public bool IsChoosing()
         {
             return isChoosing;
         }
 
-
+        // Returns the text from the currently active node
         public string GetText()
         {
             if (currentNode == null)
@@ -56,9 +60,10 @@ namespace NarrativeGame.Dialogue
             return currentNode.GetText();
         }
 
+        // Returns the name of the person that is currently speaking, either the current conversantName of the NPC (anonymous until discovered) or the playerName
         public string GetCurrentConversantName()
         {
-            if (isChoosing)
+            if (currentNode.IsPlayerSpeaking() || isChoosing)
             {
                 return playerName;
             }
@@ -68,11 +73,13 @@ namespace NarrativeGame.Dialogue
             }
         }
 
+        // Returns all children of the currently active node
         public IEnumerable<DialogueNode> GetChoices()
         {
-            return currentDialogue.GetPlayerChildren(currentNode);
+            return currentDialogue.GetAllChildren(currentNode);
         }
 
+        // Lambda function added to each button instantiated in UpdateUI
         public void SelectChoice(DialogueNode chosenNode)
         {
             currentNode = chosenNode;
@@ -81,19 +88,18 @@ namespace NarrativeGame.Dialogue
             Next();
         }
 
-
+        // Next button available when there are children available in the current node
         public void Next()
         {
-            int numPlayerResponses = currentDialogue.GetPlayerChildren(currentNode).Count();
-            if (numPlayerResponses > 0)
+            DialogueNode[] children = currentDialogue.GetAllChildren(currentNode).ToArray();
+            if (children.Length > 1)
             {
                 isChoosing = true;
                 TriggerExitAction();
                 onConversationUpdated();
                 return;
             }
-
-            DialogueNode[] children = currentDialogue.GetAIChildren(currentNode).ToArray();
+            
             int randomIndex = UnityEngine.Random.Range(0, children.Length);
             TriggerExitAction();
             currentNode = children[randomIndex];
@@ -101,11 +107,13 @@ namespace NarrativeGame.Dialogue
             onConversationUpdated();
         }
 
+        // returns true when there is an available child node
         public bool HasNext()
         {
             return currentDialogue.GetAllChildren(currentNode).Count() > 0;
         }
 
+        // Trigger actions are strings available on each node for either Entry or Exit, can be used to call specific functions by adding a DialogueTrigger with the same string on the gameobject
         private void TriggerEnterAction()
         {
             if(currentNode != null) 

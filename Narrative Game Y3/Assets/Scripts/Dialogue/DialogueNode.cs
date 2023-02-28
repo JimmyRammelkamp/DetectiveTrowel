@@ -9,9 +9,7 @@ namespace NarrativeGame.Dialogue
     public class DialogueNode : ScriptableObject
     {
         [SerializeField]
-        bool isPlayerSpeaking = false; 
-        [SerializeField]//ENUM FOR MULTIPLE SPEAKERS
-        Speaker speaker;
+        bool isPlayerSpeaking = false;
         [TextArea]
         [SerializeField]
         string text;
@@ -24,6 +22,9 @@ namespace NarrativeGame.Dialogue
         string onEnterAction;
         [SerializeField]
         string onExitAction;
+
+        [SerializeField]
+        AudioClip voiceoverAudio;
 
         public Rect GetRect()
         {
@@ -55,11 +56,6 @@ namespace NarrativeGame.Dialogue
         {
 
             return onExitAction;
-        }
-
-        public Speaker GetSpeaker()
-        {
-            return speaker;
         }
 
 #if UNITY_EDITOR
@@ -102,12 +98,4 @@ namespace NarrativeGame.Dialogue
         }
 #endif
     }
-}
-
-public enum Speaker
-{
-    None,
-    Player1,
-    Player2,
-    NPC
 }

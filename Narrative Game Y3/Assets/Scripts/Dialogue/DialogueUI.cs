@@ -10,9 +10,9 @@ namespace NarrativeGame.UI
     public class DialogueUI : MonoBehaviour
     {
         PlayerConversant playerConversant;
-        [SerializeField] TextMeshProUGUI AIText;
+        [SerializeField] TextMeshProUGUI dialogueText;
         [SerializeField] Button nextButton;
-        [SerializeField] GameObject AIResponse;
+        [SerializeField] GameObject textField;
         [SerializeField] Transform choiceRoot;
         [SerializeField] GameObject choicePrefab;
         [SerializeField] Button quitButton;
@@ -28,6 +28,7 @@ namespace NarrativeGame.UI
             UpdateUI();
         }
 
+        // Updates all the information inside the Dialogue fields, subscribed to onConversationUpdated which is called inside the Player Conversant Script
         void UpdateUI()
         {
             gameObject.SetActive(playerConversant.IsActive());
@@ -38,7 +39,7 @@ namespace NarrativeGame.UI
             conversantName.text = playerConversant.GetCurrentConversantName();
 
             // Enable/Disable appropriate UI Field
-            AIResponse.SetActive(!playerConversant.IsChoosing());
+            textField.SetActive(!playerConversant.IsChoosing());
             choiceRoot.gameObject.SetActive(playerConversant.IsChoosing());
 
             if (playerConversant.IsChoosing())
@@ -47,7 +48,7 @@ namespace NarrativeGame.UI
             }
             else
             {
-                AIText.text = playerConversant.GetText(); // Update Textbox with current text
+                dialogueText.text = playerConversant.GetText(); // Update Textbox with current text
                 nextButton.gameObject.SetActive(playerConversant.HasNext()); // Show Next Button if there is another text in sequence
                 quitButton.gameObject.SetActive(!playerConversant.HasNext()); // Show Quit Button if there is no text in sequence
             }
@@ -67,7 +68,7 @@ namespace NarrativeGame.UI
 
                 Button button = choiceInstance.GetComponentInChildren<Button>();
 
-                // lambda function creates a listener function for each button
+                // Lambda method creates a listener function for each button
                 button.onClick.AddListener(() =>
                 {
                     playerConversant.SelectChoice(choice);
