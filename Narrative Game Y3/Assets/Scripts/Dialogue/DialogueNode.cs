@@ -12,6 +12,7 @@ namespace NarrativeGame.Dialogue
         bool isPlayerSpeaking = false; 
         [SerializeField]//ENUM FOR MULTIPLE SPEAKERS
         Speaker speaker;
+        [TextArea]
         [SerializeField]
         string text;
         [SerializeField]

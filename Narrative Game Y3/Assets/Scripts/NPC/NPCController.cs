@@ -1,4 +1,3 @@
-using NarrativeGame.Dialogue;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,11 +25,7 @@ namespace NarrativeGame.Dialogue
         {
             ChangeStatus(InteractStatus.Unknown);
             if (statusIcons) statusIcons = Instantiate(statusIcons, HUDManager.instance.GetStatusIconParent());
-        }
-
-        void Awake()
-        {
-            playerConversant = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerConversant>();
+            playerConversant = FindObjectOfType<PlayerConversant>();
         }
 
         private void OnEnable() // Shows the NPC icon when the NPC object is active

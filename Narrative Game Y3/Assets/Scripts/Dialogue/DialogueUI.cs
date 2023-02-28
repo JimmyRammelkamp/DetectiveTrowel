@@ -20,7 +20,7 @@ namespace NarrativeGame.UI
 
         void Start()
         {
-            playerConversant = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerConversant>();
+            playerConversant = FindObjectOfType<PlayerConversant>();
             playerConversant.onConversationUpdated += UpdateUI;
             nextButton.onClick.AddListener(() => playerConversant.Next());
             quitButton.onClick.AddListener(() => playerConversant.Quit());
@@ -49,6 +49,7 @@ namespace NarrativeGame.UI
             {
                 AIText.text = playerConversant.GetText(); // Update Textbox with current text
                 nextButton.gameObject.SetActive(playerConversant.HasNext()); // Show Next Button if there is another text in sequence
+                quitButton.gameObject.SetActive(!playerConversant.HasNext()); // Show Quit Button if there is no text in sequence
             }
         }
 
