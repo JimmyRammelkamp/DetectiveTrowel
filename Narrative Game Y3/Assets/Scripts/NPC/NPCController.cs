@@ -1,4 +1,3 @@
-using NarrativeGame.Dialogue;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,13 +32,9 @@ namespace NarrativeGame.Dialogue
 
         void Start()
         {
+            playerConversant = FindObjectOfType<PlayerConversant>();
             ChangeStatus(InteractStatus.Unknown);
             if (statusIcons) statusIcons = Instantiate(statusIcons, HUDManager.instance.GetStatusIconParent());
-        }
-
-        void Awake()
-        {
-            playerConversant = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerConversant>();
         }
 
         private void OnEnable() // Shows the NPC icon when the NPC object is active
@@ -91,6 +86,11 @@ namespace NarrativeGame.Dialogue
         public string GetName()
         {
             return conversantName;
+        }
+
+        public void SetName(string name)
+        {
+            conversantName = name;
         }
 
         public void Speak()

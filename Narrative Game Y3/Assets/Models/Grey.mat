@@ -11,10 +11,14 @@ Material:
   m_Shader: {fileID: 4800000, guid: 6459b2db96a08ca41b0f9b39dc7ad59e, type: 3}
   m_ValidKeywords:
   - N_F_EAL_ON
+  - N_F_ESSAO_ON
+  - N_F_NFD_ON
+  - N_F_O_MOTTSO_ON
   - N_F_O_ON
   - N_F_RDC_ON
   - N_F_RELGI_ON
   - N_F_RL_ON
+  - N_F_SON_ON
   - N_F_SS_ON
   - N_F_TRANSAFFSHA_ON
   m_InvalidKeywords:
@@ -33,6 +37,7 @@ Material:
   - _OUTLINEWIDTHAFFECTEDBYVIEWDISTANCE_OFF
   - _PSGLOTEX_OFF
   - _SELFSHADOWAFFECTEDBYLIGHTSHADOWSTRENGTH_OFF
+  - _SELFSHADOWSHADOWTATVIEWDIRECTION_OFF
   - _SHOWNORMAL_OFF
   - _SPECMODE_OFF
   - _TEXTUREPATTERNSTYLE_OFF
@@ -179,7 +184,7 @@ Material:
     - _CustomLightDirectionIntensity: 0
     - _Cutoff: 0.5
     - _Cutout: 0
-    - _DepthThreshold: 900
+    - _DepthThreshold: 200
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DirectionalLightIntensity: 0.02
@@ -225,15 +230,15 @@ Material:
     - _N_F_DCS: 0
     - _N_F_DDMD: 0
     - _N_F_EAL: 1
-    - _N_F_ESSAO: 0
+    - _N_F_ESSAO: 1
     - _N_F_FR: 0
     - _N_F_GLO: 0
     - _N_F_GLOT: 0
     - _N_F_HDLS: 0
     - _N_F_HPSS: 0
     - _N_F_MC: 0
-    - _N_F_MSSOLTFO: 0
-    - _N_F_NFD: 0
+    - _N_F_MSSOLTFO: 1
+    - _N_F_NFD: 1
     - _N_F_NLASOBF: 0
     - _N_F_NM: 0
     - _N_F_O: 1
@@ -244,18 +249,18 @@ Material:
     - _N_F_RL: 1
     - _N_F_SCT: 0
     - _N_F_SL: 0
-    - _N_F_SON: 0
+    - _N_F_SON: 1
     - _N_F_SS: 1
     - _N_F_ST: 0
     - _N_F_STIAL: 0
     - _N_F_STIS: 0
-    - _NoisyOutlineIntensity: 0.582
+    - _NoisyOutlineIntensity: 0.24
     - _NormalMapIntensity: 1
     - _OcclusionStrength: 1
     - _Opacity: 1
     - _Oper: 0
     - _OutlineExtrudeMethod: 0
-    - _OutlineWidth: 0.03
+    - _OutlineWidth: 4
     - _OutlineWidthAffectedByViewDistance: 0
     - _OutlineZPostionInCamera: 0
     - _OverallShadowColorPower: 1
@@ -287,8 +292,8 @@ Material:
     - _SelfShadowHardness: 1
     - _SelfShadowRealTimeShadowColorPower: 1
     - _SelfShadowRealtimeShadowIntensity: 1
-    - _SelfShadowShadowTAtViewDirection: 1
-    - _SelfShadowThreshold: 0
+    - _SelfShadowShadowTAtViewDirection: 0
+    - _SelfShadowThreshold: 0.506
     - _ShadowColorTexturePower: 0
     - _ShadowHardness: 1
     - _ShadowTColorPower: 1
