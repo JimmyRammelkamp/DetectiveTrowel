@@ -12,6 +12,8 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private RectTransform npcInteractiveButtons;
     [SerializeField] private RectTransform mapButton;
     [SerializeField] private RectTransform backButton;
+    [SerializeField] private RectTransform finalButton;
+    [SerializeField] private RectTransform callButton;
     [SerializeField] private RectTransform cigUI;
 
     private GameManager.GameStatus tempStatus; // for updating the UI elements
@@ -36,6 +38,8 @@ public class HUDManager : MonoBehaviour
         npcInteractiveButtons.gameObject.SetActive(false);
         cigUI.gameObject.SetActive(false);
         backButton.gameObject.SetActive(false);
+        finalButton.gameObject.SetActive(false);
+        callButton.gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -46,10 +50,17 @@ public class HUDManager : MonoBehaviour
         statusIcons.gameObject.SetActive(false);
         npcInteractiveButtons.gameObject.SetActive(false);
         mapButton.gameObject.SetActive(false);
+        backButton.gameObject.SetActive(false);
+        finalButton.gameObject.SetActive(false);
+
+        PlayingCardManager.instance.CloseCardMenu();
+        Telephone.instance.PutDownpPhone();
     }
 
     public void ActivateNPCInteractiveButtons(bool _bool)
     {
+        callButton.gameObject.SetActive(false);
+
         if (_bool)
         {
             npcInteractiveButtons.position = Camera.main.WorldToScreenPoint(GameManager.instance.GetSelectedNPC().transform.position);
@@ -61,6 +72,11 @@ public class HUDManager : MonoBehaviour
         {
             npcInteractiveButtons.gameObject.SetActive(false);
         }
+    }
+
+    public void SetCallButton(bool _bool)
+    {
+        callButton.gameObject.SetActive(_bool);
     }
 
     /// <summary>
@@ -80,7 +96,6 @@ public class HUDManager : MonoBehaviour
                 backButton.gameObject.SetActive(false);
                 StartCoroutine(ShowAfterTransition(mapButton));
                 navigationC.ActivateMapCamera(navigationC.GetTableCamera());
-                PlayingCardManager.instance.CloseCardMenu();
                 break;
 
             case GameManager.GameStatus.Map:
@@ -105,7 +120,12 @@ public class HUDManager : MonoBehaviour
                 break;
 
             case GameManager.GameStatus.InspectEvidence:
+                backButton.gameObject.SetActive(true);
+                break;
 
+            case GameManager.GameStatus.Call:
+                navigationC.ActivateMapCamera(navigationC.GetTableCamera());
+                backButton.gameObject.SetActive(true);
                 break;
 
             default:
@@ -122,6 +142,11 @@ public class HUDManager : MonoBehaviour
         _transform.gameObject.SetActive(false);
         yield return new WaitUntil(() => GameManager.instance.ReadyToContinue());
         _transform.gameObject.SetActive(true);
+    }
+
+    public void ShowFinalButton(bool _bool)
+    {
+        finalButton.gameObject.SetActive(_bool);
     }
 
     /// <summary>
@@ -152,6 +177,23 @@ public class HUDManager : MonoBehaviour
         if (!GameManager.instance.GetSelectedNPC()) return;
 
         GameManager.instance.GetSelectedNPC().ShowObject();
+    }
+
+    /// <summary>
+    /// Call interaction with NPC
+    /// </summary>
+    public void Call()
+    {
+        if (!GameManager.instance.GetSelectedNPC()) return;
+
+        GameManager.instance.GetSelectedNPC().Call();
+    }
+
+    public void FinalConfirm()
+    {
+        if (!GameManager.instance.GetSelectedNPC()) return;
+
+        GameManager.instance.GetSelectedNPC().FinalConfirm();
     }
 
     /// <summary>

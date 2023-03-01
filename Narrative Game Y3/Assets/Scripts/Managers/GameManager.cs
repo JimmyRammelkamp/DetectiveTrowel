@@ -18,11 +18,14 @@ public class GameManager : MonoBehaviour
         Diorama = 3,
         Newspaper = 4,
         PlayingCard = 5,
-        InspectEvidence = 6
+        InspectEvidence = 6,
+        Call = 7
     }
 
     [SerializeField] private GameStatus gameStatus;
-    [SerializeField] private int stressLevel;
+    [SerializeField] private int maxStressLevel;
+
+    private int stressLevel;
 
     private InputActions input;
 
@@ -62,6 +65,8 @@ public class GameManager : MonoBehaviour
     {
         SetStatus(GameStatus.Table);
 
+        stressLevel = maxStressLevel;
+
         input = new InputActions();
         input.GameInput.Enable();
 
@@ -95,8 +100,8 @@ public class GameManager : MonoBehaviour
         if (!ReadyToContinue()) return;
 
         if (gameStatus == GameStatus.InspectEvidence) SetStatus(GameStatus.Diorama);
-
-        SetStatus(GameStatus.Table);
+        if (gameStatus == GameStatus.Call) SetStatus(GameStatus.Diorama);
+        else SetStatus(GameStatus.Table);
 
         DisableNPCElements();
     }
@@ -191,6 +196,9 @@ public class GameManager : MonoBehaviour
 
     private void DisableNPCElements()
     {
+        if (gameStatus == GameStatus.InspectEvidence) return;
+        if (gameStatus == GameStatus.Call) return;
+
         if (!selectedNPC) return;
 
         selectedNPC.GetComponent<Outline>().SetToggle(false);
