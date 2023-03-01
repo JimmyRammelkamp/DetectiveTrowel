@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public enum CardStatus
 {
@@ -86,7 +87,8 @@ public class PlayingCardManager : MonoBehaviour
     private void Update()
     {
         if (GameManager.instance.GetStatus() != GameManager.GameStatus.PlayingCard &&
-           GameManager.instance.GetStatus() != GameManager.GameStatus.InspectEvidence) return;
+           GameManager.instance.GetStatus() != GameManager.GameStatus.InspectEvidence &&
+             GameManager.instance.GetStatus() != GameManager.GameStatus.Call) return;
 
         SelectCard();
     }
@@ -96,8 +98,6 @@ public class PlayingCardManager : MonoBehaviour
         currentSelectedCard = ClosestCardToTheMouse();
 
         Vector2 mousePosition = GameManager.instance.GetInputs().GameInput.MousePosition.ReadValue<Vector2>();
-
-        Debug.Log(mousePosition.x);
 
         if (mousePosition.y > Screen.height / 3.6f || mousePosition.x < Screen.width / 5.5f || mousePosition.x > Screen.width - Screen.width / 5.5f)
         {
@@ -194,12 +194,18 @@ public class PlayingCardManager : MonoBehaviour
 
     public void InteractWithDeck(CardType _type)
     {
-        if (_type == CardType.All) evidenceSlot.gameObject.SetActive(true);
-        else cardSlots.gameObject.SetActive(true);
+        if (_type == CardType.All)
+        {
+            allCardList = allCardList.OrderBy(x => x.GetComponent<PlayingCard>().GetCardData().Type).ToList();
+            if (GameManager.instance.GetStatus() == GameManager.GameStatus.InspectEvidence) evidenceSlot.gameObject.SetActive(true);
+            if (GameManager.instance.GetStatus() == GameManager.GameStatus.Call) cardSlots.gameObject.SetActive(true);
+        }
 
         if (ReturnCurrentCardList() != null) SetCardsBack();
 
         currentCardType = _type;
+        PlaceCardsToHand();
+        LoadCards();
         SetCardTypes();
         CheckCloseUpCards();
         RearrangeCards();
@@ -213,7 +219,8 @@ public class PlayingCardManager : MonoBehaviour
     {
         foreach (var card in ReturnCurrentCardList())
         {
-            if (GameManager.instance.GetStatus() == GameManager.GameStatus.InspectEvidence) card.GetComponent<PlayingCard>().SetType(CardType.All);
+            if (GameManager.instance.GetStatus() == GameManager.GameStatus.InspectEvidence
+                || GameManager.instance.GetStatus() == GameManager.GameStatus.Call) card.GetComponent<PlayingCard>().SetType(CardType.All);
             else card.GetComponent<PlayingCard>().SetType(card.GetComponent<PlayingCard>().GetCardData().Type);
         }
 
@@ -270,6 +277,36 @@ public class PlayingCardManager : MonoBehaviour
         {
             if (card.GetComponent<PlayingCard>().GetCardStatus() == CardStatus.CloseUp) card.GetComponent<PlayingCard>().SetCardStatus(CardStatus.Hand);
             if (card.GetComponent<PlayingCard>().GetCardStatus() == CardStatus.Drag) card.GetComponent<PlayingCard>().SetCardStatus(CardStatus.Hand);
+        }
+    }
+
+    private void PlaceCardsToHand()
+    {
+        foreach (var card in ReturnCurrentCardList())
+        {
+            if (card.GetComponent<PlayingCard>().GetCardStatus() != CardStatus.Hand) card.GetComponent<PlayingCard>().SetCardStatus(CardStatus.Hand);
+            card.SetParent(null);
+            card.SetParent(fanOutCardsPosition);
+        }
+    }
+
+    private void LoadCards()
+    {
+        if (GameManager.instance.GetStatus() == GameManager.GameStatus.PlayingCard) return;
+
+        for (int i = 0; i < GameManager.instance.GetSelectedNPC().GetPlayingCardsOnSlot().Length; i++)
+        {
+            foreach (var card in ReturnCurrentCardList())
+            {
+                if (card.GetComponent<PlayingCard>().GetCardData() == GameManager.instance.GetSelectedNPC().GetPlayingCardsOnSlot()[i])
+                {
+                    if (cardSlots.GetChild(i).childCount != 0) continue;
+                    card.GetComponent<PlayingCard>().SetCardStatus(CardStatus.CardSlot);
+                    card.SetParent(cardSlots.GetChild(i));
+                    card.position = cardSlots.GetChild(i).transform.position + transform.forward * 0.02f;
+                    card.localRotation = Quaternion.identity;
+                }
+            }
         }
     }
 
@@ -405,11 +442,11 @@ public class PlayingCardManager : MonoBehaviour
         if (_list.Count > 1) _card.transform.localPosition = _list[_list.Count - 2].localPosition + new Vector3(0, cardThickness, 0);
     }
 
-    public void ToggleSlotOutline(bool _toggle)
+    public void ToggleSlotOutline(bool _toggle, CardType _type)
     {
         for (int i = 0; i < cardSlots.childCount; i++)
         {
-            if (cardSlots.GetChild(i).GetComponent<CardSlot>().GetSlotType() == currentCardType)
+            if (cardSlots.GetChild(i).GetComponent<CardSlot>().GetSlotType() == _type)
             {
                 GameManager.instance.ToggleOutline(cardSlots.GetChild(i).gameObject, _toggle);
             }

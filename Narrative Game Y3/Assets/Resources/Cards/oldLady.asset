@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fca4d32c0e4cf9242ba7671c6ada67f1, type: 3}
-  m_Name: CardData 3
+  m_Name: oldLady
   m_EditorClassIdentifier: 
   itemID: 102
   type: 1

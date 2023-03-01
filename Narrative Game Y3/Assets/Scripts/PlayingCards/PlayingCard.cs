@@ -74,7 +74,7 @@ public class PlayingCard : MonoBehaviour
 
         if (PlayingCardManager.instance.GetCurrentCardType() != type) return;
 
-        PlayingCardManager.instance.ToggleSlotOutline(false);
+        PlayingCardManager.instance.ToggleSlotOutline(false, cardData.Type);
 
         CheckUnderMouse();
 
@@ -92,7 +92,7 @@ public class PlayingCard : MonoBehaviour
 
         if (mousePosition == clickPosition && status != CardStatus.CloseUp)
         {
-            if (status == CardStatus.CardSlot) PlayingCardManager.instance.RemoveCardFromSlot((int)type);
+            if (status == CardStatus.CardSlot) GameManager.instance.GetSelectedNPC().RemoveCardFromNPCSlot((int)cardData.Type);
 
             PlayingCardManager.instance.CheckCloseUpCards();
             transform.localRotation = Quaternion.Euler(Vector3.zero);
@@ -114,7 +114,7 @@ public class PlayingCard : MonoBehaviour
 
         //if (GameManager.instance.GetStatus() != GameManager.GameStatus.PlayingCard) return;
 
-        PlayingCardManager.instance.ToggleSlotOutline(true);
+        PlayingCardManager.instance.ToggleSlotOutline(true, cardData.Type);
 
         Vector3 mousePosition = GameManager.instance.GetInputs().GameInput.MousePosition.ReadValue<Vector2>();
 
@@ -266,7 +266,7 @@ public class PlayingCard : MonoBehaviour
 
     private void PrepareForDragging()
     {
-        if (status == CardStatus.CardSlot) PlayingCardManager.instance.RemoveCardFromSlot((int)type);
+        if (status == CardStatus.CardSlot) GameManager.instance.GetSelectedNPC().RemoveCardFromNPCSlot((int)cardData.Type);
 
         PlayingCardManager.instance.CheckCloseUpCards();
 
@@ -312,7 +312,7 @@ public class PlayingCard : MonoBehaviour
 
             if (item.transform.TryGetComponent(out CardSlot _cardSlot))
             {
-                if (_cardSlot.GetSlotType() != type) return;
+                if (_cardSlot.GetSlotType() != cardData.Type) return;
 
                 status = CardStatus.CardSlot;
 
@@ -326,7 +326,7 @@ public class PlayingCard : MonoBehaviour
                 transform.SetParent(_cardSlot.transform);
                 Vector3 pos = _cardSlot.transform.position + transform.forward * 0.02f;
                 StartCoroutine(LerpCard(pos, false));
-                PlayingCardManager.instance.AddCardToSlot(transform);
+                GameManager.instance.GetSelectedNPC().AddCardToNPCSlot(transform);
             }
         }
 
