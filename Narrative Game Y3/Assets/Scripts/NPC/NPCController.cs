@@ -39,7 +39,7 @@ namespace NarrativeGame.Dialogue
 
         void Awake()
         {
-            //playerConversant = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerConversant>();
+            playerConversant = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerConversant>();
         }
 
         private void OnEnable() // Shows the NPC icon when the NPC object is active
@@ -97,7 +97,7 @@ namespace NarrativeGame.Dialogue
         {
             Debug.Log("NPC Speak");
 
-            //playerConversant.StartDialogue(this, dialogue);
+            playerConversant.StartDialogue(this, dialogue);
 
             ChangeStatus(InteractStatus.Interacted);
         }
