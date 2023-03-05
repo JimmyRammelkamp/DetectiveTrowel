@@ -21,6 +21,7 @@ Material:
   - N_F_SON_ON
   - N_F_SS_ON
   - N_F_TRANSAFFSHA_ON
+  - N_F_USETLB_ON
   m_InvalidKeywords:
   - N_F_TRANSAFFSHA
   - _CUSTOMLIGHTDIRECTIONFOLLOWOBJECTROTATION_OFF
@@ -184,7 +185,7 @@ Material:
     - _CustomLightDirectionIntensity: 0
     - _Cutoff: 0.5
     - _Cutout: 0
-    - _DepthThreshold: 200
+    - _DepthThreshold: 400
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DirectionalLightIntensity: 0.02
@@ -318,7 +319,7 @@ Material:
     - _TransAffSha: 1
     - _TransparentThreshold: 0
     - _UseSecondaryCutout: 0
-    - _UseTLB: 0
+    - _UseTLB: 1
     - _VertexColorBlueAffectOutlineWitdh: 0
     - _VertexColorGreenControlSelfShadowThreshold: 0
     - _VertexColorRedControlSmoothObjectNormal: 0
