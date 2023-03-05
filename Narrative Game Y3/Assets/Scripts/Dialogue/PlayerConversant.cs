@@ -9,6 +9,9 @@ namespace NarrativeGame.Dialogue
     public class PlayerConversant : MonoBehaviour
     {
         [SerializeField] string playerName;
+        [SerializeField] AudioSource dialogueAudioSource;
+        [SerializeField] float playbackVolume = 1;
+
         Dialogue currentDialogue;
         DialogueNode currentNode = null;
         NPCController currentConversant = null;
@@ -119,6 +122,11 @@ namespace NarrativeGame.Dialogue
             if(currentNode != null) 
             {
                 TriggerAction(currentNode.GetOnEnterAction());
+
+                if(currentNode.GetAudio() != null)
+                {
+                    dialogueAudioSource.PlayOneShot(currentNode.GetAudio(), playbackVolume);
+                }
             }
         }
 

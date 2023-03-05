@@ -26,7 +26,7 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 43c8ddf51d2b7db428fe4e8ed903bcf9, type: 3}
 --- !u!114 &-8793046445715361420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52,7 +52,7 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: fcec66f61b3168f4daaef5456b39a618, type: 3}
 --- !u!114 &-8776289221133126817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,7 +82,7 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 55308c2623c06a54bb77cc4961d4171c, type: 3}
 --- !u!114 &-8514051975785439021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 1b67ce583fa3d2149bafbb1a113d7255, type: 3}
 --- !u!114 &-5074963576320040001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 029a604666a317e4bbfe6bf6598a2a03, type: 3}
 --- !u!114 &-4843273022013948695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,7 +181,7 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 97fea49bdea6225419af6b936fbc8410, type: 3}
 --- !u!114 &-656410156614391465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,7 +369,7 @@ MonoBehaviour:
     height: 100
   onEnterAction: SetName
   onExitAction: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: dfe69a5c8566b854fbfb7e40e573fe40, type: 3}
 --- !u!114 &4689045800212985881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,7 +397,7 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: f5da85e53b5c4314492bf7f9199f47e4, type: 3}
 --- !u!114 &5439909149544967565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -422,7 +422,7 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 38b4d3cfbe99c934e87d9c101e4b4f6b, type: 3}
 --- !u!114 &6341130677772968355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -472,7 +472,7 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 0cc7dd4a12943d346ba6db9a000a4299, type: 3}
 --- !u!114 &7096398129126252571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -522,7 +522,7 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: db471de7cdbd51845b5fb27cc8a94bd5, type: 3}
 --- !u!114 &8955067219666933100
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -36,6 +36,12 @@ namespace NarrativeGame.Dialogue
             return text;
         }
 
+        public AudioClip GetAudio()
+        {
+            if(voiceoverAudio != null) return voiceoverAudio;
+            return null;
+        }
+
         public List<string> GetChildren()
         {
             return children;
