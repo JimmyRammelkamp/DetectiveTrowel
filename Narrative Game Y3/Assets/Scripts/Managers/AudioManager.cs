@@ -26,7 +26,7 @@ public class AudioManager : MonoBehaviour
         foreach (Sound s in sounds) SoundSetUp(s);
     }
 
-    public void SoundSetUp(Sound sound, GameObject sourceObject = null)     //  SoundSetUp allows other Scripts to access this fuction to add the AudioSource to other objects instead of the Audio Manager
+    public void SoundSetUp(Sound sound, GameObject sourceObject = null, AudioClip clip = null)     //  SoundSetUp allows other Scripts to access this fuction to add the AudioSource to other objects instead of the Audio Manager
     {
         if (sourceObject == null) sound.source = gameObject.AddComponent<AudioSource>();
         else
@@ -36,9 +36,13 @@ public class AudioManager : MonoBehaviour
             else sound.source = sourceObject.GetComponent<AudioSource>();
         }
 
-        sound.source.clip = sound.clip;
+        if (clip == null) sound.source.clip = sound.clip;
+        else sound.source.clip = clip;
+
+        sound.source.outputAudioMixerGroup = sound.outputAudioMixerGroup;
 
         sound.source.volume = sound.volume;
+
         sound.source.pitch = sound.pitch;
 
         sound.source.spatialBlend = sound.spacialBlend;
@@ -46,30 +50,46 @@ public class AudioManager : MonoBehaviour
         sound.source.loop = sound.loop;
     }
 
-    public void Play(string name, Sound _s = null)
+    public void Play(string name = null, Sound s = null)
     {
-        Sound s;
-        if (_s == null) s = Array.Find(sounds, sound => sound.name == name);
-        else s = _s;
-
         if (s == null)
         {
+            if (name == null)
+            {
+                Debug.LogError("name string is null, unable to search for Sound Class in 'sounds' array!");
+                return;
+            }
+            s = Array.Find(sounds, sound => sound.name == name);
+        }
+
+        if (s == null) {
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
+
+        //  Plays Audio clip from Sound class "s"
         s.source.Play();
     }
-    public void Stop(string name, Sound _s = null)
-    {
-        Sound s;
-        if (_s == null) s = Array.Find(sounds, sound => sound.name == name);
-        else s = _s;
 
+    public void Stop(string name = null, Sound s = null)
+    {
+        //  If "_s" is null then 
         if (s == null)
         {
+            if (name == null)
+            {
+                Debug.LogError("name string is null, unable to search for Sound Class in 'sounds' array!");
+                return;
+            }
+            s = Array.Find(sounds, sound => sound.name == name);
+        }
+
+        if (s == null) {
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
+
+        //  Stops Audio clip from Sound class "s"
         s.source.Stop();
     }
 }
