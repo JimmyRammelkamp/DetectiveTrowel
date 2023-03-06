@@ -6060,7 +6060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeStatusToThis: 5
-  availableInState: 01000000
+  availableInState: 0100000005000000
 --- !u!1 &1962887087
 GameObject:
   m_ObjectHideFlags: 0
@@ -6663,7 +6663,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeStatusToThis: 5
-  availableInState: 01000000
+  availableInState: 0100000005000000
 --- !u!1 &2066188698
 GameObject:
   m_ObjectHideFlags: 0
@@ -6806,7 +6806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeStatusToThis: 5
-  availableInState: 01000000
+  availableInState: 0100000005000000
 --- !u!1 &2132658746
 GameObject:
   m_ObjectHideFlags: 0
