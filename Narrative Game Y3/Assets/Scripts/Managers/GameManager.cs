@@ -19,7 +19,8 @@ public class GameManager : MonoBehaviour
         Newspaper = 4,
         PlayingCard = 5,
         InspectEvidence = 6,
-        Call = 7
+        Call = 7,
+        Dialogue = 8
     }
 
     [SerializeField] private GameStatus gameStatus;

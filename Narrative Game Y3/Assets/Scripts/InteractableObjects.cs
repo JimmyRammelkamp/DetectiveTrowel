@@ -5,7 +5,7 @@ using UnityEngine;
 public class InteractableObjects : MonoBehaviour
 {
     [SerializeField] private GameManager.GameStatus changeStatusToThis;
-    [SerializeField] private List<GameManager.GameStatus> thisObjectSAlaviable;
+    [SerializeField] private List<GameManager.GameStatus> availableInState;
 
     private bool isMouseEnter = false;
     private bool doubleCheck = false;
@@ -14,7 +14,7 @@ public class InteractableObjects : MonoBehaviour
     {
         bool isAvaliable = false;
 
-        foreach (var status in thisObjectSAlaviable)
+        foreach (var status in availableInState)
         {
             if (GameManager.instance.GetStatus() == status) isAvaliable = true;
         }

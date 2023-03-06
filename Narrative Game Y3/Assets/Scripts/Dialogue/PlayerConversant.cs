@@ -38,6 +38,7 @@ namespace NarrativeGame.Dialogue
             isChoosing = false;
             currentConversant = null;
             onConversationUpdated();
+            dialogueAudioSource.Stop();
         }
 
         // Checks if there is an active dialogue in the scene
@@ -125,6 +126,7 @@ namespace NarrativeGame.Dialogue
 
                 if(currentNode.GetAudio() != null)
                 {
+                    dialogueAudioSource.Stop();
                     dialogueAudioSource.PlayOneShot(currentNode.GetAudio(), playbackVolume);
                 }
             }

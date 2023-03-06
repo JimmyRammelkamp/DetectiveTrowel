@@ -18,8 +18,6 @@ Material:
   - N_F_RDC_ON
   - N_F_RELGI_ON
   - N_F_RL_ON
-  - N_F_SON_ON
-  - N_F_SS_ON
   - N_F_TRANSAFFSHA_ON
   - N_F_USETLB_ON
   m_InvalidKeywords:
@@ -250,8 +248,8 @@ Material:
     - _N_F_RL: 1
     - _N_F_SCT: 0
     - _N_F_SL: 0
-    - _N_F_SON: 1
-    - _N_F_SS: 1
+    - _N_F_SON: 0
+    - _N_F_SS: 0
     - _N_F_ST: 0
     - _N_F_STIAL: 0
     - _N_F_STIS: 0

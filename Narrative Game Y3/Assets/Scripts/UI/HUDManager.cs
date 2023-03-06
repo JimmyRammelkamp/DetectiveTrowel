@@ -95,24 +95,24 @@ public class HUDManager : MonoBehaviour
             case GameManager.GameStatus.Table:
                 backButton.gameObject.SetActive(false);
                 StartCoroutine(ShowAfterTransition(mapButton));
-                navigationC.ActivateMapCamera(navigationC.GetTableCamera());
+                navigationC.ActivateCamera(navigationC.GetTableCamera());
                 break;
 
             case GameManager.GameStatus.Map:
                 StartCoroutine(ShowAfterTransition(backButton));
-                navigationC.ActivateMapCamera(navigationC.GetMapCamera());
+                navigationC.ActivateCamera(navigationC.GetMapCamera());
                 break;
 
             case GameManager.GameStatus.Diorama:
                 StartCoroutine(ShowAfterTransition(backButton));
                 StartCoroutine(ShowAfterTransition(mapButton));
                 statusIcons.gameObject.SetActive(true);
-                navigationC.ActivateMapCamera(navigationC.GetDioramaCamera());
+                navigationC.ActivateCamera(navigationC.GetDioramaCamera());
                 break;
 
             case GameManager.GameStatus.Newspaper:
                 StartCoroutine(ShowAfterTransition(backButton));
-                navigationC.ActivateMapCamera(navigationC.GetNewspaperCamera());
+                navigationC.ActivateCamera(navigationC.GetNewspaperCamera());
                 break;
 
             case GameManager.GameStatus.PlayingCard:
@@ -124,12 +124,12 @@ public class HUDManager : MonoBehaviour
                 break;
 
             case GameManager.GameStatus.Call:
-                navigationC.ActivateMapCamera(navigationC.GetTableCamera());
+                navigationC.ActivateCamera(navigationC.GetTableCamera());
                 backButton.gameObject.SetActive(true);
                 break;
 
             default:
-                navigationC.ActivateMapCamera(navigationC.GetTableCamera());
+                navigationC.ActivateCamera(navigationC.GetTableCamera());
                 break;
         }
 

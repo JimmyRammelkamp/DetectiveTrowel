@@ -27,7 +27,7 @@ public class NavigationCamera : MonoBehaviour
 
     private void Start()
     {
-        ActivateMapCamera(tableCamera);
+        ActivateCamera(tableCamera);
     }
 
     /// <summary>
@@ -53,7 +53,7 @@ public class NavigationCamera : MonoBehaviour
     /// <summary>
     /// Activate the new camera
     /// </summary>
-    public void ActivateMapCamera(CinemachineVirtualCamera _VCamera)
+    public void ActivateCamera(CinemachineVirtualCamera _VCamera)
     {
         DisableAllCamera();
 

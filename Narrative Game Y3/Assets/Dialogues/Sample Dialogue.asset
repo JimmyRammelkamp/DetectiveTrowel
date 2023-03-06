@@ -176,12 +176,61 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: 204
-    y: 261
+    y: 262
     width: 250
     height: 100
   onEnterAction: 
   onExitAction: 
   voiceoverAudio: {fileID: 8300000, guid: 97fea49bdea6225419af6b936fbc8410, type: 3}
+--- !u!114 &-3081834094570186489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d6131a39233c664a96c408ecb7767ce, type: 3}
+  m_Name: 8e556cd4-d1da-4d06-9ff9-1c97cc469431
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: 
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 2869
+    y: 228
+    width: 250
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  voiceoverAudio: {fileID: 0}
+--- !u!114 &-2409183781849494225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d6131a39233c664a96c408ecb7767ce, type: 3}
+  m_Name: 16545810-da1f-4b82-bbb3-d10f212125cb
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: sample text
+  children:
+  - 8e556cd4-d1da-4d06-9ff9-1c97cc469431
+  rect:
+    serializedVersion: 2
+    x: 2567
+    y: 216
+    width: 250
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  voiceoverAudio: {fileID: 0}
 --- !u!114 &-656410156614391465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,6 +290,8 @@ MonoBehaviour:
   - {fileID: 8955067219666933100}
   - {fileID: 5439909149544967565}
   - {fileID: -4843273022013948695}
+  - {fileID: -2409183781849494225}
+  - {fileID: -3081834094570186489}
   newNodeOffset: {x: 300, y: 0}
 --- !u!114 &1082395960085424370
 MonoBehaviour:
@@ -256,7 +307,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 1
   text: You seem to handle a lot of poisonous things yourself
-  children: []
+  children:
+  - 16545810-da1f-4b82-bbb3-d10f212125cb
   rect:
     serializedVersion: 2
     x: 2265
