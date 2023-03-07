@@ -128,6 +128,11 @@ public class HUDManager : MonoBehaviour
                 backButton.gameObject.SetActive(true);
                 break;
 
+            case GameManager.GameStatus.Dialogue:
+                navigationC.ActivateCamera(navigationC.GetDialogueCamera());
+                backButton.gameObject.SetActive(false);
+                break;
+
             default:
                 navigationC.ActivateCamera(navigationC.GetTableCamera());
                 break;

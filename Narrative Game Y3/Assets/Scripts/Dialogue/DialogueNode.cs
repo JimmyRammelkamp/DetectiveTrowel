@@ -22,6 +22,8 @@ namespace NarrativeGame.Dialogue
         string onEnterAction;
         [SerializeField]
         string onExitAction;
+        [SerializeField]
+        int[] aimTarget;
 
         [SerializeField]
         AudioClip voiceoverAudio;
@@ -40,6 +42,11 @@ namespace NarrativeGame.Dialogue
         {
             if(voiceoverAudio != null) return voiceoverAudio;
             return null;
+        }
+
+        public int[] GetAimTargets()
+        {
+            return aimTarget;
         }
 
         public List<string> GetChildren()

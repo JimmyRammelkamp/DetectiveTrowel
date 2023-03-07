@@ -98,7 +98,7 @@ namespace NarrativeGame.Dialogue
             Debug.Log("NPC Speak");
 
             playerConversant.StartDialogue(this, dialogue);
-
+            GameManager.instance.SetStatus(GameManager.GameStatus.Dialogue);
             ChangeStatus(InteractStatus.Interacted);
         }
 

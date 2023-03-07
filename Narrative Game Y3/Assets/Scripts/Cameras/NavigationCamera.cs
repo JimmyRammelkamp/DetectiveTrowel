@@ -11,6 +11,7 @@ public class NavigationCamera : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera mapCamera;
     [SerializeField] CinemachineVirtualCamera dioramaCamera;
     [SerializeField] CinemachineVirtualCamera newspaperCamera;
+    [SerializeField] CinemachineVirtualCamera dialogueCamera;
 
     bool isMapActive = false;
 
@@ -18,6 +19,7 @@ public class NavigationCamera : MonoBehaviour
     public CinemachineVirtualCamera GetMapCamera() { return mapCamera; }
     public CinemachineVirtualCamera GetDioramaCamera() { return dioramaCamera; }
     public CinemachineVirtualCamera GetNewspaperCamera() { return newspaperCamera; }
+    public CinemachineVirtualCamera GetDialogueCamera() { return dialogueCamera; }
 
     private void Awake()
     {
@@ -48,6 +50,7 @@ public class NavigationCamera : MonoBehaviour
         tableCamera.Priority = 0;
         dioramaCamera.Priority = 0;
         newspaperCamera.Priority = 0;
+        dialogueCamera.Priority = 0;
     }
 
     /// <summary>

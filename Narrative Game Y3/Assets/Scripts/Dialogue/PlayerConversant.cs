@@ -11,6 +11,7 @@ namespace NarrativeGame.Dialogue
         [SerializeField] string playerName;
         [SerializeField] AudioSource dialogueAudioSource;
         [SerializeField] float playbackVolume = 1;
+        [SerializeField] TargetGroupManager targetManager;
 
         Dialogue currentDialogue;
         DialogueNode currentNode = null;
@@ -39,6 +40,7 @@ namespace NarrativeGame.Dialogue
             currentConversant = null;
             onConversationUpdated();
             dialogueAudioSource.Stop();
+            GameManager.instance.SetStatus(GameManager.GameStatus.Diorama);
         }
 
         // Checks if there is an active dialogue in the scene
@@ -101,6 +103,7 @@ namespace NarrativeGame.Dialogue
                 isChoosing = true;
                 TriggerExitAction();
                 onConversationUpdated();
+                targetManager.SetFocusTarget(0, 1);
                 return;
             }
             
@@ -128,6 +131,34 @@ namespace NarrativeGame.Dialogue
                 {
                     dialogueAudioSource.Stop();
                     dialogueAudioSource.PlayOneShot(currentNode.GetAudio(), playbackVolume);
+                }
+
+                targetManager.ResetFocus();
+                
+                int[] targets = currentNode.GetAimTargets();
+                switch (targets.Length)
+                    {
+                        case 1:
+                            targetManager.SetFocusTarget(targets[0]);
+                        return;
+                            //break;
+                        case 2:
+                            targetManager.SetFocusTarget(targets[0], targets[1]);
+                        return;
+                            //break;
+                        case 3:
+                            targetManager.SetFocusTarget(targets[0], targets[1], targets[2]);
+                        return;
+                            //break;
+                }
+
+                if (currentNode.IsPlayerSpeaking())
+                {
+                    targetManager.SetFocusTarget(0);
+                }
+                else
+                {
+                    targetManager.SetFocusTarget(1);
                 }
             }
         }
