@@ -19,6 +19,9 @@ ModelImporter:
       74: -5808115089251888037
     second: Armature|Grasping
   - first:
+      74: -3065981986972593503
+    second: Armature|Hold Cassette
+  - first:
       74: 1591476672468412604
     second: Armature|HoldingCig1
   - first:
@@ -36,6 +39,9 @@ ModelImporter:
   - first:
       74: 5027094780220695339
     second: Armature|OpenPose
+  - first:
+      74: 6254527307470850190
+    second: Armature|Pushing Button
   externalObjects: {}
   materials:
     materialImportMode: 2
