@@ -11,7 +11,7 @@ public class TestScript : MonoBehaviour
     }
     private void Start()
     {
-        AudioManager.instance.SoundSetUp(test, this.gameObject);
-        AudioManager.instance.Play("Test", test);
+        //AudioManager.instance.SoundSetUp(test, this.gameObject);
+        //AudioManager.instance.Play("Test", test);
     }
 }
