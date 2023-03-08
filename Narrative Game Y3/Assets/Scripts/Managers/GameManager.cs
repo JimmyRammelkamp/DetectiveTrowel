@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using NarrativeGame.Dialogue;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameStatus gameStatus;
     [SerializeField] private int maxStressLevel;
 
+    public event Action onStatusUpdated;
+
     private int stressLevel;
 
     private InputActions input;
@@ -44,6 +47,7 @@ public class GameManager : MonoBehaviour
     { 
         gameStatus = _status;
         HUDManager.instance.ActivateUIElementsAccordingToGameStatus(gameStatus);
+        if (onStatusUpdated != null) onStatusUpdated(); // Calls any functions subscribed (HandManager)
     }
 
     private void Awake()
@@ -129,12 +133,12 @@ public class GameManager : MonoBehaviour
     {
         PointerEventData eventData = new PointerEventData(EventSystem.current);
         eventData.position = input.GameInput.MousePosition.ReadValue<Vector2>();
-        List<RaycastResult> raysastResults = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(eventData, raysastResults);
+        List<RaycastResult> raycastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, raycastResults);
 
-        for (int index = 0; index < raysastResults.Count; index++)
+        for (int index = 0; index < raycastResults.Count; index++)
         {
-            RaycastResult curRaysastResult = raysastResults[index];
+            RaycastResult curRaysastResult = raycastResults[index];
 
             if (curRaysastResult.gameObject.transform.TryGetComponent(out Button _UIElement))
             {
