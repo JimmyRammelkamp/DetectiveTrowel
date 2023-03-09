@@ -9,6 +9,7 @@ public class HandManager : MonoBehaviour
     GameManager.GameStatus gameStatus;
     bool isAnimating;
 
+    [Header ("Character Positions")]
     [SerializeField] Transform detectivePiece;
     [SerializeField] Transform nPCSSpotlightPos;
     [SerializeField] Transform detectiveSpotlightPos;
@@ -26,6 +27,10 @@ public class HandManager : MonoBehaviour
     Vector3 tempNPCPos;
     Vector3 tempDetectivePos;
 
+    // animator variables
+    int animIDSwitching, animIDHoldingPawn;
+    Animator leftHandAnimator, rightHandAnimator;
+
     public bool IsAnimating() { return isAnimating; }
     public Transform GetRightHand() { return RightHand.transform; }
     public Transform GetLeftHand() { return LeftHand.transform; }
@@ -39,6 +44,16 @@ public class HandManager : MonoBehaviour
     void Start()
     {
         GameManager.instance.onStatusUpdated += UpdateHands;
+
+        leftHandAnimator = LeftHand.GetComponent<Animator>();
+        rightHandAnimator = RightHand.GetComponent<Animator>();
+        AssignAnimationIDs();
+    }
+
+    void AssignAnimationIDs()
+    {
+        animIDSwitching = Animator.StringToHash("Switching");
+        animIDHoldingPawn = Animator.StringToHash("Holding Pawn");
     }
 
     private void UpdateHands()
@@ -56,6 +71,8 @@ public class HandManager : MonoBehaviour
             case GameManager.GameStatus.Map:
                 break;
             case GameManager.GameStatus.Diorama:
+                leftHandAnimator.SetBool(animIDHoldingPawn, false);
+                rightHandAnimator.SetBool(animIDHoldingPawn, false);
                 StartCoroutine(ChangeHandPosition(leftRestPos, LeftHand.transform));
                 StartCoroutine(ChangeHandPosition(rightRestPos, RightHand.transform));
                 break;
@@ -68,6 +85,8 @@ public class HandManager : MonoBehaviour
             case GameManager.GameStatus.Call:
                 break;
             case GameManager.GameStatus.Dialogue:
+                leftHandAnimator.SetBool(animIDHoldingPawn, true);
+                rightHandAnimator.SetBool(animIDHoldingPawn, true);
                 StartCoroutine(ChangeHandPosition(detectivePieceOffsetPos, LeftHand.transform));
                 StartCoroutine(ChangeHandPosition(GameManager.instance.GetSelectedNPC().GetHandOffsetPos(), RightHand.transform));
                 break;
@@ -76,6 +95,8 @@ public class HandManager : MonoBehaviour
 
     public void StartSwapDioramaHandPosition()
     {
+        leftHandAnimator.SetBool(animIDSwitching, true);
+        rightHandAnimator.SetBool(animIDSwitching, true);
         StartCoroutine(ChangeHandPosition(DioramaManager.instance.GetCurrentDiorama().GetComponent<Diorama>().GetLeftHandOffset(), LeftHand.transform));
         StartCoroutine(ChangeHandPosition(DioramaManager.instance.GetCurrentDiorama().GetComponent<Diorama>().GetRightHandOffset(), RightHand.transform));
     }
@@ -158,7 +179,7 @@ public class HandManager : MonoBehaviour
         }
 
         float offset = 0.1f;
-        float frequently = 10;
+        float frequency = 20;
         float startY = _piece.position.y;
         float time = 0.0f;
 
@@ -166,7 +187,7 @@ public class HandManager : MonoBehaviour
         {
             yield return new WaitForSeconds(Time.deltaTime);
 
-            float sin = Mathf.Sin(frequently * time);
+            float sin = Mathf.Sin(frequency * time);
 
             time += Time.deltaTime;
 
