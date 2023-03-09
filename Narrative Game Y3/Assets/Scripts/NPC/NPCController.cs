@@ -7,6 +7,7 @@ namespace NarrativeGame.Dialogue
 {
     public class NPCController : MonoBehaviour, IObjectInteraction
     {
+        [SerializeField] private Transform handPosOffset;
         [SerializeField] private RectTransform statusIcons;
         [SerializeField] Dialogue dialogue = null;
         [SerializeField] string conversantName;
@@ -20,6 +21,8 @@ namespace NarrativeGame.Dialogue
         public PlayCardsSObject[] GetPlayingCardsOnSlot() { return playingCardsOnSlot; }
 
         public void SetIsQuestAbaliable(bool _bool) { isQuestAvaliable = true; }
+
+        public Transform GetHandOffsetPos() { return handPosOffset; }
 
         public enum InteractStatus // NPC status based on if the player already interacted with it or it has new dialogue active
         {
@@ -97,9 +100,18 @@ namespace NarrativeGame.Dialogue
         {
             Debug.Log("NPC Speak");
 
-            playerConversant.StartDialogue(this, dialogue);
+            StartCoroutine(StartDialogue());
             GameManager.instance.SetStatus(GameManager.GameStatus.Dialogue);
             ChangeStatus(InteractStatus.Interacted);
+        }
+
+        IEnumerator StartDialogue()
+        {
+            yield return new WaitForSeconds(0.1f);
+
+            while (HandManager.instance.IsAnimating()) yield return null;
+
+            playerConversant.StartDialogue(this, dialogue);
         }
 
         public void Inspect()

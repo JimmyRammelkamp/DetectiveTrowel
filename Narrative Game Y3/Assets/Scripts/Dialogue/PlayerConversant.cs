@@ -8,6 +8,8 @@ namespace NarrativeGame.Dialogue
 {
     public class PlayerConversant : MonoBehaviour
     {
+        public static PlayerConversant instance;
+
         [SerializeField] string playerName;
         [SerializeField] AudioSource dialogueAudioSource;
         [SerializeField] float playbackVolume = 1;
@@ -19,6 +21,14 @@ namespace NarrativeGame.Dialogue
         bool isChoosing = false;
 
         public event Action onConversationUpdated;
+
+        public bool GetIsAudioPlaying() { return dialogueAudioSource.isPlaying; }
+
+        void Awake()
+        {
+            if (instance != null) Debug.Log("Error: There are multiple instances exits at the same time (PlayerConversant)");
+            instance = this;
+        }
 
         // Start Dialogue (Called from the NPCController when hitting "Speak")
         public void StartDialogue(NPCController newConversant, Dialogue newDialogue)
@@ -40,6 +50,18 @@ namespace NarrativeGame.Dialogue
             currentConversant = null;
             onConversationUpdated();
             dialogueAudioSource.Stop();
+            StartCoroutine(MovePiecesBack());
+        }
+
+        // Delaying the dialogue until the pieces moved in the right position
+        IEnumerator MovePiecesBack()
+        {
+            HandManager.instance.MovePiecesBack();
+
+            yield return new WaitForSeconds(0.1f);
+
+            while (HandManager.instance.IsAnimating()) yield return null;
+
             GameManager.instance.SetStatus(GameManager.GameStatus.Diorama);
         }
 
@@ -155,10 +177,12 @@ namespace NarrativeGame.Dialogue
                 if (currentNode.IsPlayerSpeaking())
                 {
                     targetManager.SetFocusTarget(0);
+                    HandManager.instance.MovePiecesUpAndDown(0);
                 }
                 else
                 {
                     targetManager.SetFocusTarget(1);
+                    HandManager.instance.MovePiecesUpAndDown(1);
                 }
             }
         }
