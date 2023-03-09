@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     public void SetNPC(NPCController _npc) { selectedNPC = _npc; }
     public GameStatus GetStatus() { return gameStatus; }
     public void SetStatus(GameStatus _status) 
-    { 
+    {
         gameStatus = _status;
         HUDManager.instance.ActivateUIElementsAccordingToGameStatus(gameStatus);
         if (onStatusUpdated != null) onStatusUpdated(); // Calls any functions subscribed (HandManager)
@@ -202,6 +202,7 @@ public class GameManager : MonoBehaviour
     private void DisableNPCElements()
     {
         if (gameStatus == GameStatus.InspectEvidence) return;
+        if (gameStatus == GameStatus.Dialogue) return;
         if (gameStatus == GameStatus.Call) return;
 
         if (!selectedNPC) return;
@@ -218,6 +219,7 @@ public class GameManager : MonoBehaviour
     {
         if (NavigationCamera.instance.IsCameraTransitionOver()) return false;
         if (DioramaManager.instance.IsDioramaAnimationOver()) return false;
+        if (HandManager.instance.IsAnimating()) return false;
 
         return true;
     }

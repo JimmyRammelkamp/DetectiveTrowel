@@ -13,6 +13,7 @@ public class DioramaManager : MonoBehaviour
     private Transform newDiorama;
 
     public Transform GetAnimationTransform() { return animationTransform; }
+    public Transform GetCurrentDiorama() { return animationTransform.GetChild(0); }
 
     void Awake()
     {
@@ -46,7 +47,17 @@ public class DioramaManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.1f);
         while (NavigationCamera.instance.IsCameraTransitionOver()) yield return null;
 
+        HandManager.instance.StartSwapDioramaHandPosition();
+
+        yield return new WaitForSecondsRealtime(0.1f);
+        while (HandManager.instance.IsAnimating()) yield return null;
+
         anim.SetTrigger("ChangeDiorama");
+    }
+
+    public void SetHandsBackToTable()
+    {
+        HandManager.instance.BackToTable();
     }
 
     /// <summary>
@@ -56,6 +67,9 @@ public class DioramaManager : MonoBehaviour
     {
         animationTransform.GetChild(0).gameObject.SetActive(false);
         animationTransform.GetChild(0).SetParent(transform);
+
+        HandManager.instance.ChangeHandParent(newDiorama.GetComponent<Diorama>().GetLeftHandOffset(), HandManager.instance.GetLeftHand());
+        HandManager.instance.ChangeHandParent(newDiorama.GetComponent<Diorama>().GetRightHandOffset(), HandManager.instance.GetRightHand());
 
         newDiorama.SetParent(animationTransform);
         newDiorama.gameObject.SetActive(true);
