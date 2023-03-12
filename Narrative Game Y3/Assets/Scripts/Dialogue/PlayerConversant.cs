@@ -43,6 +43,9 @@ namespace NarrativeGame.Dialogue
         // Quit Dialogue (Called from the Quit button when no more dialogue texts in the sequence)
         public void Quit()
         {
+            BlackBars.instance.BlackBarOff();
+            Lamp.instance.ChangeLampTarget(LampTarget.UP);
+            EnvironmentLight.instance.ChangeToDefaultIntensity();
             currentDialogue = null;
             TriggerExitAction();
             currentNode = null;
@@ -149,9 +152,10 @@ namespace NarrativeGame.Dialogue
             {
                 TriggerAction(currentNode.GetOnEnterAction());
 
-                if(currentNode.GetAudio() != null)
+                dialogueAudioSource.Stop();
+
+                if (currentNode.GetAudio() != null)
                 {
-                    dialogueAudioSource.Stop();
                     dialogueAudioSource.PlayOneShot(currentNode.GetAudio(), playbackVolume);
                 }
 
@@ -173,6 +177,8 @@ namespace NarrativeGame.Dialogue
                         return;
                             //break;
                 }
+
+                HandManager.instance.StopUpAndDownMovement();
 
                 if (currentNode.IsPlayerSpeaking())
                 {

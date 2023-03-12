@@ -31,4 +31,9 @@ public class Telephone : MonoBehaviour
             isPhonePickedUp = false;
         }
     }
+
+    public bool IsAnimationOver()
+    {
+        return anim.GetCurrentAnimatorStateInfo(0).IsTag("PhoneAnimation");
+    }
 }

@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     public GameStatus GetStatus() { return gameStatus; }
     public void SetStatus(GameStatus _status) 
     {
+        HandManager.instance.SetPrevStatus(gameStatus);
         gameStatus = _status;
         HUDManager.instance.ActivateUIElementsAccordingToGameStatus(gameStatus);
         if (onStatusUpdated != null) onStatusUpdated(); // Calls any functions subscribed (HandManager)
@@ -105,7 +106,11 @@ public class GameManager : MonoBehaviour
         if (!ReadyToContinue()) return;
 
         if (gameStatus == GameStatus.InspectEvidence) SetStatus(GameStatus.Diorama);
-        if (gameStatus == GameStatus.Call) SetStatus(GameStatus.Diorama);
+        if (gameStatus == GameStatus.Call)
+        {
+            SetStatus(GameStatus.Diorama);
+            HandManager.instance.PutDownTelephone();
+        }
         else SetStatus(GameStatus.Table);
 
         DisableNPCElements();

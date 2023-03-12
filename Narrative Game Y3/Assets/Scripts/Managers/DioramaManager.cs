@@ -65,14 +65,23 @@ public class DioramaManager : MonoBehaviour
     /// </summary>
     public void ChangeDiorama()
     {
+        HandManager.instance.ChangeHandParent(transform.root, HandManager.instance.GetLeftHand());
+        HandManager.instance.ChangeHandParent(transform.root, HandManager.instance.GetRightHand());
+
         animationTransform.GetChild(0).gameObject.SetActive(false);
         animationTransform.GetChild(0).SetParent(transform);
 
-        HandManager.instance.ChangeHandParent(newDiorama.GetComponent<Diorama>().GetLeftHandOffset(), HandManager.instance.GetLeftHand());
-        HandManager.instance.ChangeHandParent(newDiorama.GetComponent<Diorama>().GetRightHandOffset(), HandManager.instance.GetRightHand());
-
         newDiorama.SetParent(animationTransform);
         newDiorama.gameObject.SetActive(true);
+
+        StartCoroutine(ParentSwap());
+    }
+
+    IEnumerator ParentSwap()
+    {
+        yield return new WaitForSeconds(0.1f);
+        HandManager.instance.ChangeHandParent(newDiorama.GetComponent<Diorama>().GetLeftHandOffset(), HandManager.instance.GetLeftHand());
+        HandManager.instance.ChangeHandParent(newDiorama.GetComponent<Diorama>().GetRightHandOffset(), HandManager.instance.GetRightHand());
     }
 
     /// <summary>

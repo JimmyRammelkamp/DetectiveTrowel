@@ -6,6 +6,7 @@ public class HandManager : MonoBehaviour
 {
     public static HandManager instance;
 
+    GameManager.GameStatus prevStatus;
     GameManager.GameStatus gameStatus;
     bool isAnimating;
 
@@ -21,11 +22,18 @@ public class HandManager : MonoBehaviour
     [Header("Available Positions")]
     [SerializeField] Transform leftRestPos;
     [SerializeField] Transform rightRestPos;
+    [SerializeField] Transform telephonePos;
+    [SerializeField] Transform newsPaperPos;
 
     [SerializeField] Transform detectivePieceOffsetPos;
 
     Vector3 tempNPCPos;
     Vector3 tempDetectivePos;
+
+    IEnumerator upAndDownIE;
+
+    float pieceStartY;
+    Transform currentMovingPiece;
 
     // animator variables
     int animIDSwitching, animIDHoldingPawn;
@@ -34,6 +42,7 @@ public class HandManager : MonoBehaviour
     public bool IsAnimating() { return isAnimating; }
     public Transform GetRightHand() { return RightHand.transform; }
     public Transform GetLeftHand() { return LeftHand.transform; }
+    public void SetPrevStatus(GameManager.GameStatus _prevStatus) { prevStatus = _prevStatus; }
 
     private void Awake()
     {
@@ -65,18 +74,47 @@ public class HandManager : MonoBehaviour
             case GameManager.GameStatus.None:
                 break;
             case GameManager.GameStatus.Table:
-                StartCoroutine(ChangeHandPosition(leftRestPos, LeftHand.transform));
-                StartCoroutine(ChangeHandPosition(rightRestPos, RightHand.transform));
+                AnimationUpdate();
                 break;
             case GameManager.GameStatus.Map:
                 break;
             case GameManager.GameStatus.Diorama:
-                leftHandAnimator.SetBool(animIDHoldingPawn, false);
-                rightHandAnimator.SetBool(animIDHoldingPawn, false);
-                StartCoroutine(ChangeHandPosition(leftRestPos, LeftHand.transform));
-                StartCoroutine(ChangeHandPosition(rightRestPos, RightHand.transform));
+                if (prevStatus == GameManager.GameStatus.Call) return;
+                BackToTable();
                 break;
             case GameManager.GameStatus.Newspaper:
+                StartCoroutine(ChangeHandPosition(newsPaperPos, RightHand.transform));
+                break;
+            case GameManager.GameStatus.PlayingCard:
+                break;
+            case GameManager.GameStatus.InspectEvidence:
+                break;
+            case GameManager.GameStatus.Call:
+                PickUpTelephone();
+                break;
+            case GameManager.GameStatus.Dialogue:
+                leftHandAnimator.SetBool(animIDHoldingPawn, true);
+                rightHandAnimator.SetBool(animIDHoldingPawn, true);
+                StartCoroutine(ChangeHandPosition(detectivePieceOffsetPos, LeftHand.transform));
+                StartCoroutine(ChangeHandPosition(GameManager.instance.GetSelectedNPC().GetHandOffsetPos(), RightHand.transform));
+                break;
+        }
+    }
+
+    private void AnimationUpdate()
+    {
+        switch (prevStatus)
+        {
+            case GameManager.GameStatus.None:
+                break;
+            case GameManager.GameStatus.Table:
+                break;
+            case GameManager.GameStatus.Map:
+                break;
+            case GameManager.GameStatus.Diorama:
+                break;
+            case GameManager.GameStatus.Newspaper:
+                StartCoroutine(PutDownNewsPaper());
                 break;
             case GameManager.GameStatus.PlayingCard:
                 break;
@@ -85,10 +123,41 @@ public class HandManager : MonoBehaviour
             case GameManager.GameStatus.Call:
                 break;
             case GameManager.GameStatus.Dialogue:
-                leftHandAnimator.SetBool(animIDHoldingPawn, true);
-                rightHandAnimator.SetBool(animIDHoldingPawn, true);
-                StartCoroutine(ChangeHandPosition(detectivePieceOffsetPos, LeftHand.transform));
-                StartCoroutine(ChangeHandPosition(GameManager.instance.GetSelectedNPC().GetHandOffsetPos(), RightHand.transform));
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void AdditionalTrigger()
+    {
+        switch (gameStatus)
+        {
+            case GameManager.GameStatus.None:
+                break;
+            case GameManager.GameStatus.Table:
+                break;
+            case GameManager.GameStatus.Map:
+                break;
+            case GameManager.GameStatus.Diorama:
+                break;
+            case GameManager.GameStatus.Newspaper:
+                NewsPaper.instance.PickUpNewspaper();
+                break;
+            case GameManager.GameStatus.PlayingCard:
+                break;
+            case GameManager.GameStatus.InspectEvidence:
+                break;
+            case GameManager.GameStatus.Call:
+                break;
+            case GameManager.GameStatus.Dialogue:
+                BlackBars.instance.BlackBarOn();
+                Lamp.instance.ChangeLampTarget(LampTarget.DIORAMA);
+                EnvironmentLight.instance.ChangeLightIntensity(0.05f);
+                MoveDetectivePieceToSpotlight();
+                MoveNPCPieceToSpotlight();
+                break;
+            default:
                 break;
         }
     }
@@ -101,8 +170,55 @@ public class HandManager : MonoBehaviour
         StartCoroutine(ChangeHandPosition(DioramaManager.instance.GetCurrentDiorama().GetComponent<Diorama>().GetRightHandOffset(), RightHand.transform));
     }
 
+    IEnumerator PutDownNewsPaper()
+    {
+        NewsPaper.instance.PutDownNewspaper();
+
+        yield return new WaitForSeconds(0.1f);
+
+        while (NewsPaper.instance.IsAnimationOver()) yield return null;
+
+        StartCoroutine(ChangeHandPosition(rightRestPos, RightHand.transform));
+    }
+
+    public void PickUpTelephone()
+    {
+        StartCoroutine(PickUpPhone());
+    }
+
+    public void PutDownTelephone()
+    {
+        StartCoroutine(PutDownPhone());
+    }
+
+    IEnumerator PickUpPhone()
+    {
+        StartCoroutine(ChangeHandPosition(telephonePos, LeftHand.transform));
+
+        yield return new WaitForSeconds(0.1f);
+
+        while (isAnimating) yield return null;
+
+        Telephone.instance.PickUpPhone();
+    }
+
+    IEnumerator PutDownPhone()
+    {
+        Telephone.instance.PutDownpPhone();
+
+        yield return new WaitForSeconds(0.1f);
+
+        while (Telephone.instance.IsAnimationOver()) yield return null;
+
+        StartCoroutine(ChangeHandPosition(leftRestPos, LeftHand.transform));
+    }
+
     public void BackToTable()
     {
+        leftHandAnimator.SetBool(animIDHoldingPawn, false);
+        rightHandAnimator.SetBool(animIDHoldingPawn, false);
+        leftHandAnimator.SetBool(animIDSwitching, false);
+        rightHandAnimator.SetBool(animIDSwitching, false);
         StartCoroutine(ChangeHandPosition(leftRestPos, LeftHand.transform));
         StartCoroutine(ChangeHandPosition(rightRestPos, RightHand.transform));
     }
@@ -130,41 +246,22 @@ public class HandManager : MonoBehaviour
         StartCoroutine(ChangePiecePosition(detectiveSpotlightPos.position - transform.up * 0.2f, detectivePiece));
     }
 
-    private void AdditionalTrigger()
+    public void StopUpAndDownMovement()
     {
-        switch (gameStatus)
-        {
-            case GameManager.GameStatus.None:
-                break;
-            case GameManager.GameStatus.Table:
-                break;
-            case GameManager.GameStatus.Map:
-                break;
-            case GameManager.GameStatus.Diorama:
-                break;
-            case GameManager.GameStatus.Newspaper:
-                break;
-            case GameManager.GameStatus.PlayingCard:
-                break;
-            case GameManager.GameStatus.InspectEvidence:
-                break;
-            case GameManager.GameStatus.Call:
-                break;
-            case GameManager.GameStatus.Dialogue:
-                MoveDetectivePieceToSpotlight();
-                MoveNPCPieceToSpotlight();
-                break;
-            default:
-                break;
-        }
+        if (upAndDownIE == null) return;
+
+        currentMovingPiece.position = new Vector3(currentMovingPiece.position.x, pieceStartY, currentMovingPiece.position.z);
+
+        StopCoroutine(upAndDownIE);
     }
 
     public void MovePiecesUpAndDown(int _targetIndex)
     {
-        StartCoroutine(MovePiecesUpAndDownEnume(_targetIndex));
+        upAndDownIE = MovePiecesUpAndDownEnume(_targetIndex);
+        StartCoroutine(upAndDownIE);
     }
 
-    IEnumerator MovePiecesUpAndDownEnume(int _targetIndex)
+    private Transform GetPieceTransform(int _targetIndex)
     {
         Transform _piece = transform;
 
@@ -178,12 +275,21 @@ public class HandManager : MonoBehaviour
                 break;
         }
 
+        currentMovingPiece = _piece;
+
+        return _piece;
+    }
+
+    IEnumerator MovePiecesUpAndDownEnume(int _targetIndex)
+    {
+        Transform _piece = GetPieceTransform(_targetIndex);
+
         float offset = 0.1f;
         float frequency = 20;
-        float startY = _piece.position.y;
+        pieceStartY = _piece.position.y;
         float time = 0.0f;
 
-        while (NarrativeGame.Dialogue.PlayerConversant.instance.GetIsAudioPlaying() || startY > _piece.position.y + 0.001f || startY < _piece.position.y - 0.001f)
+        while (NarrativeGame.Dialogue.PlayerConversant.instance.GetIsAudioPlaying() || pieceStartY > _piece.position.y + 0.005f || pieceStartY < _piece.position.y - 0.005f)
         {
             yield return new WaitForSeconds(Time.deltaTime);
 
@@ -191,12 +297,12 @@ public class HandManager : MonoBehaviour
 
             time += Time.deltaTime;
 
-            float newY = startY + offset * sin;
+            float newY = pieceStartY + offset * sin;
 
             _piece.position = new Vector3(_piece.position.x, newY, _piece.position.z);
         }
 
-        _piece.position = new Vector3(_piece.position.x, startY, _piece.position.z);
+        _piece.position = new Vector3(_piece.position.x, pieceStartY, _piece.position.z);
     }
 
     IEnumerator ChangeHandPosition(Transform _to, Transform _hand)

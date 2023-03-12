@@ -131,13 +131,12 @@ namespace NarrativeGame.Dialogue
             Debug.Log("Call to end the Quest");
             GameManager.instance.SetStatus(GameManager.GameStatus.Call);
             PlayingCardManager.instance.InteractWithDeck(CardType.All);
-            Telephone.instance.PickUpPhone();
         }
 
         public void FinalConfirm()
         {
             Debug.Log("Final Confirm");
-            Telephone.instance.PutDownpPhone();
+            HandManager.instance.PutDownTelephone();
 
             int counter = 0;
 

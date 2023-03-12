@@ -54,7 +54,6 @@ public class HUDManager : MonoBehaviour
         finalButton.gameObject.SetActive(false);
 
         PlayingCardManager.instance.CloseCardMenu();
-        Telephone.instance.PutDownpPhone();
     }
 
     public void ActivateNPCInteractiveButtons(bool _bool)
