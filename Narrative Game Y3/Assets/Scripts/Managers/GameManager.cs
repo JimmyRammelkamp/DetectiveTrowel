@@ -7,6 +7,14 @@ using UnityEngine.UI;
 using NarrativeGame.Dialogue;
 using System;
 
+public enum DialogueStatus
+{
+    Player = 0,
+    NPC = 1,
+    Inspection = 2,
+}
+
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -20,8 +28,7 @@ public class GameManager : MonoBehaviour
         Newspaper = 4,
         PlayingCard = 5,
         InspectEvidence = 6,
-        Call = 7,
-        Dialogue = 8
+        Dialogue = 7
     }
 
     [SerializeField] private GameStatus gameStatus;
@@ -106,11 +113,9 @@ public class GameManager : MonoBehaviour
         if (!ReadyToContinue()) return;
 
         if (gameStatus == GameStatus.InspectEvidence) SetStatus(GameStatus.Diorama);
-        if (gameStatus == GameStatus.Call)
-        {
-            SetStatus(GameStatus.Diorama);
-            HandManager.instance.PutDownTelephone();
-        }
+        
+            //SetStatus(GameStatus.Diorama);
+            //HandManager.instance.PutDownTelephone();
         else SetStatus(GameStatus.Table);
 
         DisableNPCElements();
@@ -208,7 +213,6 @@ public class GameManager : MonoBehaviour
     {
         if (gameStatus == GameStatus.InspectEvidence) return;
         if (gameStatus == GameStatus.Dialogue) return;
-        if (gameStatus == GameStatus.Call) return;
 
         if (!selectedNPC) return;
 
@@ -249,4 +253,11 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+}
+
+[System.Serializable]
+public class InspectEvidenceDialogue
+{
+    public PlayCardsSObject triggerCard;
+    public Dialogue dialogue;
 }

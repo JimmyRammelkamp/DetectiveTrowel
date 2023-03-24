@@ -40,12 +40,41 @@ namespace NarrativeGame.Dialogue
             onConversationUpdated();
         }
 
-        // Quit Dialogue (Called from the Quit button when no more dialogue texts in the sequence)
+        public void StartDialogue(Dialogue newDialogue)
+        {
+            currentDialogue = newDialogue;
+            currentNode = currentDialogue.GetRootNode();
+            TriggerEnterAction();
+            onConversationUpdated();
+        }
+
+            // Quit Dialogue (Called from the Quit button when no more dialogue texts in the sequence)
         public void Quit()
         {
-            BlackBars.instance.BlackBarOff();
-            Lamp.instance.ChangeLampTarget(LampTarget.UP);
-            EnvironmentLight.instance.ChangeToDefaultIntensity();
+
+            switch (currentNode.GetDialogueStatus())
+            {
+                case DialogueStatus.Player:
+                    BlackBars.instance.BlackBarOff();
+                    Lamp.instance.ChangeLampTarget(LampTarget.UP);
+                    EnvironmentLight.instance.ChangeToDefaultIntensity();
+                    StartCoroutine(MovePiecesBack());
+                    break;
+
+
+                case DialogueStatus.NPC:
+                    BlackBars.instance.BlackBarOff();
+                    Lamp.instance.ChangeLampTarget(LampTarget.UP);
+                    EnvironmentLight.instance.ChangeToDefaultIntensity();
+                    StartCoroutine(MovePiecesBack());
+                    break;
+
+
+                case DialogueStatus.Inspection:
+                    GameManager.instance.SetStatus(GameManager.GameStatus.Diorama);
+                    break;
+            }
+
             currentDialogue = null;
             TriggerExitAction();
             currentNode = null;
@@ -53,7 +82,6 @@ namespace NarrativeGame.Dialogue
             currentConversant = null;
             onConversationUpdated();
             dialogueAudioSource.Stop();
-            StartCoroutine(MovePiecesBack());
         }
 
         // Delaying the dialogue until the pieces moved in the right position
@@ -94,14 +122,23 @@ namespace NarrativeGame.Dialogue
         // Returns the name of the person that is currently speaking, either the current conversantName of the NPC (anonymous until discovered) or the playerName
         public string GetCurrentConversantName()
         {
-            if (currentNode.IsPlayerSpeaking() || isChoosing)
+            switch (currentNode.GetDialogueStatus())
             {
-                return playerName;
+                case DialogueStatus.Player:
+                    return playerName;
+
+                case DialogueStatus.NPC:
+                    return currentConversant.GetName();
+
+                case DialogueStatus.Inspection:
+                    return null;
+
+                default:
+                    if(isChoosing) return playerName;
+                    break;
             }
-            else
-            {
-                return currentConversant.GetName();
-            }
+
+            return null;
         }
 
         // Returns all children of the currently active node
@@ -180,15 +217,20 @@ namespace NarrativeGame.Dialogue
 
                 HandManager.instance.StopUpAndDownMovement();
 
-                if (currentNode.IsPlayerSpeaking())
+                switch (currentNode.GetDialogueStatus())
                 {
-                    targetManager.SetFocusTarget(0);
-                    HandManager.instance.MovePiecesUpAndDown(0);
-                }
-                else
-                {
-                    targetManager.SetFocusTarget(1);
-                    HandManager.instance.MovePiecesUpAndDown(1);
+                    case DialogueStatus.Player:
+                        targetManager.SetFocusTarget(0);
+                        HandManager.instance.MovePiecesUpAndDown(0);
+                        break;
+                    case DialogueStatus.NPC:
+                        targetManager.SetFocusTarget(1);
+                        HandManager.instance.MovePiecesUpAndDown(1);
+                        break;
+                    case DialogueStatus.Inspection:
+                        break;
+                    default:
+                        break;
                 }
             }
         }

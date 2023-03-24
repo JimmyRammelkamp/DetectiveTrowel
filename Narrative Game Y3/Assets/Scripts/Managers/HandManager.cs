@@ -79,7 +79,6 @@ public class HandManager : MonoBehaviour
             case GameManager.GameStatus.Map:
                 break;
             case GameManager.GameStatus.Diorama:
-                if (prevStatus == GameManager.GameStatus.Call) return;
                 BackToTable();
                 break;
             case GameManager.GameStatus.Newspaper:
@@ -88,9 +87,6 @@ public class HandManager : MonoBehaviour
             case GameManager.GameStatus.PlayingCard:
                 break;
             case GameManager.GameStatus.InspectEvidence:
-                break;
-            case GameManager.GameStatus.Call:
-                PickUpTelephone();
                 break;
             case GameManager.GameStatus.Dialogue:
                 leftHandAnimator.SetBool(animIDHoldingPawn, true);
@@ -120,8 +116,6 @@ public class HandManager : MonoBehaviour
                 break;
             case GameManager.GameStatus.InspectEvidence:
                 break;
-            case GameManager.GameStatus.Call:
-                break;
             case GameManager.GameStatus.Dialogue:
                 break;
             default:
@@ -147,9 +141,7 @@ public class HandManager : MonoBehaviour
             case GameManager.GameStatus.PlayingCard:
                 break;
             case GameManager.GameStatus.InspectEvidence:
-                break;
-            case GameManager.GameStatus.Call:
-                break;
+                break;;
             case GameManager.GameStatus.Dialogue:
                 BlackBars.instance.BlackBarOn();
                 Lamp.instance.ChangeLampTarget(LampTarget.DIORAMA);

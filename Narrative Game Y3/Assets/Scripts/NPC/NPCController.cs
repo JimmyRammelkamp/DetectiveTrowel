@@ -11,16 +11,15 @@ namespace NarrativeGame.Dialogue
         [SerializeField] private RectTransform statusIcons;
         [SerializeField] Dialogue dialogue = null;
         [SerializeField] string conversantName;
-        [SerializeField] PlayCardsSObject[] questSlot = new PlayCardsSObject[3];
+
+        [SerializeField] private Dialogue wrongCardDialogue;
+        [SerializeField] private List<InspectEvidenceDialogue> InspectCardDialogueList;
+
         PlayerConversant playerConversant;
 
         private PlayCardsSObject[] playingCardsOnSlot = new PlayCardsSObject[3];
 
-        [SerializeField] private bool isQuestAvaliable = false;
-
         public PlayCardsSObject[] GetPlayingCardsOnSlot() { return playingCardsOnSlot; }
-
-        public void SetIsQuestAbaliable(bool _bool) { isQuestAvaliable = true; }
 
         public Transform GetHandOffsetPos() { return handPosOffset; }
 
@@ -83,7 +82,6 @@ namespace NarrativeGame.Dialogue
             }
 
             HUDManager.instance.ActivateNPCInteractiveButtons(true);
-            if (isQuestAvaliable) HUDManager.instance.SetCallButton(true);
         }
 
         public string GetName()
@@ -100,18 +98,18 @@ namespace NarrativeGame.Dialogue
         {
             Debug.Log("NPC Speak");
 
-            StartCoroutine(StartDialogue());
+            StartCoroutine(StartDialogue(dialogue));
             GameManager.instance.SetStatus(GameManager.GameStatus.Dialogue);
             ChangeStatus(InteractStatus.Interacted);
         }
 
-        IEnumerator StartDialogue()
+        IEnumerator StartDialogue(Dialogue _dialogue)
         {
             yield return new WaitForSeconds(0.1f);
 
             while (HandManager.instance.IsAnimating()) yield return null;
 
-            playerConversant.StartDialogue(this, dialogue);
+            playerConversant.StartDialogue(this, _dialogue);
         }
 
         public void Inspect()
@@ -119,56 +117,28 @@ namespace NarrativeGame.Dialogue
             Debug.Log("NPC Inspect");
         }
 
-        public void ShowObject()
+        public void ShowCard()
         {
             Debug.Log("NPC Show Object");
             GameManager.instance.SetStatus(GameManager.GameStatus.InspectEvidence);
             PlayingCardManager.instance.InteractWithDeck(CardType.All);
         }
 
-        public void Call()
-        {
-            Debug.Log("Call to end the Quest");
-            GameManager.instance.SetStatus(GameManager.GameStatus.Call);
-            PlayingCardManager.instance.InteractWithDeck(CardType.All);
-        }
-
-        public void FinalConfirm()
-        {
-            Debug.Log("Final Confirm");
-            HandManager.instance.PutDownTelephone();
-
-            int counter = 0;
-
-            for (int i = 0; i < questSlot.Length; i++)
-            {
-                for (int j = 0; j < playingCardsOnSlot.Length; j++)
-                {
-                    if (questSlot[i] == playingCardsOnSlot[j]) counter++;
-                }
-            }
-
-            if (counter < 3) QUestFailed();
-            else QuestCompleted();
-        }
-
         public void InspectEvidence(PlayCardsSObject _card)
         {
             Debug.Log("Inspect this: " + _card + " -" + transform.name);
-        }
 
-        private void QuestCompleted()
-        {
-            Debug.Log("Quest Completed");
-            GameManager.instance.SetStatus(GameManager.GameStatus.Diorama);
-            isQuestAvaliable = false;
-        }
+            Dialogue tempDialogue = null;
 
-        private void QUestFailed()
-        {
-            Debug.Log("Quest Failed");
-            GameManager.instance.SetStressLevel(GameManager.instance.GetStressLevel() - 1);
-            GameManager.instance.SetStatus(GameManager.GameStatus.Table);
+            foreach (var item in InspectCardDialogueList)
+            {
+                if (item.triggerCard.ToString() == _card.ToString()) tempDialogue = item.dialogue;
+            }
+
+            if (tempDialogue == null) tempDialogue = wrongCardDialogue;
+
+            StartCoroutine(StartDialogue(tempDialogue));
+            GameManager.instance.SetStatus(GameManager.GameStatus.Dialogue);
         }
 
         /// <summary>

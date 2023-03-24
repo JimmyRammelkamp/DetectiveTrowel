@@ -13,8 +13,8 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private RectTransform mapButton;
     [SerializeField] private RectTransform backButton;
     [SerializeField] private RectTransform finalButton;
-    [SerializeField] private RectTransform callButton;
     [SerializeField] private RectTransform cigUI;
+    [SerializeField] private RectTransform taskWindow;
 
     private GameManager.GameStatus tempStatus; // for updating the UI elements
 
@@ -39,13 +39,12 @@ public class HUDManager : MonoBehaviour
         cigUI.gameObject.SetActive(false);
         backButton.gameObject.SetActive(false);
         finalButton.gameObject.SetActive(false);
-        callButton.gameObject.SetActive(false);
     }
 
     /// <summary>
     ///  Disable every UI elements
     /// </summary>
-    private void DisableUIElements()
+    public void DisableUIElements()
     {
         statusIcons.gameObject.SetActive(false);
         npcInteractiveButtons.gameObject.SetActive(false);
@@ -58,8 +57,6 @@ public class HUDManager : MonoBehaviour
 
     public void ActivateNPCInteractiveButtons(bool _bool)
     {
-        callButton.gameObject.SetActive(false);
-
         if (_bool)
         {
             npcInteractiveButtons.position = Camera.main.WorldToScreenPoint(GameManager.instance.GetSelectedNPC().transform.position);
@@ -71,11 +68,6 @@ public class HUDManager : MonoBehaviour
         {
             npcInteractiveButtons.gameObject.SetActive(false);
         }
-    }
-
-    public void SetCallButton(bool _bool)
-    {
-        callButton.gameObject.SetActive(_bool);
     }
 
     /// <summary>
@@ -119,11 +111,6 @@ public class HUDManager : MonoBehaviour
                 break;
 
             case GameManager.GameStatus.InspectEvidence:
-                backButton.gameObject.SetActive(true);
-                break;
-
-            case GameManager.GameStatus.Call:
-                navigationC.ActivateCamera(navigationC.GetTableCamera());
                 backButton.gameObject.SetActive(true);
                 break;
 
@@ -176,28 +163,11 @@ public class HUDManager : MonoBehaviour
     /// <summary>
     /// ShowObject interaction with NPC
     /// </summary>
-    public void ShowObject()
+    public void ShowCard()
     {
         if (!GameManager.instance.GetSelectedNPC()) return;
 
-        GameManager.instance.GetSelectedNPC().ShowObject();
-    }
-
-    /// <summary>
-    /// Call interaction with NPC
-    /// </summary>
-    public void Call()
-    {
-        if (!GameManager.instance.GetSelectedNPC()) return;
-
-        GameManager.instance.GetSelectedNPC().Call();
-    }
-
-    public void FinalConfirm()
-    {
-        if (!GameManager.instance.GetSelectedNPC()) return;
-
-        GameManager.instance.GetSelectedNPC().FinalConfirm();
+        GameManager.instance.GetSelectedNPC().ShowCard();
     }
 
     /// <summary>
@@ -213,5 +183,19 @@ public class HUDManager : MonoBehaviour
     public void DisableCigUI()
     {
         cigUI.gameObject.SetActive(false);
+    }
+
+    public void UpdateTaskManager(ProgressionTasks _tasks)
+    {
+        taskWindow.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "";
+        taskWindow.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = "";
+
+        taskWindow.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = _tasks.taskName;
+
+        foreach (var task in _tasks.taskDescription)
+        {
+            string start = "- ";
+            taskWindow.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text += start + task.TaskDescription + "\n";
+        }
     }
 }

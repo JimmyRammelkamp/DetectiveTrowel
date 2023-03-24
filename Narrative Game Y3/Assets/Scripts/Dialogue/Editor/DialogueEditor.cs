@@ -171,7 +171,7 @@ namespace NarrativeGame.Dialogue.Editor
         private void DrawNode(DialogueNode node)
         {
             GUIStyle style = nodeStyle;
-            if (node.IsPlayerSpeaking())
+            if (node.GetDialogueStatus() == DialogueStatus.Player)
             {
                 style = playerNodeStyle;
             }

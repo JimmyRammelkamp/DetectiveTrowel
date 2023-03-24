@@ -25,6 +25,7 @@ namespace NarrativeGame.Dialogue
         private void OnValidate()
         {
             nodeLookup.Clear();
+
             foreach (DialogueNode node in GetAllNodes())
             {
                 nodeLookup[node.name] = node;
@@ -84,7 +85,7 @@ namespace NarrativeGame.Dialogue
             if (parent != null)
             {
                 parent.AddChild(newNode.name);
-                newNode.SetPlayerSpeaking(!parent.IsPlayerSpeaking());
+                newNode.SetDialogueStatus(DialogueStatus.NPC);
                 newNode.SetPosition(parent.GetRect().position + newNodeOffset); //Offset new node next to parent
             }
 

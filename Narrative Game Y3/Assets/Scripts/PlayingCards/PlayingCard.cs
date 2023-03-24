@@ -304,7 +304,6 @@ public class PlayingCard : MonoBehaviour
             if (item.transform.TryGetComponent(out EvidenceSlot _evidenceSlot))
             {
                 GameManager.instance.GetSelectedNPC().InspectEvidence(cardData);
-                GameManager.instance.SetStatus(GameManager.GameStatus.Diorama);
                 isEvidenceShowed = true;
                 PlayingCardManager.instance.SetIsDragging(false);
                 return;
@@ -323,10 +322,10 @@ public class PlayingCard : MonoBehaviour
                     PlayingCardManager.instance.PlaceCardBack();
                 }
 
+                PlayingCardManager.instance.AddCardToSlot(this.transform);
                 transform.SetParent(_cardSlot.transform);
                 Vector3 pos = _cardSlot.transform.position + transform.forward * 0.02f;
                 StartCoroutine(LerpCard(pos, false));
-                GameManager.instance.GetSelectedNPC().AddCardToNPCSlot(transform);
             }
         }
 

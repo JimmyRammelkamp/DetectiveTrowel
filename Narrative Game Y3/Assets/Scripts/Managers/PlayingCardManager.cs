@@ -87,8 +87,7 @@ public class PlayingCardManager : MonoBehaviour
     private void Update()
     {
         if (GameManager.instance.GetStatus() != GameManager.GameStatus.PlayingCard &&
-           GameManager.instance.GetStatus() != GameManager.GameStatus.InspectEvidence &&
-             GameManager.instance.GetStatus() != GameManager.GameStatus.Call) return;
+           GameManager.instance.GetStatus() != GameManager.GameStatus.InspectEvidence) return;
 
         SelectCard();
     }
@@ -198,8 +197,9 @@ public class PlayingCardManager : MonoBehaviour
         {
             allCardList = allCardList.OrderBy(x => x.GetComponent<PlayingCard>().GetCardData().Type).ToList();
             if (GameManager.instance.GetStatus() == GameManager.GameStatus.InspectEvidence) evidenceSlot.gameObject.SetActive(true);
-            if (GameManager.instance.GetStatus() == GameManager.GameStatus.Call) cardSlots.gameObject.SetActive(true);
         }
+
+        if (GameManager.instance.GetStatus() == GameManager.GameStatus.PlayingCard) cardSlots.gameObject.SetActive(true);
 
         if (ReturnCurrentCardList() != null) SetCardsBack();
 
@@ -219,8 +219,7 @@ public class PlayingCardManager : MonoBehaviour
     {
         foreach (var card in ReturnCurrentCardList())
         {
-            if (GameManager.instance.GetStatus() == GameManager.GameStatus.InspectEvidence
-                || GameManager.instance.GetStatus() == GameManager.GameStatus.Call) card.GetComponent<PlayingCard>().SetType(CardType.All);
+            if (GameManager.instance.GetStatus() == GameManager.GameStatus.InspectEvidence) card.GetComponent<PlayingCard>().SetType(CardType.All);
             else card.GetComponent<PlayingCard>().SetType(card.GetComponent<PlayingCard>().GetCardData().Type);
         }
 
@@ -284,6 +283,7 @@ public class PlayingCardManager : MonoBehaviour
     {
         foreach (var card in ReturnCurrentCardList())
         {
+            if (card.GetComponent<PlayingCard>().GetCardStatus() == CardStatus.CardSlot) continue;
             if (card.GetComponent<PlayingCard>().GetCardStatus() != CardStatus.Hand) card.GetComponent<PlayingCard>().SetCardStatus(CardStatus.Hand);
             card.SetParent(null);
             card.SetParent(fanOutCardsPosition);

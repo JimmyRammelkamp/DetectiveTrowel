@@ -9,7 +9,7 @@ namespace NarrativeGame.Dialogue
     public class DialogueNode : ScriptableObject
     {
         [SerializeField]
-        bool isPlayerSpeaking = false;
+        DialogueStatus dialogueStatus;
         [TextArea]
         [SerializeField]
         string text;
@@ -54,9 +54,9 @@ namespace NarrativeGame.Dialogue
             return children;
         }
 
-        public bool IsPlayerSpeaking()
+        public DialogueStatus GetDialogueStatus()
         {
-            return isPlayerSpeaking;
+            return dialogueStatus;
         }
 
         public string GetOnEnterAction()
@@ -103,10 +103,10 @@ namespace NarrativeGame.Dialogue
             EditorUtility.SetDirty(this);
         }
 
-        public void SetPlayerSpeaking(bool newIsPlayerSpeaking)
+        public void SetDialogueStatus(DialogueStatus newDialogueStatus)
         {
             Undo.RecordObject(this, "Change Dialogue Speaker"); //Store undo record
-            isPlayerSpeaking = newIsPlayerSpeaking;
+            dialogueStatus = newDialogueStatus;
             EditorUtility.SetDirty(this);
         }
 #endif
