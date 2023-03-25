@@ -261,3 +261,10 @@ public class InspectEvidenceDialogue
     public PlayCardsSObject triggerCard;
     public Dialogue dialogue;
 }
+
+[System.Serializable]
+public class progressionDialogue
+{
+    public TaskSO task;
+    public Dialogue dialogue;
+}

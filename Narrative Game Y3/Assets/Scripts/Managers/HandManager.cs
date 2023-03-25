@@ -359,7 +359,8 @@ public class HandManager : MonoBehaviour
             _piece.position = Vector3.Lerp(startPos, endPos, lerp);
             _piece.position += transform.up * y;
         }
+        _piece.position = _to;
 
-        isAnimating = false;
+      isAnimating = false;
     }
 }

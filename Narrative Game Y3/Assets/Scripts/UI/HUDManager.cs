@@ -51,6 +51,7 @@ public class HUDManager : MonoBehaviour
         mapButton.gameObject.SetActive(false);
         backButton.gameObject.SetActive(false);
         finalButton.gameObject.SetActive(false);
+        taskWindow.gameObject.SetActive(false);
 
         PlayingCardManager.instance.CloseCardMenu();
     }
@@ -124,6 +125,7 @@ public class HUDManager : MonoBehaviour
                 break;
         }
 
+        if (_status != GameManager.GameStatus.Dialogue) taskWindow.gameObject.SetActive(true);
         tempStatus = GameManager.instance.GetStatus();
     }
 
@@ -195,7 +197,45 @@ public class HUDManager : MonoBehaviour
         foreach (var task in _tasks.taskDescription)
         {
             string start = "- ";
-            taskWindow.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text += start + task.TaskDescription + "\n";
+
+            if (task.IsCompleted)
+            {
+                string prefix = "<s>";
+                string suffix = "</s>";
+
+                StartCoroutine(TaskListUpdatedAnim());
+
+                taskWindow.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text += prefix + start + task.TaskDescription + suffix + "\n";
+            }
+            else
+            {
+                taskWindow.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text += start + task.TaskDescription + "\n";
+            }
+
         }
+    }
+
+    IEnumerator TaskListUpdatedAnim()
+    {
+        while (GameManager.instance.GetStatus() != GameManager.GameStatus.Diorama) yield return null;
+
+        taskWindow.GetChild(1).gameObject.SetActive(true);
+
+        Color originalColor = taskWindow.GetChild(1).GetComponent<TextMeshProUGUI>().color;
+
+        float time = 2.0f;
+        float value = 0;
+
+        while (time > 0 || value > 0.1f)
+        {
+            yield return new WaitForSeconds(Time.deltaTime);
+            time -= Time.deltaTime;
+
+            value = 0.5f * Mathf.Sin(2f * Mathf.PI * 0.5f * Time.time) + 0.5f;
+
+            taskWindow.GetChild(1).GetComponent<TextMeshProUGUI>().color = new Color(originalColor.r, originalColor.g, originalColor.b, value);
+        }
+
+        taskWindow.GetChild(1).gameObject.SetActive(false);
     }
 }

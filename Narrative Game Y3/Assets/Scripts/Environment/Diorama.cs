@@ -9,6 +9,12 @@ public class Diorama : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(DisableDioramas());
+    } 
+
+    IEnumerator DisableDioramas()
+    {
+        yield return new WaitForSeconds(0.1f);
         if (transform.parent.name == "Dioramas") gameObject.SetActive(false);
     }
 

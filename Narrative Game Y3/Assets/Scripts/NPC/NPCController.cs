@@ -9,11 +9,17 @@ namespace NarrativeGame.Dialogue
     {
         [SerializeField] private Transform handPosOffset;
         [SerializeField] private RectTransform statusIcons;
-        [SerializeField] Dialogue dialogue = null;
+        [SerializeField] Dialogue startDialogue = null;
         [SerializeField] string conversantName;
 
+        [Header("These are for the Inspect card:")]
+        [Space]
         [SerializeField] private Dialogue wrongCardDialogue;
         [SerializeField] private List<InspectEvidenceDialogue> InspectCardDialogueList;
+
+        [Header("This is for the progression dialogue change:")]
+        [Space]
+        [SerializeField] private List<progressionDialogue> progressionDialogueList;
 
         PlayerConversant playerConversant;
 
@@ -36,6 +42,7 @@ namespace NarrativeGame.Dialogue
         {
             playerConversant = FindObjectOfType<PlayerConversant>();
             ChangeStatus(InteractStatus.Unknown);
+            ProgressionManager.instance.AddNPC(this);
             if (statusIcons) statusIcons = Instantiate(statusIcons, HUDManager.instance.GetStatusIconParent());
         }
 
@@ -98,7 +105,7 @@ namespace NarrativeGame.Dialogue
         {
             Debug.Log("NPC Speak");
 
-            StartCoroutine(StartDialogue(dialogue));
+            StartCoroutine(StartDialogue(startDialogue));
             GameManager.instance.SetStatus(GameManager.GameStatus.Dialogue);
             ChangeStatus(InteractStatus.Interacted);
         }
@@ -139,6 +146,18 @@ namespace NarrativeGame.Dialogue
 
             StartCoroutine(StartDialogue(tempDialogue));
             GameManager.instance.SetStatus(GameManager.GameStatus.Dialogue);
+        }
+
+        public void ChangeDialogueIfPorgress(TaskSO _task)
+        {
+            foreach (var progress in progressionDialogueList)
+            {
+                if (progress.task.ToString() == _task.ToString())
+                {
+                    startDialogue = progress.dialogue;
+                    ChangeStatus(InteractStatus.NewDialogue);
+                }
+            }
         }
 
         /// <summary>

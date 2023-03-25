@@ -19,6 +19,9 @@ namespace NarrativeGame.Dialogue
         Rect rect = new Rect(0, 0, 250, 100);
 
         [SerializeField]
+        private TaskSO completedTask;
+
+        [SerializeField]
         string onEnterAction;
         [SerializeField]
         string onExitAction;
@@ -57,6 +60,11 @@ namespace NarrativeGame.Dialogue
         public DialogueStatus GetDialogueStatus()
         {
             return dialogueStatus;
+        }
+
+        public TaskSO GetTaskSO()
+        {
+            return completedTask;
         }
 
         public string GetOnEnterAction()

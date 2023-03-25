@@ -215,15 +215,17 @@ namespace NarrativeGame.Dialogue
                             //break;
                 }
 
-                HandManager.instance.StopUpAndDownMovement();
+                if (currentNode.GetTaskSO()) ProgressionManager.instance.RefreshTasks(currentNode.GetTaskSO());
 
                 switch (currentNode.GetDialogueStatus())
                 {
                     case DialogueStatus.Player:
+                        HandManager.instance.StopUpAndDownMovement();
                         targetManager.SetFocusTarget(0);
                         HandManager.instance.MovePiecesUpAndDown(0);
                         break;
                     case DialogueStatus.NPC:
+                        HandManager.instance.StopUpAndDownMovement();
                         targetManager.SetFocusTarget(1);
                         HandManager.instance.MovePiecesUpAndDown(1);
                         break;
