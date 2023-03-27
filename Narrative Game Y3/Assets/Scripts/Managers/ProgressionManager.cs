@@ -66,6 +66,8 @@ public class ProgressionManager : MonoBehaviour
 
                 if (taskNumber == progressionTasks[i].taskDescription.Count && i == currentTask) currentTask++;
 
+                if (progressionTasks.Count - 1 < currentTask) currentTask = progressionTasks.Count - 1;
+
                 HUDManager.instance.UpdateTaskManager(progressionTasks[currentTask]);
             }
         }

@@ -199,20 +199,24 @@ namespace NarrativeGame.Dialogue
                 targetManager.ResetFocus();
                 
                 int[] targets = currentNode.GetAimTargets();
-                switch (targets.Length)
+
+                if (targets != null)
+                {
+                    switch (targets.Length)
                     {
                         case 1:
                             targetManager.SetFocusTarget(targets[0]);
-                        return;
-                            //break;
+                            return;
+                        //break;
                         case 2:
                             targetManager.SetFocusTarget(targets[0], targets[1]);
-                        return;
-                            //break;
+                            return;
+                        //break;
                         case 3:
                             targetManager.SetFocusTarget(targets[0], targets[1], targets[2]);
-                        return;
+                            return;
                             //break;
+                    }
                 }
 
                 if (currentNode.GetTaskSO()) ProgressionManager.instance.RefreshTasks(currentNode.GetTaskSO());

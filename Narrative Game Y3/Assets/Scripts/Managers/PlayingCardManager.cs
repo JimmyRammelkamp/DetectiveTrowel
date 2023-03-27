@@ -80,8 +80,8 @@ public class PlayingCardManager : MonoBehaviour
         evidenceSlot.gameObject.SetActive(false);
         cardThickness = cardPrefab.GetComponent<MeshRenderer>().bounds.size.z;
 
-        LoadCardsForTesting();
-        for (int i = 0; i < 20; i++) AddCardTest();
+        //LoadCardsForTesting();
+        //for (int i = 0; i < 20; i++) AddCardTest();
     }
 
     private void Update()
@@ -100,7 +100,7 @@ public class PlayingCardManager : MonoBehaviour
 
         if (mousePosition.y > Screen.height / 3.6f || mousePosition.x < Screen.width / 5.5f || mousePosition.x > Screen.width - Screen.width / 5.5f)
         {
-            tempCurrentSelectedCard.GetComponent<PlayingCard>().MouseExit();
+            if(tempCurrentSelectedCard) tempCurrentSelectedCard.GetComponent<PlayingCard>().MouseExit();
             return;
         }
 
@@ -110,7 +110,7 @@ public class PlayingCardManager : MonoBehaviour
 
         if (tempCurrentSelectedCard == currentSelectedCard) return;
 
-        tempCurrentSelectedCard.GetComponent<PlayingCard>().MouseExit();
+        if (tempCurrentSelectedCard) tempCurrentSelectedCard.GetComponent<PlayingCard>().MouseExit();
 
         tempCurrentSelectedCard = currentSelectedCard;
     }
@@ -212,7 +212,7 @@ public class PlayingCardManager : MonoBehaviour
         FanOutCards(true);
 
         currentSelectedCard = ReturnCurrentCardList()[0];
-        tempCurrentSelectedCard = ReturnCurrentCardList()[1];
+        if(ReturnCurrentCardList().Count > 1) tempCurrentSelectedCard = ReturnCurrentCardList()[1];
     }
 
     private void SetCardTypes()
@@ -415,6 +415,21 @@ public class PlayingCardManager : MonoBehaviour
         GameObject go = Instantiate(cardPrefab);
 
         go.GetComponent<PlayingCard>().SetCardData(_playCards);
+
+        foreach (var item in allCardList)
+        {
+            if (go.GetComponent<PlayingCard>().GetCardData().ToString() == item.GetComponent<PlayingCard>().GetCardData().ToString())
+            {
+                Destroy(go);
+                return;
+            }
+        }
+
+        if (allCardList.Contains(go.transform))
+        {
+            Destroy(go);
+            return;
+        }
 
         allCardList.Add(go.transform);
 

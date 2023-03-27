@@ -2809,7 +2809,7 @@ MonoBehaviour:
     taskDescription:
     - {fileID: 11400000, guid: 3e473bdfb99cddc419aec9fd817a8ca6, type: 2}
   unlockObjects:
-  - task: {fileID: 11400000, guid: ff6310d4e39bd9f41ba5c688bbcca256, type: 2}
+  - task: {fileID: 11400000, guid: 3e473bdfb99cddc419aec9fd817a8ca6, type: 2}
     objects:
     - {fileID: 758637039}
 --- !u!1 &410087039
@@ -12164,9 +12164,38 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1610894672399816500, guid: 2a75457ea406a0f4e993dc3028b88dc4,
         type: 3}
-      propertyPath: startDialogue
+      propertyPath: wrongCardDialogue
       value: 
-      objectReference: {fileID: 11400000, guid: 89382ff9a75ccd64c8dc6ddccd8e3169,
+      objectReference: {fileID: 11400000, guid: 9eaf97594b6d2974dae89fc193dfc45c,
+        type: 2}
+    - target: {fileID: 1610894672399816500, guid: 2a75457ea406a0f4e993dc3028b88dc4,
+        type: 3}
+      propertyPath: InspectCardDialogueList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1610894672399816500, guid: 2a75457ea406a0f4e993dc3028b88dc4,
+        type: 3}
+      propertyPath: InspectCardDialogueList.Array.data[0].dialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 855c2ab07623c2e47b3c27d4a17b9257,
+        type: 2}
+    - target: {fileID: 1610894672399816500, guid: 2a75457ea406a0f4e993dc3028b88dc4,
+        type: 3}
+      propertyPath: InspectCardDialogueList.Array.data[1].dialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 9fe6ee2072feed44ca69138dbee0fa84,
+        type: 2}
+    - target: {fileID: 1610894672399816500, guid: 2a75457ea406a0f4e993dc3028b88dc4,
+        type: 3}
+      propertyPath: InspectCardDialogueList.Array.data[0].triggerCard
+      value: 
+      objectReference: {fileID: 11400000, guid: 8c11bfdb45706fb4895b6c1e932f857d,
+        type: 2}
+    - target: {fileID: 1610894672399816500, guid: 2a75457ea406a0f4e993dc3028b88dc4,
+        type: 3}
+      propertyPath: InspectCardDialogueList.Array.data[1].triggerCard
+      value: 
+      objectReference: {fileID: 11400000, guid: 0a75db8f83f7b634a9e224557799cc8e,
         type: 2}
     - target: {fileID: 7030177308748087540, guid: 2a75457ea406a0f4e993dc3028b88dc4,
         type: 3}

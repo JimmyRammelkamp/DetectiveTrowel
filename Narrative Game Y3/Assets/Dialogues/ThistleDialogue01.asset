@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6131a39233c664a96c408ecb7767ce, type: 3}
   m_Name: 2ca2dc87-02e6-434f-8a77-33284411ca9e
   m_EditorClassIdentifier: 
-  dialogueStatus: 1
+  dialogueStatus: 0
   text: "That\u2019s the illustrious head of council Mr Tulip."
   children:
   - a1345d6a-837e-4a6b-b441-827c416b3e72
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6131a39233c664a96c408ecb7767ce, type: 3}
   m_Name: 95cf5ffd-41fc-4e2f-8867-8161ce89628a
   m_EditorClassIdentifier: 
-  dialogueStatus: 1
+  dialogueStatus: 0
   text: Trowel! Timely as ever.
   children:
   - 86a4a72e-246f-4dbe-85d6-45d3a6fffe3a
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6131a39233c664a96c408ecb7767ce, type: 3}
   m_Name: 8c0b43e4-dfe8-4c6c-9df0-7a788e03cca3
   m_EditorClassIdentifier: 
-  dialogueStatus: 1
+  dialogueStatus: 0
   text: "Come now detective. It\u2019s quite plain to see. I\u2019d expect someone
     of your stature to have a good sense of it from a quick glance."
   children: []
@@ -154,7 +154,7 @@ MonoBehaviour:
     y: 265
     width: 250
     height: 100
-  completedTask: {fileID: 0}
+  completedTask: {fileID: 11400000, guid: 3e473bdfb99cddc419aec9fd817a8ca6, type: 2}
   evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 

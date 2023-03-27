@@ -17,11 +17,12 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 301
+    x: 302
     y: -1
     width: 250
     height: 100
   completedTask: {fileID: 11400000, guid: 88d8959ebd8c91c4cabc438935d6e661, type: 2}
+  evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
@@ -49,6 +50,7 @@ MonoBehaviour:
     width: 250
     height: 100
   completedTask: {fileID: 0}
+  evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
