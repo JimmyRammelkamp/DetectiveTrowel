@@ -217,6 +217,8 @@ namespace NarrativeGame.Dialogue
 
                 if (currentNode.GetTaskSO()) ProgressionManager.instance.RefreshTasks(currentNode.GetTaskSO());
 
+                if (currentNode.GetCardSO()) PlayingCardManager.instance.AddCard(currentNode.GetCardSO());
+
                 switch (currentNode.GetDialogueStatus())
                 {
                     case DialogueStatus.Player:

@@ -22,6 +22,9 @@ namespace NarrativeGame.Dialogue
         private TaskSO completedTask;
 
         [SerializeField]
+        private PlayCardsSObject evidenceCard;
+
+        [SerializeField]
         string onEnterAction;
         [SerializeField]
         string onExitAction;
@@ -65,6 +68,11 @@ namespace NarrativeGame.Dialogue
         public TaskSO GetTaskSO()
         {
             return completedTask;
+        }
+
+        public PlayCardsSObject GetCardSO()
+        {
+            return evidenceCard;
         }
 
         public string GetOnEnterAction()

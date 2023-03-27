@@ -25,6 +25,7 @@ MonoBehaviour:
     width: 250
     height: 100
   completedTask: {fileID: 0}
+  evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
@@ -53,6 +54,7 @@ MonoBehaviour:
     width: 250
     height: 100
   completedTask: {fileID: 11400000, guid: ff6310d4e39bd9f41ba5c688bbcca256, type: 2}
+  evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
@@ -85,6 +87,7 @@ MonoBehaviour:
     width: 250
     height: 100
   completedTask: {fileID: 0}
+  evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
@@ -112,6 +115,7 @@ MonoBehaviour:
     width: 250
     height: 100
   completedTask: {fileID: 0}
+  evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
@@ -138,6 +142,7 @@ MonoBehaviour:
     width: 250
     height: 100
   completedTask: {fileID: 0}
+  evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
@@ -164,6 +169,7 @@ MonoBehaviour:
     width: 250
     height: 100
   completedTask: {fileID: 0}
+  evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
@@ -192,6 +198,7 @@ MonoBehaviour:
     width: 250
     height: 100
   completedTask: {fileID: 0}
+  evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
@@ -219,6 +226,7 @@ MonoBehaviour:
     width: 250
     height: 100
   completedTask: {fileID: 0}
+  evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
@@ -280,6 +288,7 @@ MonoBehaviour:
     width: 250
     height: 100
   completedTask: {fileID: 0}
+  evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
@@ -307,6 +316,7 @@ MonoBehaviour:
     width: 250
     height: 100
   completedTask: {fileID: 0}
+  evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
@@ -334,6 +344,7 @@ MonoBehaviour:
     width: 250
     height: 100
   completedTask: {fileID: 0}
+  evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
@@ -361,6 +372,7 @@ MonoBehaviour:
     width: 250
     height: 100
   completedTask: {fileID: 0}
+  evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
@@ -387,11 +399,12 @@ MonoBehaviour:
   - 69c8da44-d94c-46d7-9fd6-af011e65ab6c
   rect:
     serializedVersion: 2
-    x: 771
+    x: 772
     y: 261
     width: 250
     height: 100
   completedTask: {fileID: 0}
+  evidenceCard: {fileID: 0}
   onEnterAction: SetName
   onExitAction: 
   aimTarget: 
@@ -422,6 +435,7 @@ MonoBehaviour:
     width: 250
     height: 100
   completedTask: {fileID: 0}
+  evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
@@ -449,6 +463,7 @@ MonoBehaviour:
     width: 250
     height: 100
   completedTask: {fileID: 0}
+  evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
@@ -476,6 +491,7 @@ MonoBehaviour:
     width: 250
     height: 100
   completedTask: {fileID: 0}
+  evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
@@ -503,6 +519,7 @@ MonoBehaviour:
     width: 250
     height: 100
   completedTask: {fileID: 0}
+  evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
@@ -530,6 +547,7 @@ MonoBehaviour:
     width: 250
     height: 100
   completedTask: {fileID: 0}
+  evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
@@ -552,11 +570,12 @@ MonoBehaviour:
   - 06b4a14c-bf88-43c3-979b-17497b96c68f
   rect:
     serializedVersion: 2
-    x: 1366
-    y: 307
+    x: 1388
+    y: 324
     width: 250
     height: 100
   completedTask: {fileID: 0}
+  evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
@@ -584,6 +603,7 @@ MonoBehaviour:
     width: 250
     height: 100
   completedTask: {fileID: 0}
+  evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
@@ -611,6 +631,7 @@ MonoBehaviour:
     width: 250
     height: 100
   completedTask: {fileID: 0}
+  evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
   aimTarget: 

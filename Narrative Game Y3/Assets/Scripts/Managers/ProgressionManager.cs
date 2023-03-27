@@ -19,7 +19,7 @@ public class ProgressionManager : MonoBehaviour
 
     private List<NarrativeGame.Dialogue.NPCController> listNPC = new();
 
-    public void AddNPC(NarrativeGame.Dialogue.NPCController _npc) { listNPC.Add(_npc); Debug.Log("NPC added"); }
+    public void AddNPC(NarrativeGame.Dialogue.NPCController _npc) { listNPC.Add(_npc); }
 
     private void Awake()
     {
