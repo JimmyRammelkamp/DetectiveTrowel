@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571427, b: 0.30692315, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028349, g: 0.2257139, b: 0.30692267, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2808,10 +2808,21 @@ MonoBehaviour:
   - taskName: Scene
     taskDescription:
     - {fileID: 11400000, guid: 3e473bdfb99cddc419aec9fd817a8ca6, type: 2}
+    - {fileID: 11400000, guid: 7976073fad8c78349868f7c5975c085b, type: 2}
+    - {fileID: 11400000, guid: 463333ac5fd538646842b29cfa1e6b09, type: 2}
+    - {fileID: 11400000, guid: eea5aa1fd0261f043bc4eb3794287ef9, type: 2}
   unlockObjects:
   - task: {fileID: 11400000, guid: 3e473bdfb99cddc419aec9fd817a8ca6, type: 2}
     objects:
     - {fileID: 758637039}
+  - task: {fileID: 11400000, guid: 7976073fad8c78349868f7c5975c085b, type: 2}
+    objects:
+    - {fileID: 1297384376}
+  - task: {fileID: 11400000, guid: 463333ac5fd538646842b29cfa1e6b09, type: 2}
+    objects: []
+  - task: {fileID: 11400000, guid: eea5aa1fd0261f043bc4eb3794287ef9, type: 2}
+    objects:
+    - {fileID: 6333728765421893958}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -6386,6 +6397,12 @@ Transform:
   m_Father: {fileID: 293019505}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1297384376 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7983698727614301883, guid: 2a75457ea406a0f4e993dc3028b88dc4,
+    type: 3}
+  m_PrefabInstance: {fileID: 7030177308306262993}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1330619441 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3519340132773589732, guid: e67f99cc6b3d8e948b245cc6c3399c55,
@@ -12162,41 +12179,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1498049266}
     m_Modifications:
-    - target: {fileID: 1610894672399816500, guid: 2a75457ea406a0f4e993dc3028b88dc4,
-        type: 3}
-      propertyPath: wrongCardDialogue
-      value: 
-      objectReference: {fileID: 11400000, guid: 9eaf97594b6d2974dae89fc193dfc45c,
-        type: 2}
-    - target: {fileID: 1610894672399816500, guid: 2a75457ea406a0f4e993dc3028b88dc4,
-        type: 3}
-      propertyPath: InspectCardDialogueList.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1610894672399816500, guid: 2a75457ea406a0f4e993dc3028b88dc4,
-        type: 3}
-      propertyPath: InspectCardDialogueList.Array.data[0].dialogue
-      value: 
-      objectReference: {fileID: 11400000, guid: 855c2ab07623c2e47b3c27d4a17b9257,
-        type: 2}
-    - target: {fileID: 1610894672399816500, guid: 2a75457ea406a0f4e993dc3028b88dc4,
-        type: 3}
-      propertyPath: InspectCardDialogueList.Array.data[1].dialogue
-      value: 
-      objectReference: {fileID: 11400000, guid: 9fe6ee2072feed44ca69138dbee0fa84,
-        type: 2}
-    - target: {fileID: 1610894672399816500, guid: 2a75457ea406a0f4e993dc3028b88dc4,
-        type: 3}
-      propertyPath: InspectCardDialogueList.Array.data[0].triggerCard
-      value: 
-      objectReference: {fileID: 11400000, guid: 8c11bfdb45706fb4895b6c1e932f857d,
-        type: 2}
-    - target: {fileID: 1610894672399816500, guid: 2a75457ea406a0f4e993dc3028b88dc4,
-        type: 3}
-      propertyPath: InspectCardDialogueList.Array.data[1].triggerCard
-      value: 
-      objectReference: {fileID: 11400000, guid: 0a75db8f83f7b634a9e224557799cc8e,
-        type: 2}
     - target: {fileID: 7030177308748087540, guid: 2a75457ea406a0f4e993dc3028b88dc4,
         type: 3}
       propertyPath: m_Name

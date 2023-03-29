@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6131a39233c664a96c408ecb7767ce, type: 3}
   m_Name: d105d25b-0834-4410-b140-c5e65407a1b1
   m_EditorClassIdentifier: 
-  dialogueStatus: 0
+  dialogueStatus: 1
   text: "Astute as always detective Trowel. Now might be the time to check up on
     poor Miss Rose over there. She\u2019s had quite the morning. She was a direct
     witness to the crime. Very fortunate for us but not so much for her. "
@@ -68,7 +68,7 @@ MonoBehaviour:
     y: 174
     width: 250
     height: 100
-  completedTask: {fileID: 0}
+  completedTask: {fileID: 11400000, guid: 7976073fad8c78349868f7c5975c085b, type: 2}
   evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 

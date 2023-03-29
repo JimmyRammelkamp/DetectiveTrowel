@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 199d46ddef1572247b4b17a6ab9244f4, type: 3}
   m_Name: Q1T2
   m_EditorClassIdentifier: 
-  taskDescription: 
+  taskDescription: Show Thistle Evidence of the Corpse
