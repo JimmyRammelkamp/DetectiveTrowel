@@ -361,6 +361,6 @@ public class HandManager : MonoBehaviour
         }
         _piece.position = _to;
 
-      isAnimating = false;
+        isAnimating = false;
     }
 }

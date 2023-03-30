@@ -20,6 +20,7 @@ public class HUDManager : MonoBehaviour
 
 
     public RectTransform GetStatusIconParent() { return statusIcons; }
+    public RectTransform GetNPCInteractiveButtons() { return npcInteractiveButtons; }
 
     void Awake()
     {
@@ -205,11 +206,11 @@ public class HUDManager : MonoBehaviour
 
                 StartCoroutine(TaskListUpdatedAnim());
 
-                taskWindow.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text += prefix + start + task.TaskDescription + suffix + "\n";
+                if (!task.IsHidden) taskWindow.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text += prefix + start + task.TaskDescription + suffix + "\n";
             }
             else
             {
-                taskWindow.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text += start + task.TaskDescription + "\n";
+               if (!task.IsHidden) taskWindow.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text += start + task.TaskDescription + "\n";
             }
 
         }

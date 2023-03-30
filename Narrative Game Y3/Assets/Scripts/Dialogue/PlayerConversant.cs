@@ -254,8 +254,7 @@ namespace NarrativeGame.Dialogue
         private void TriggerAction(string action)
         {
             if (action == "") return;
-
-            foreach(DialogueTrigger trigger in currentConversant.GetComponents<DialogueTrigger>())
+            foreach (DialogueTrigger trigger in currentConversant.GetComponents<DialogueTrigger>())
             {
                 trigger.Trigger(action);
             }

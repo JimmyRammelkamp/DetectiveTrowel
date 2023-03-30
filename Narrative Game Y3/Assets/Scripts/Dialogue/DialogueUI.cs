@@ -40,6 +40,7 @@ namespace NarrativeGame.UI
 
             // Enable/Disable appropriate UI Field
             textField.SetActive(!playerConversant.IsChoosing());
+            nextButton.gameObject.SetActive(!playerConversant.IsChoosing());
             choiceRoot.gameObject.SetActive(playerConversant.IsChoosing());
 
             if (playerConversant.IsChoosing())

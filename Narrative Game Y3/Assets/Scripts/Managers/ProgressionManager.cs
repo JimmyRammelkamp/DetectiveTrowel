@@ -11,9 +11,13 @@ public class ProgressionManager : MonoBehaviour
     [Space]
     [SerializeField] private List<ProgressionTasks> progressionTasks;
 
-    [Header("When a certain task is done, it unlocks these objects (SetActive):")]
+    [Header("When a certain task is done, it unlocks these objects - SetActive(true):")]
     [Space]
-    [SerializeField] private List<UnlockObjects> unlockObjects;  
+    [SerializeField] private List<UnlockObjects> unlockObjects;
+
+    [Header("When a certain task is done, it unlocks these objects - SetActive(false):")]
+    [Space]
+    [SerializeField] private List<UnlockObjects> lockObjects;
 
     private int currentTask = 0;
 
@@ -47,7 +51,7 @@ public class ProgressionManager : MonoBehaviour
 
     public void RefreshTasks(TaskSO _task)
     {
-        UnlockObjects(_task);
+        UpdateObjects(_task);
 
         ChangeNPCDialogue(_task);
 
@@ -74,7 +78,7 @@ public class ProgressionManager : MonoBehaviour
 
     }
 
-    private void UnlockObjects(TaskSO _task)
+    private void UpdateObjects(TaskSO _task)
     {
         foreach (var task in unlockObjects)
         {
@@ -82,7 +86,25 @@ public class ProgressionManager : MonoBehaviour
             {
                 foreach (var objects in task.objects)
                 {
+                    if (objects.TryGetComponent(out NarrativeGame.Dialogue.NPCController npc))
+                    {
+                        npc.GetComponent<NarrativeGame.Dialogue.NPCController>().enabled = true;
+                        npc.GetComponent<Outline>().enabled = true;
+                        npc.GetComponent<InteractableObjects>().enabled = true;
+                    }
+
                     objects.SetActive(true);
+                }
+            }
+        }
+
+        foreach (var task in lockObjects)
+        {
+            if (task.task.ToString() == _task.ToString())
+            {
+                foreach (var objects in task.objects)
+                {
+                    objects.SetActive(false);
                 }
             }
         }
@@ -102,7 +124,13 @@ public class ProgressionManager : MonoBehaviour
         {
             foreach (var objects in task.objects)
             {
-                objects.SetActive(false);
+                if (objects.TryGetComponent(out NarrativeGame.Dialogue.NPCController npc))
+                {
+                    npc.GetComponent<NarrativeGame.Dialogue.NPCController>().enabled = false;
+                    npc.GetComponent<Outline>().enabled = false;
+                    npc.GetComponent<InteractableObjects>().enabled = false;
+                }
+                else objects.SetActive(false);
             }
         }
     }

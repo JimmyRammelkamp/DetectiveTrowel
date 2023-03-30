@@ -5,8 +5,10 @@ public class TaskSO : ScriptableObject
 {
     [TextArea(3, 10)]
     [SerializeField] private string taskDescription;
+    [SerializeField] private bool isHidden;
 
     [System.NonSerialized] private bool isCompleted = false;
+
 
     private void OnEnable()
     {
@@ -15,5 +17,6 @@ public class TaskSO : ScriptableObject
 
 
     public string TaskDescription { get { return taskDescription; } }
+    public bool IsHidden { get { return isHidden; } }
     public bool IsCompleted { get { return isCompleted; } set { isCompleted = value; } }
 }
