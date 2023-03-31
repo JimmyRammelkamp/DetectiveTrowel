@@ -145,7 +145,6 @@ public class HandManager : MonoBehaviour
             case GameManager.GameStatus.Dialogue:
                 BlackBars.instance.BlackBarOn();
                 Lamp.instance.ChangeLampTarget(LampTarget.DIORAMA);
-                EnvironmentLight.instance.ChangeLightIntensity(0.05f);
                 MoveDetectivePieceToSpotlight();
                 MoveNPCPieceToSpotlight();
                 break;

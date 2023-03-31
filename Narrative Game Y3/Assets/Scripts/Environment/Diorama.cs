@@ -6,6 +6,7 @@ public class Diorama : MonoBehaviour
 {
     [SerializeField] private Transform leftHandOffset;
     [SerializeField] private Transform rightHandOffset;
+    [SerializeField] private EnvironmentSO environmentLight;
 
     private void Start()
     {
@@ -16,6 +17,12 @@ public class Diorama : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         if (transform.parent.name == "Dioramas") gameObject.SetActive(false);
+    }
+
+    public void ChangeDioramaLight()
+    {
+        if (!environmentLight) EnvironmentLight.instance.ChangeToDefaultIntensity();
+        else EnvironmentLight.instance.ChangeLight(environmentLight);
     }
 
     public Transform GetLeftHandOffset() { return leftHandOffset; }

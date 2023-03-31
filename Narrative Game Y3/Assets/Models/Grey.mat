@@ -191,7 +191,7 @@ Material:
     - _DstBlend: 0
     - _DynamicNoisyOutline: 0
     - _EnvironmentReflections: 1
-    - _EnvironmentalLightingIntensity: 1
+    - _EnvironmentalLightingIntensity: 0
     - _FarDistanceMaxWidth: -0.13
     - _GIFlatShade: 0
     - _GIShadeThreshold: 0
@@ -290,7 +290,7 @@ Material:
     - _SelfShadowAffectedByLightShadowStrength: 0
     - _SelfShadowHardness: 1
     - _SelfShadowRealTimeShadowColorPower: 1
-    - _SelfShadowRealtimeShadowIntensity: 1
+    - _SelfShadowRealtimeShadowIntensity: 0.75
     - _SelfShadowShadowTAtViewDirection: 0
     - _SelfShadowThreshold: 0.506
     - _ShadowColorTexturePower: 0
@@ -334,7 +334,7 @@ Material:
     - _MainColor: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineOffset: {r: 0, g: 0, b: 0, a: 1}
-    - _OverallShadowColor: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 1}
+    - _OverallShadowColor: {r: 0.11881453, g: 0.17944305, b: 0.2830189, a: 1}
     - _PTCol: {r: 0, g: 0, b: 0, a: 1}
     - _RimLightColor: {r: 1, g: 1, b: 1, a: 1}
     - _SSAOColor: {r: 0, g: 0, b: 0, a: 0}

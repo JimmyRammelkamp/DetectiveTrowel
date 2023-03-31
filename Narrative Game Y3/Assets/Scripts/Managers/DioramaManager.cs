@@ -28,6 +28,7 @@ public class DioramaManager : MonoBehaviour
     private void Initalize()
     {
         anim = GetComponent<Animator>();
+        GetCurrentDiorama().GetComponent<Diorama>().ChangeDioramaLight();
     }
 
     /// <summary>
@@ -36,6 +37,7 @@ public class DioramaManager : MonoBehaviour
     public void TriggerDioramaAnimation(Transform _newDiorama)
     {
         newDiorama = _newDiorama;
+        newDiorama.GetComponent<Diorama>().ChangeDioramaLight();
         StartCoroutine(DioramaAnimation());
     }
 

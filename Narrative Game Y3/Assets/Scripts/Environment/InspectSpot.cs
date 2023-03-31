@@ -14,6 +14,8 @@ namespace NarrativeGame.Dialogue
 
         PlayerConversant playerConversant;
 
+        public bool IsDialogueAvaliable() { return dialogue; }
+
         private void OnEnable()
         {
             if (interactIcon) interactIcon.gameObject.SetActive(true);
@@ -39,7 +41,7 @@ namespace NarrativeGame.Dialogue
             IconPositionUpdate();
         }
 
-        private void StartInnerDialogue()
+        public void StartInnerDialogue()
         {
             Debug.Log("Inner Dialogue " + transform.name);
             if (!dialogue) return;

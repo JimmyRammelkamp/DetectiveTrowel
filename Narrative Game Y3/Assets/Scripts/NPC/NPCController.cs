@@ -10,7 +10,6 @@ namespace NarrativeGame.Dialogue
         [SerializeField] private Transform handPosOffset;
         [SerializeField] private RectTransform statusIcons;
         [SerializeField] Dialogue startDialogue = null;
-        [SerializeField] Dialogue inspectDialogue = null;
         [SerializeField] string conversantName;
 
         [Header("These are for the Inspect card:")]
@@ -98,7 +97,7 @@ namespace NarrativeGame.Dialogue
 
             if (InspectCardDialogueList.Count == 0) HUDManager.instance.GetNPCInteractiveButtons().GetChild(2).gameObject.SetActive(false);
 
-            if(!inspectDialogue) HUDManager.instance.GetNPCInteractiveButtons().GetChild(1).gameObject.SetActive(false);
+            HUDManager.instance.GetNPCInteractiveButtons().GetChild(1).gameObject.SetActive(GetComponent<InspectSpot>().IsDialogueAvaliable());
         }
 
         public string GetName()
@@ -132,6 +131,7 @@ namespace NarrativeGame.Dialogue
         public void Inspect()
         {
             Debug.Log("NPC Inspect");
+            GetComponent<InspectSpot>().StartInnerDialogue();
         }
 
         public void ShowCard()
