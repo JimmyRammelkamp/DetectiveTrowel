@@ -204,6 +204,7 @@ public class GameManager : MonoBehaviour
         {
             if (item.transform.TryGetComponent(out InteractableObjects interactable))
             {
+                if (!interactable.GetComponent<InteractableObjects>().isActiveAndEnabled) return;
                 if (interactable.isObjectInteractivable()) interactable.MouseEnter();
             }
         }

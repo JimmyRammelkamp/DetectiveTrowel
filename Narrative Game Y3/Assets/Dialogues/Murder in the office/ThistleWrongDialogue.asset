@@ -40,6 +40,6 @@ MonoBehaviour:
   completedTask: {fileID: 0}
   evidenceCard: {fileID: 0}
   onEnterAction: 
-  onExitAction: 
+  onExitAction: SmokeBlackScreen
   aimTarget: 
   voiceoverAudio: {fileID: 0}

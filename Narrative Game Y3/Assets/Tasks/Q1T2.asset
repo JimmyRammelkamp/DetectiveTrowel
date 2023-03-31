@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Q1T2
   m_EditorClassIdentifier: 
   taskDescription: Show Thistle Evidence of the Corpse
+  isHidden: 0

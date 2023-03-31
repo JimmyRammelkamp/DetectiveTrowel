@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Q1T3
   m_EditorClassIdentifier: 
   taskDescription: Speak with Miss Rose about what she witnessed
+  isHidden: 0

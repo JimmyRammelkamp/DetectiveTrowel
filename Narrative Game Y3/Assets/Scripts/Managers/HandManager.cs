@@ -274,6 +274,8 @@ public class HandManager : MonoBehaviour
 
     IEnumerator MovePiecesUpAndDownEnume(int _targetIndex)
     {
+        yield return new WaitForSeconds(0.1f);
+
         Transform _piece = GetPieceTransform(_targetIndex);
 
         float offset = 0.1f;
@@ -281,7 +283,7 @@ public class HandManager : MonoBehaviour
         pieceStartY = _piece.position.y;
         float time = 0.0f;
 
-        while (NarrativeGame.Dialogue.PlayerConversant.instance.GetIsAudioPlaying() || pieceStartY > _piece.position.y + 0.005f || pieceStartY < _piece.position.y - 0.005f)
+        while (NarrativeGame.Dialogue.PlayerConversant.instance.GetIsAudioPlaying() || !NarrativeGame.UI.DialogueUI.instance.GetIsDialogueFinished() || pieceStartY > _piece.position.y + 0.005f || pieceStartY < _piece.position.y - 0.005f)
         {
             yield return new WaitForSeconds(Time.deltaTime);
 
@@ -295,6 +297,7 @@ public class HandManager : MonoBehaviour
         }
 
         _piece.position = new Vector3(_piece.position.x, pieceStartY, _piece.position.z);
+        upAndDownIE = null;
     }
 
     IEnumerator ChangeHandPosition(Transform _to, Transform _hand)
@@ -361,6 +364,6 @@ public class HandManager : MonoBehaviour
         }
         _piece.position = _to;
 
-      isAnimating = false;
+        isAnimating = false;
     }
 }

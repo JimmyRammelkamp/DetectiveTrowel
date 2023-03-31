@@ -10,6 +10,7 @@ namespace NarrativeGame.Dialogue
         [SerializeField] private Transform handPosOffset;
         [SerializeField] private RectTransform statusIcons;
         [SerializeField] Dialogue startDialogue = null;
+        [SerializeField] Dialogue inspectDialogue = null;
         [SerializeField] string conversantName;
 
         [Header("These are for the Inspect card:")]
@@ -79,6 +80,8 @@ namespace NarrativeGame.Dialogue
         {
             if (GameManager.instance.GetStatus() != GameManager.GameStatus.Diorama) return;
 
+            if (!GetComponent<InteractableObjects>().isActiveAndEnabled) return;
+
             GameManager.instance.SetNPC(this);
 
             if (transform.TryGetComponent(out Outline _outline))
@@ -89,6 +92,13 @@ namespace NarrativeGame.Dialogue
             }
 
             HUDManager.instance.ActivateNPCInteractiveButtons(true);
+
+            if (PlayingCardManager.instance.CurrentCardNumber() == 0) HUDManager.instance.GetNPCInteractiveButtons().GetChild(2).gameObject.SetActive(false);
+            else HUDManager.instance.GetNPCInteractiveButtons().GetChild(2).gameObject.SetActive(true);
+
+            if (InspectCardDialogueList.Count == 0) HUDManager.instance.GetNPCInteractiveButtons().GetChild(2).gameObject.SetActive(false);
+
+            if(!inspectDialogue) HUDManager.instance.GetNPCInteractiveButtons().GetChild(1).gameObject.SetActive(false);
         }
 
         public string GetName()
@@ -142,7 +152,11 @@ namespace NarrativeGame.Dialogue
                 if (item.triggerCard.ToString() == _card.ToString()) tempDialogue = item.dialogue;
             }
 
-            if (tempDialogue == null) tempDialogue = wrongCardDialogue;
+            if (tempDialogue == null)
+            {
+                GameManager.instance.SetStressLevel(GameManager.instance.GetStressLevel() - 1);
+                tempDialogue = wrongCardDialogue;
+            }
 
             StartCoroutine(StartDialogue(tempDialogue));
             GameManager.instance.SetStatus(GameManager.GameStatus.Dialogue);
