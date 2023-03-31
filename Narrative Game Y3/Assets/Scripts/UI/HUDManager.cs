@@ -190,7 +190,6 @@ public class HUDManager : MonoBehaviour
 
     public void UpdateTaskManager(ProgressionTasks _tasks)
     {
-        taskWindow.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "";
         taskWindow.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = "";
 
         taskWindow.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = _tasks.taskName;

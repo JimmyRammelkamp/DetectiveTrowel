@@ -51,7 +51,6 @@ namespace NarrativeGame.Dialogue
             // Quit Dialogue (Called from the Quit button when no more dialogue texts in the sequence)
         public void Quit()
         {
-
             switch (currentNode.GetDialogueStatus())
             {
                 case DialogueStatus.Player:
@@ -82,6 +81,8 @@ namespace NarrativeGame.Dialogue
             currentConversant = null;
             onConversationUpdated();
             dialogueAudioSource.Stop();
+
+            UI.DialogueUI.instance.SetIsDialogueFinished(true);
         }
 
         // Delaying the dialogue until the pieces moved in the right position
@@ -170,8 +171,8 @@ namespace NarrativeGame.Dialogue
             }
             
             int randomIndex = UnityEngine.Random.Range(0, children.Length);
-            TriggerExitAction();
-            currentNode = children[randomIndex];
+            if (UI.DialogueUI.instance.GetIsDialogueFinished()) TriggerExitAction();
+            if (UI.DialogueUI.instance.GetIsDialogueFinished()) currentNode = children[randomIndex];
             TriggerEnterAction();
             onConversationUpdated();
         }

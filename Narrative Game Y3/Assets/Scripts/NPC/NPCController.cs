@@ -93,7 +93,11 @@ namespace NarrativeGame.Dialogue
 
             HUDManager.instance.ActivateNPCInteractiveButtons(true);
 
+            if (PlayingCardManager.instance.CurrentCardNumber() == 0) HUDManager.instance.GetNPCInteractiveButtons().GetChild(2).gameObject.SetActive(false);
+            else HUDManager.instance.GetNPCInteractiveButtons().GetChild(2).gameObject.SetActive(true);
+
             if (InspectCardDialogueList.Count == 0) HUDManager.instance.GetNPCInteractiveButtons().GetChild(2).gameObject.SetActive(false);
+
             if(!inspectDialogue) HUDManager.instance.GetNPCInteractiveButtons().GetChild(1).gameObject.SetActive(false);
         }
 

@@ -67,6 +67,10 @@ public class PlayingCardManager : MonoBehaviour
     public bool IsCardFaningDone() { return isCardFaningDone; }
     public bool IsDragging() { return isDragging; }
     public void SetIsDragging(bool _bool) { isDragging = _bool; }
+    public int CurrentCardNumber() {
+        currentCardType = CardType.All;
+        return ReturnCurrentCardList().Count;
+            }
 
     void Awake()
     {
@@ -94,6 +98,8 @@ public class PlayingCardManager : MonoBehaviour
 
     private void SelectCard()
     {
+        if (ReturnCurrentCardList().Count == 0) return;
+
         currentSelectedCard = ClosestCardToTheMouse();
 
         Vector2 mousePosition = GameManager.instance.GetInputs().GameInput.MousePosition.ReadValue<Vector2>();
@@ -193,6 +199,8 @@ public class PlayingCardManager : MonoBehaviour
 
     public void InteractWithDeck(CardType _type)
     {
+        currentCardType = _type;
+
         if (_type == CardType.All)
         {
             allCardList = allCardList.OrderBy(x => x.GetComponent<PlayingCard>().GetCardData().Type).ToList();
@@ -203,7 +211,6 @@ public class PlayingCardManager : MonoBehaviour
 
         if (ReturnCurrentCardList() != null) SetCardsBack();
 
-        currentCardType = _type;
         PlaceCardsToHand();
         LoadCards();
         SetCardTypes();
@@ -423,12 +430,6 @@ public class PlayingCardManager : MonoBehaviour
                 Destroy(go);
                 return;
             }
-        }
-
-        if (allCardList.Contains(go.transform))
-        {
-            Destroy(go);
-            return;
         }
 
         allCardList.Add(go.transform);

@@ -15,7 +15,7 @@ public class ProgressionManager : MonoBehaviour
     [Space]
     [SerializeField] private List<UnlockObjects> unlockObjects;
 
-    [Header("When a certain task is done, it unlocks these objects - SetActive(false):")]
+    [Header("When a certain task is done, it hides these objects - SetActive(false):")]
     [Space]
     [SerializeField] private List<UnlockObjects> lockObjects;
 
