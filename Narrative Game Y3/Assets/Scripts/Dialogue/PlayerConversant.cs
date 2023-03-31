@@ -56,7 +56,6 @@ namespace NarrativeGame.Dialogue
                 case DialogueStatus.Player:
                     BlackBars.instance.BlackBarOff();
                     Lamp.instance.ChangeLampTarget(LampTarget.UP);
-                    EnvironmentLight.instance.ChangeToDefaultIntensity();
                     StartCoroutine(MovePiecesBack());
                     break;
 
@@ -64,7 +63,6 @@ namespace NarrativeGame.Dialogue
                 case DialogueStatus.NPC:
                     BlackBars.instance.BlackBarOff();
                     Lamp.instance.ChangeLampTarget(LampTarget.UP);
-                    EnvironmentLight.instance.ChangeToDefaultIntensity();
                     StartCoroutine(MovePiecesBack());
                     break;
 
