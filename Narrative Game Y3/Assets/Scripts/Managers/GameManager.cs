@@ -28,11 +28,13 @@ public class GameManager : MonoBehaviour
         Newspaper = 4,
         PlayingCard = 5,
         InspectEvidence = 6,
-        Dialogue = 7
+        Dialogue = 7,
+        Inspect = 8
     }
 
     [SerializeField] private GameStatus gameStatus;
     [SerializeField] private int maxStressLevel;
+    [SerializeField] private List<Transform> cigList = new();
 
     public event Action onStatusUpdated;
 
@@ -46,7 +48,6 @@ public class GameManager : MonoBehaviour
 
     public InputActions GetInputs() { return input; }
     public int GetStressLevel() { return stressLevel; }
-    public void SetStressLevel(int _stressLevel) { stressLevel = _stressLevel; }
     public NPCController GetSelectedNPC() { return selectedNPC; }
     public void SetNPC(NPCController _npc) { selectedNPC = _npc; }
     public GameStatus GetStatus() { return gameStatus; }
@@ -89,6 +90,14 @@ public class GameManager : MonoBehaviour
 
         //input.GameInput.ScrollWheel.performed += ScrollNavigation;
         //input.GameInput.ScrollWheel.performed += ScrollNavigation;
+    }
+
+    public void ReduceStressLevel()
+    {
+        int index = maxStressLevel - stressLevel;
+        stressLevel -= 1;
+
+        cigList[index].gameObject.SetActive(false);
     }
 
     /// <summary>

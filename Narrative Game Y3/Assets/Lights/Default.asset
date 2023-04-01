@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e616afea2ff8a144beb56998864ea01, type: 3}
   m_Name: Default
   m_EditorClassIdentifier: 
-  intensity: 0.5
+  intensity: 1
   lightXDirection: 50
   lightYDirection: 0
-  temperature: 6587
+  temperature: 5575
   filterColor: {r: 1, g: 1, b: 1, a: 1}

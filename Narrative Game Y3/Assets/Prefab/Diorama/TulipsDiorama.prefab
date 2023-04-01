@@ -169,7 +169,6 @@ MonoBehaviour:
   statusIcons: {fileID: 6243902107820977552, guid: f33fee12271fab847a03a8bcd8ce6d8d,
     type: 3}
   startDialogue: {fileID: 0}
-  inspectDialogue: {fileID: 0}
   conversantName: 
   wrongCardDialogue: {fileID: 0}
   InspectCardDialogueList: []
@@ -297,7 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftHandOffset: {fileID: 4640210042789120946}
   rightHandOffset: {fileID: 4640210042128343578}
-  environmentLight: {fileID: 0}
+  environmentLight: {fileID: 11400000, guid: d4cb388995148d64a92ec379b76b9793, type: 2}
 --- !u!114 &4640210042114269911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -677,7 +676,6 @@ MonoBehaviour:
   statusIcons: {fileID: 6243902107820977552, guid: f33fee12271fab847a03a8bcd8ce6d8d,
     type: 3}
   startDialogue: {fileID: 0}
-  inspectDialogue: {fileID: 0}
   conversantName: 
   wrongCardDialogue: {fileID: 0}
   InspectCardDialogueList: []
@@ -863,7 +861,6 @@ MonoBehaviour:
   statusIcons: {fileID: 6243902107820977552, guid: f33fee12271fab847a03a8bcd8ce6d8d,
     type: 3}
   startDialogue: {fileID: 0}
-  inspectDialogue: {fileID: 0}
   conversantName: 
   wrongCardDialogue: {fileID: 0}
   InspectCardDialogueList: []

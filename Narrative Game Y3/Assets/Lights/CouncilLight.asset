@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CouncilLight
   m_EditorClassIdentifier: 
   intensity: 0.3
-  lightXDirection: 168
+  lightXDirection: 137
   lightYDirection: 85
   temperature: 4338
-  filterColor: {r: 1, g: 0.504562, b: 0.49411762, a: 1}
+  filterColor: {r: 1, g: 0.2950856, b: 0.2783019, a: 1}

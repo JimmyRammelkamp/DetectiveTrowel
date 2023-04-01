@@ -154,7 +154,7 @@ namespace NarrativeGame.Dialogue
 
             if (tempDialogue == null)
             {
-                GameManager.instance.SetStressLevel(GameManager.instance.GetStressLevel() - 1);
+                GameManager.instance.ReduceStressLevel();
                 tempDialogue = wrongCardDialogue;
             }
 

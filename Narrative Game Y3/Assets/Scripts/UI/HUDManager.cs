@@ -121,6 +121,9 @@ public class HUDManager : MonoBehaviour
                 backButton.gameObject.SetActive(false);
                 break;
 
+            case GameManager.GameStatus.Inspect:
+                break;
+
             default:
                 navigationC.ActivateCamera(navigationC.GetTableCamera());
                 break;

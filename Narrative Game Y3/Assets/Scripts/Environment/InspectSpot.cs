@@ -50,6 +50,7 @@ namespace NarrativeGame.Dialogue
             NavigationCamera.instance.SetInspectCamera(inspectCamera);
             NavigationCamera.instance.ActivateCamera(inspectCamera);
             HUDManager.instance.DisableUIElements();
+            GameManager.instance.SetStatus(GameManager.GameStatus.Inspect);
         }
 
         public void IconPositionUpdate()

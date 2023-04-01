@@ -150,8 +150,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5121395895993922776}
-  m_LocalRotation: {x: -0.005336089, y: 0.96391445, z: 0.26502442, w: -0.02454618}
-  m_LocalPosition: {x: 0.19035405, y: -0.17190583, z: 0.2530147}
+  m_LocalRotation: {x: -0.17827345, y: 0.8783883, z: 0.4290097, w: -0.11226456}
+  m_LocalPosition: {x: 0.040933307, y: -0.07730263, z: 0.049706478}
   m_LocalScale: {x: 0.08762859, y: 0.08762861, z: 0.08762862}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -175,7 +175,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 0
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
@@ -286,7 +286,6 @@ MonoBehaviour:
   statusIcons: {fileID: 6243902107820977552, guid: f33fee12271fab847a03a8bcd8ce6d8d,
     type: 3}
   startDialogue: {fileID: 11400000, guid: 30b4fcd9158bb924b8a1bc7af076043e, type: 2}
-  inspectDialogue: {fileID: 0}
   conversantName: Miss Rose
   wrongCardDialogue: {fileID: 0}
   InspectCardDialogueList: []
@@ -303,7 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c8366329f8f51c4fadc32055ea07398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inspectCamera: {fileID: 0}
+  inspectCamera: {fileID: 6763069217032694345}
   interactIcon: {fileID: 0}
   dialogue: {fileID: 0}
 --- !u!33 &6786815246780356701

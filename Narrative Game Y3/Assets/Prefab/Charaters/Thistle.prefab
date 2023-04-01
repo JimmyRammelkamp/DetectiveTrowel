@@ -24,8 +24,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227361653678337321}
-  m_LocalRotation: {x: -0.0053360877, y: 0.96391445, z: 0.2650244, w: -0.024546182}
-  m_LocalPosition: {x: -0.017325718, y: -0.12852967, z: 0.2530147}
+  m_LocalRotation: {x: -0.0057994616, y: 0.914078, z: 0.40460768, w: -0.026839718}
+  m_LocalPosition: {x: 0.00021216687, y: -0.11283533, z: 0.1069412}
   m_LocalScale: {x: 0.08762858, y: 0.08762863, z: 0.08762863}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -49,7 +49,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 0
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
@@ -286,7 +286,6 @@ MonoBehaviour:
   statusIcons: {fileID: 6243902107820977552, guid: f33fee12271fab847a03a8bcd8ce6d8d,
     type: 3}
   startDialogue: {fileID: 11400000, guid: 89382ff9a75ccd64c8dc6ddccd8e3169, type: 2}
-  inspectDialogue: {fileID: 0}
   conversantName: Thistle
   wrongCardDialogue: {fileID: 11400000, guid: 9eaf97594b6d2974dae89fc193dfc45c, type: 2}
   InspectCardDialogueList:
@@ -307,9 +306,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c8366329f8f51c4fadc32055ea07398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inspectCamera: {fileID: 0}
+  inspectCamera: {fileID: 5221317232349901785}
   interactIcon: {fileID: 0}
-  dialogue: {fileID: 0}
+  dialogue: {fileID: 11400000, guid: 2daccdac706e46b4487f656abc8eab53, type: 2}
 --- !u!33 &5329034252072786383
 MeshFilter:
   m_ObjectHideFlags: 0
