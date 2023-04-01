@@ -100,7 +100,7 @@ MonoBehaviour:
     height: 100
   completedTask: {fileID: 0}
   evidenceCard: {fileID: 0}
-  onEnterAction: 
+  onEnterAction: SetName
   onExitAction: 
   aimTarget: 
   voiceoverAudio: {fileID: 0}
