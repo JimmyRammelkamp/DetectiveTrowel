@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject settingsUI;
+
+    public void StartButton()
     {
-        
+        AudioManager.instance.StopAudio("Menu Music");
+        SceneManager.LoadScene(1);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SettingsButton()
     {
-        
+        settingsUI.SetActive(true);
+    }
+
+    public void QuitButton()
+    {
+        Application.Quit();
     }
 }
