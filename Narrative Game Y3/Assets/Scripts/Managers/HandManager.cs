@@ -27,6 +27,9 @@ public class HandManager : MonoBehaviour
 
     [SerializeField] Transform detectivePieceOffsetPos;
 
+    [SerializeField]
+    float pawnPivotOffset = -0.3f;
+
     Vector3 tempNPCPos;
     Vector3 tempDetectivePos;
 
@@ -228,13 +231,13 @@ public class HandManager : MonoBehaviour
     public void MoveNPCPieceToSpotlight()
     {
         tempNPCPos = GameManager.instance.GetSelectedNPC().transform.position;
-        StartCoroutine(ChangePiecePosition(nPCSSpotlightPos.position + transform.up * 0.25f, GameManager.instance.GetSelectedNPC().transform));
+        StartCoroutine(ChangePiecePosition(nPCSSpotlightPos.position + transform.up * pawnPivotOffset, GameManager.instance.GetSelectedNPC().transform));
     }
 
     public void MoveDetectivePieceToSpotlight()
     {
         tempDetectivePos = detectivePiece.position;
-        StartCoroutine(ChangePiecePosition(detectiveSpotlightPos.position - transform.up * 0.2f, detectivePiece));
+        StartCoroutine(ChangePiecePosition(detectiveSpotlightPos.position + transform.up * pawnPivotOffset, detectivePiece));
     }
 
     public void StopUpAndDownMovement()
