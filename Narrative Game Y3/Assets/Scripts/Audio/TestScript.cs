@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class TestScript : MonoBehaviour
 {
-    public Sound test;
+    public string soundName, soundname2;
 
-    private void Awake()
+    public void PlaySound()
     {
+        AudioManager.instance.PlayAudio(soundName);
+        AudioManager.instance.PlayAudio(soundname2);
     }
-    private void Start()
+
+    public void StopSound()
     {
-        //AudioManager.instance.SoundSetUp(test, this.gameObject);
-        //AudioManager.instance.Play("Test", test);
+        AudioManager.instance.StopAudio(soundName);
+        AudioManager.instance.StopAudio(soundname2);
     }
 }
