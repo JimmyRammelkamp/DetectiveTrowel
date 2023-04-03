@@ -25,7 +25,7 @@ MonoBehaviour:
     width: 250
     height: 100
   completedTask: {fileID: 0}
-  evidenceCard: {fileID: 0}
+  evidenceCard: {fileID: 11400000, guid: 170c38c89f8435b47ac97710d659cc3c, type: 2}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
@@ -138,8 +138,8 @@ MonoBehaviour:
   - fff0c373-8387-4939-9164-58529ae5d401
   rect:
     serializedVersion: 2
-    x: 287
-    y: 251
+    x: 297
+    y: 285
     width: 250
     height: 100
   completedTask: {fileID: 0}
@@ -376,7 +376,7 @@ MonoBehaviour:
     width: 250
     height: 100
   completedTask: {fileID: 0}
-  evidenceCard: {fileID: 0}
+  evidenceCard: {fileID: 11400000, guid: ba905a794b385e34b905ca2d29429817, type: 2}
   onEnterAction: 
   onExitAction: 
   aimTarget: 

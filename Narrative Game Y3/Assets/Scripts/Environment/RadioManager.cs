@@ -37,6 +37,7 @@ public class RadioManager : MonoBehaviour, IObjectInteraction
             radioAudioSource.Stop();
             animator.enabled = false;
         }
+        radioAudioSource.PlayOneShot(interactSound, 0.1f);
     }
 
     public bool isObjectActive()

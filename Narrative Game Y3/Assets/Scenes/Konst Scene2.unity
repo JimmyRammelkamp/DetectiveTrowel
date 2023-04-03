@@ -19839,6 +19839,14 @@ PlayableDirector:
     value: {fileID: 134158114}
   - key: {fileID: -5657339887114355092, guid: cb28adc451930a142bd000f9887436b0, type: 2}
     value: {fileID: 134158114}
+  - key: {fileID: 7313459812222690029, guid: cb28adc451930a142bd000f9887436b0, type: 2}
+    value: {fileID: 949058157}
+  - key: {fileID: 2139970045195246759, guid: cb28adc451930a142bd000f9887436b0, type: 2}
+    value: {fileID: 2032604455}
+  - key: {fileID: 5812811574340256294, guid: cb28adc451930a142bd000f9887436b0, type: 2}
+    value: {fileID: 5866666020078856599}
+  - key: {fileID: 6263045878353148905, guid: cb28adc451930a142bd000f9887436b0, type: 2}
+    value: {fileID: 2116177613}
   m_ExposedReferences:
     m_References:
     - 866a9b75d42f03343823b3606950e9d1: {fileID: 826443922}
@@ -21982,7 +21990,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ab688a806f2c76e4d854d1678592a6f1, type: 3}
   - {fileID: 8300000, guid: cb69997f00830824aa199f19e02363cd, type: 3}
   radioAudioSource: {fileID: 16129849}
-  interactSound: {fileID: 0}
+  interactSound: {fileID: 8300000, guid: fc55ac03dafe5e34d85f9e402e323910, type: 3}
 --- !u!1 &1990156668
 GameObject:
   m_ObjectHideFlags: 3
