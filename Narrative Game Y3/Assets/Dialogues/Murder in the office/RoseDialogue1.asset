@@ -29,7 +29,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: dc57f26b2ba53c94b9d8df1775c1382d, type: 3}
 --- !u!114 &-6885841709392524338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43,11 +43,10 @@ MonoBehaviour:
   m_Name: 1adbc138-7609-49ce-9116-8a3086ff1164
   m_EditorClassIdentifier: 
   dialogueStatus: 1
-  text: "Oh well I was never much more than his secretary. I knew him as well as
+  text: "Oh well I never was much more than his secretary. I knew him as well as
     one does someone they work with every day. And what a good job he\u2019d do every
     day without fail. I\u2019ve got nothing bad to say about him, he always treated
-    me well as his secretary. Far better than the plants in his office. That man
-    couldn\u2019t remember to water one if his life depended on it, bless him. "
+    me well as his secretary."
   children:
   - 256258d3-96c8-4f7d-bbc4-738ae33c221b
   - b65a9190-0a2f-4db9-bd57-447a727bfd67
@@ -63,7 +62,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 8a71ac71450a157479ae415a3bbec96c, type: 3}
 --- !u!114 &-3788510011957460036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,7 +90,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: b3587e48a13aaef429d0d4f82d234fb4, type: 3}
 --- !u!114 &-3247215481355482517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,7 +147,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: e6d261d8425badd44a4049aed4feaec8, type: 3}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,7 +205,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: a588ef5bf86c8c046bebfff90cf5083e, type: 3}
 --- !u!114 &2860084276284912487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,7 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6131a39233c664a96c408ecb7767ce, type: 3}
   m_Name: 9121c996-0a79-45b2-8b8c-1c62bda6b036
   m_EditorClassIdentifier: 
-  dialogueStatus: 1
+  dialogueStatus: 0
   text: Thank you Miss Rose. That'll be all for now.
   children: []
   rect:
@@ -261,7 +260,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 3df00477212ed4e4baa0b20ec70840fc, type: 3}
 --- !u!114 &3615338831533880592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,7 +289,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 5763fceace3622f44ab37e7214368c97, type: 3}
 --- !u!114 &3733648192090208142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,7 +317,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: a734303dbc5dfce448891e707ca28ead, type: 3}
 --- !u!114 &6354417313152993377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,7 +348,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 500bc94cc20183f49a82b8bf7a28f556, type: 3}
 --- !u!114 &8563605182319095788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,7 +380,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 43488a777f992414fa7e4c2f0dc2cff1, type: 3}
 --- !u!114 &8778331752889208141
 MonoBehaviour:
   m_ObjectHideFlags: 0

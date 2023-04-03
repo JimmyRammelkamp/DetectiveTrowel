@@ -27,7 +27,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 59cebf727e21edb4baf4dfd694645e7c, type: 3}
 --- !u!114 &-3393660323025051350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55,7 +55,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: abf5f76b606a01242b1fa55ef866a500, type: 3}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,7 +103,7 @@ MonoBehaviour:
   onEnterAction: SetName
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: e091a080e7e913549bda2ac60a8b8270, type: 3}
 --- !u!114 &2269206952672440969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: a5883dac0b3589a41a50c0108f13e534, type: 3}
 --- !u!114 &4636045509125937987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueStatus: 1
   text: "Come now detective. It\u2019s quite plain to see. I\u2019d expect someone
-    of your stature to have a good sense of it from a quick glance."
+    of your stature to have a good sense of it from naught more than a quick glance."
   children: []
   rect:
     serializedVersion: 2
@@ -159,4 +159,4 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 9e380e7f75b426346bfe63ec27917371, type: 3}

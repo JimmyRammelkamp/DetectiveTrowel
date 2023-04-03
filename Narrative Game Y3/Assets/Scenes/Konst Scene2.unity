@@ -17135,6 +17135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1172232586}
   - component: {fileID: 1172232587}
+  - component: {fileID: 1172232588}
   m_Layer: 0
   m_Name: Dialogue Audio Source
   m_TagString: Untagged
@@ -17214,7 +17215,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.5
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -17254,6 +17255,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!165 &1172232588
+AudioHighPassFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172232585}
+  m_Enabled: 1
+  m_CutoffFrequency: 2460
+  m_HighpassResonanceQ: 3
 --- !u!1001 &1176865218
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22614,7 +22625,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132147769026903}
   m_LocalRotation: {x: -0, y: 0.70719016, z: -0, w: 0.7070234}
-  m_LocalPosition: {x: -0.8450106, y: 0.406, z: 0.29874521}
+  m_LocalPosition: {x: -0.608, y: 0.406, z: -0.112}
   m_LocalScale: {x: 0.115148, y: 0.115148, z: 0.115148}
   m_ConstrainProportionsScale: 0
   m_Children:

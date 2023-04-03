@@ -42,4 +42,4 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: SmokeBlackScreen
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: a54223f8b75cd634d93e8c465b12951b, type: 3}
