@@ -17,7 +17,7 @@ public class RadioManager : MonoBehaviour, IObjectInteraction
     private void Start()
     {
         animator = GetComponent<Animator>();
-        maxSongindex = AvailableSongs.Length + 1;
+        maxSongindex = AvailableSongs.Length;
     }
 
     public void Interact()
