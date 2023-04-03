@@ -30,6 +30,14 @@ public class HandManager : MonoBehaviour
     [SerializeField]
     float pawnPivotOffset = -0.3f;
 
+    [Header("Sound")]
+    [SerializeField] AudioSource handAudioSource;
+    [SerializeField] AudioClip pickupSound;
+    [SerializeField] AudioClip boardPickupSound;
+
+    [SerializeField] float playbackVolume = 1f;
+
+
     Vector3 tempNPCPos;
     Vector3 tempDetectivePos;
 
@@ -160,8 +168,8 @@ public class HandManager : MonoBehaviour
     {
         leftHandAnimator.SetBool(animIDSwitching, true);
         rightHandAnimator.SetBool(animIDSwitching, true);
-        StartCoroutine(ChangeHandPosition(DioramaManager.instance.GetCurrentDiorama().GetComponent<Diorama>().GetLeftHandOffset(), LeftHand.transform));
-        StartCoroutine(ChangeHandPosition(DioramaManager.instance.GetCurrentDiorama().GetComponent<Diorama>().GetRightHandOffset(), RightHand.transform));
+        StartCoroutine(ChangeHandPosition(DioramaManager.instance.GetCurrentDiorama().GetComponent<Diorama>().GetLeftHandOffset(), LeftHand.transform, boardPickupSound));
+        StartCoroutine(ChangeHandPosition(DioramaManager.instance.GetCurrentDiorama().GetComponent<Diorama>().GetRightHandOffset(), RightHand.transform, boardPickupSound));
     }
 
     IEnumerator PutDownNewsPaper()
@@ -226,20 +234,20 @@ public class HandManager : MonoBehaviour
 
     public void MovePiecesBack()
     {
-        StartCoroutine(ChangePiecePosition(tempNPCPos, GameManager.instance.GetSelectedNPC().transform));
-        StartCoroutine(ChangePiecePosition(tempDetectivePos, detectivePiece));
+        StartCoroutine(ChangePiecePosition(tempNPCPos, GameManager.instance.GetSelectedNPC().transform, pickupSound, 2));
+        StartCoroutine(ChangePiecePosition(tempDetectivePos, detectivePiece, pickupSound, 2));
     }
 
     public void MoveNPCPieceToSpotlight()
     {
         tempNPCPos = GameManager.instance.GetSelectedNPC().transform.position;
-        StartCoroutine(ChangePiecePosition(nPCSSpotlightPos.position + transform.up * pawnPivotOffset, GameManager.instance.GetSelectedNPC().transform));
+        StartCoroutine(ChangePiecePosition(nPCSSpotlightPos.position + transform.up * pawnPivotOffset, GameManager.instance.GetSelectedNPC().transform, pickupSound, 1));
     }
 
     public void MoveDetectivePieceToSpotlight()
     {
         tempDetectivePos = detectivePiece.position;
-        StartCoroutine(ChangePiecePosition(detectiveSpotlightPos.position + transform.up * pawnPivotOffset, detectivePiece));
+        StartCoroutine(ChangePiecePosition(detectiveSpotlightPos.position + transform.up * pawnPivotOffset, detectivePiece, pickupSound, 1));
     }
 
     public void StopUpAndDownMovement()
@@ -343,6 +351,46 @@ public class HandManager : MonoBehaviour
         AdditionalTrigger();
     }
 
+    IEnumerator ChangeHandPosition(Transform _to, Transform _hand, AudioClip audioClip)
+    {
+        if (_to == _hand.parent) yield break;
+
+        isAnimating = true;
+
+        _hand.SetParent(null);
+
+        float lerp = 0;
+
+        Vector3 startPos = _hand.position;
+        Vector3 endPos = _to.position;
+
+        Vector3 startAngle = _hand.rotation.eulerAngles;
+        Vector3 endAngle = _to.rotation.eulerAngles;
+
+        float delta = Time.deltaTime / 0.75f;
+
+        while (lerp < 1)
+        {
+            yield return new WaitForSeconds(Time.deltaTime);
+            lerp += delta;
+
+            float angle = 90 - lerp * 180;
+
+            float y = 0.75f * Mathf.Cos(angle * Mathf.Deg2Rad);
+
+            _hand.position = Vector3.Lerp(startPos, endPos, lerp);
+            _hand.position += transform.up * y;
+            _hand.rotation = Quaternion.Slerp(Quaternion.Euler(startAngle), Quaternion.Euler(endAngle), lerp);
+        }
+
+        _hand.SetParent(_to);
+        handAudioSource.PlayOneShot(audioClip, playbackVolume);
+
+        isAnimating = false;
+
+        AdditionalTrigger();
+    }
+
     IEnumerator ChangePiecePosition(Vector3 _to, Transform _piece)
     {
         isAnimating = true;
@@ -367,6 +415,39 @@ public class HandManager : MonoBehaviour
             _piece.position += transform.up * y;
         }
         _piece.position = _to;
+        
+
+        isAnimating = false;
+    }
+
+    IEnumerator ChangePiecePosition(Vector3 _to, Transform _piece, AudioClip audioClip, int playOrder)
+    {
+        isAnimating = true;
+
+        float lerp = 0;
+
+        Vector3 startPos = _piece.position;
+        Vector3 endPos = _to;
+
+        float delta = Time.deltaTime / 0.5f;
+        if(playOrder == 1) handAudioSource.PlayOneShot(audioClip, playbackVolume * 0.1f);
+
+        while (lerp < 1)
+        {
+            yield return new WaitForSeconds(Time.deltaTime);
+            lerp += delta;
+
+            float angle = 90 - lerp * 180;
+
+            float y = 0.75f * Mathf.Cos(angle * Mathf.Deg2Rad);
+
+            _piece.position = Vector3.Lerp(startPos, endPos, lerp);
+            _piece.position += transform.up * y;
+        }
+
+        if (playOrder == 2) handAudioSource.PlayOneShot(audioClip, playbackVolume * 0.1f);
+        _piece.position = _to;
+
 
         isAnimating = false;
     }

@@ -36,6 +36,11 @@ public class PlayingCardManager : MonoBehaviour
     [SerializeField] private Transform evidenceSlot;
     [SerializeField] private Transform selectedCardsOnTablePositions;
 
+    [Header("Card Sound")]
+    [SerializeField] AudioSource cardAudioSource;
+    [SerializeField] AudioClip cardAddAudio;
+    [SerializeField] float playbackVolume = 1f;
+
     public List<PlayCardsSObject> cardList = new();
     private List<Transform> characterList = new();
     private List<Transform> weaponList = new();
@@ -440,6 +445,7 @@ public class PlayingCardManager : MonoBehaviour
         }
 
         allCardList.Add(go.transform);
+        cardAudioSource.PlayOneShot(cardAddAudio, playbackVolume);
 
         switch (type)
         {

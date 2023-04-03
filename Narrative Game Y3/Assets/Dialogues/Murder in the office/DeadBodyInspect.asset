@@ -34,8 +34,8 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 0
-    y: 0
+    x: 215
+    y: 176
     width: 250
     height: 100
   completedTask: {fileID: 0}
