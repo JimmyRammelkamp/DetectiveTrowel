@@ -8,7 +8,6 @@ namespace NarrativeGame.Dialogue
     public class NPCController : MonoBehaviour, IObjectInteraction
     {
         [SerializeField] private Transform handPosOffset;
-        [SerializeField] private RectTransform statusIcons;
         [SerializeField] Dialogue startDialogue = null;
         [SerializeField] string conversantName;
 
@@ -22,6 +21,8 @@ namespace NarrativeGame.Dialogue
         [SerializeField] private List<progressionDialogue> progressionDialogueList;
 
         PlayerConversant playerConversant;
+
+        private RectTransform statusIcons;
 
         private PlayCardsSObject[] playingCardsOnSlot = new PlayCardsSObject[3];
 
@@ -43,12 +44,13 @@ namespace NarrativeGame.Dialogue
             playerConversant = FindObjectOfType<PlayerConversant>();
             ChangeStatus(InteractStatus.Unknown);
             ProgressionManager.instance.AddNPC(this);
-            if (statusIcons) statusIcons = Instantiate(statusIcons, HUDManager.instance.GetStatusIconParent());
         }
 
         private void OnEnable() // Shows the NPC icon when the NPC object is active
         {
-            statusIcons.gameObject.SetActive(true);
+            if (!GameManager.instance) return;
+            if (!statusIcons) statusIcons = Instantiate(GameManager.instance.GetNPCIcons(), HUDManager.instance.GetStatusIconParent());
+            if (statusIcons) statusIcons.gameObject.SetActive(true);
         }
 
         private void OnDisable() // Hides the NPC icon when the NPC object is active
@@ -98,6 +100,11 @@ namespace NarrativeGame.Dialogue
             if (InspectCardDialogueList.Count == 0) HUDManager.instance.GetNPCInteractiveButtons().GetChild(2).gameObject.SetActive(false);
 
             HUDManager.instance.GetNPCInteractiveButtons().GetChild(1).gameObject.SetActive(GetComponent<InspectSpot>().IsDialogueAvaliable());
+        }
+
+        public bool isObjectActive()
+        {
+            return true;
         }
 
         public string GetName()
@@ -179,8 +186,7 @@ namespace NarrativeGame.Dialogue
         /// </summary>
         private void IconPositionUpdate()
         {
-            statusIcons.position = Camera.main.WorldToScreenPoint(transform.position);
-            statusIcons.position += new Vector3(0, Screen.height / 10, 0);
+            if (statusIcons) statusIcons.position = Camera.main.WorldToScreenPoint(transform.position + Vector3.up * 0.85f);
         }
 
         /// <summary>

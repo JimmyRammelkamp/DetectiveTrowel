@@ -47,7 +47,6 @@ public class EnvironmentLight : MonoBehaviour
     void Start()
     {
         directionalLight = GetComponent<Light>();
-        ApplyEnvironmentLight(defaultLight);
     }
 
     private void OnValidate()

@@ -23,6 +23,11 @@ public class MapSelector : MonoBehaviour, IObjectInteraction, IMouseEnter, IMous
         DioramaManager.instance.TriggerDioramaAnimation(mapPrefab);
     }
 
+    public bool isObjectActive()
+    {
+        return true;
+    }
+
     public void MouseEnter()
     {
         redCircle.gameObject.SetActive(true);

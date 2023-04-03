@@ -220,6 +220,8 @@ public class HandManager : MonoBehaviour
     public void ChangeHandParent(Transform _to, Transform _hand)
     {
         _hand.SetParent(_to);
+        _hand.transform.localPosition = Vector3.zero;
+        _hand.transform.localRotation = Quaternion.identity;
     }
 
     public void MovePiecesBack()

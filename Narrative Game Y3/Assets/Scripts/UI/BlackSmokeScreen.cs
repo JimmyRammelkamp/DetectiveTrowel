@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BlackSmokeScreen : MonoBehaviour
 {
@@ -19,12 +20,22 @@ public class BlackSmokeScreen : MonoBehaviour
         anim = GetComponent<Animator>();
         gameObject.GetComponent<Image>().enabled = true;
         transform.GetChild(0).gameObject.SetActive(true);
+        transform.GetChild(1).gameObject.SetActive(true);
     }
-
 
     public void TriggerBlackScreen()
     {
         anim.SetTrigger("SmokeScreen");
+    }
+    public void TriggerGameOver()
+    {
+        anim.SetTrigger("GameOver");
+    }
+
+    public void TriggerRestartScene()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
     }
 
     public void TriggerSmokeEffect()

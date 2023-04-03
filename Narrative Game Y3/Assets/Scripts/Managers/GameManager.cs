@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameStatus gameStatus;
     [SerializeField] private int maxStressLevel;
     [SerializeField] private List<Transform> cigList = new();
+    [SerializeField] private RectTransform NPCIcons;
 
     public event Action onStatusUpdated;
 
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
 
     private LayerMask rayLayer;
 
+    public RectTransform GetNPCIcons() { return NPCIcons; }
     public InputActions GetInputs() { return input; }
     public int GetStressLevel() { return stressLevel; }
     public NPCController GetSelectedNPC() { return selectedNPC; }

@@ -238,6 +238,26 @@ public class PlayingCardManager : MonoBehaviour
         FanOutCards(false);
     }
 
+    private Transform GetParentDeckByType(CardType _type)
+    {
+        Transform _parent = transform;
+
+        switch (_type)
+        {
+            case CardType.Character:
+                _parent = characterPosition;
+                break;
+            case CardType.Weapon:
+                _parent = weaponPosition;
+                break;
+            case CardType.Motive:
+                _parent = motivePosition;
+                break;
+        }
+
+        return _parent;
+    }
+
     public void SetCardsBack()
     {
         SetCardTypes();
@@ -251,20 +271,7 @@ public class PlayingCardManager : MonoBehaviour
 
             CardType listCardType = card.GetComponent<PlayingCard>().GetCardType();
 
-            Transform _parent = GetCloseUpCardPosition();
-
-            switch (listCardType)
-            {
-                case CardType.Character:
-                    _parent = characterPosition;
-                    break;
-                case CardType.Weapon:
-                    _parent = weaponPosition;
-                    break;
-                case CardType.Motive:
-                    _parent = motivePosition;
-                    break;
-            }
+            Transform _parent = GetParentDeckByType(listCardType);
 
             card.SetParent(_parent);
 
@@ -446,6 +453,8 @@ public class PlayingCardManager : MonoBehaviour
                 SetCardPosition(ref go, ref motiveList, motivePosition);
                 break;
         }
+
+        HUDManager.instance.NewCardObtainedAnimTrigger();
     }
 
     private void SetCardPosition(ref GameObject _card, ref List<Transform> _list, Transform _parent)

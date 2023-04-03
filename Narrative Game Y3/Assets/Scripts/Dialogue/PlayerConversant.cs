@@ -81,6 +81,8 @@ namespace NarrativeGame.Dialogue
             dialogueAudioSource.Stop();
 
             UI.DialogueUI.instance.SetIsDialogueFinished(true);
+
+            if (GameManager.instance.GetStressLevel() == 0) BlackSmokeScreen.instance.TriggerGameOver();
         }
 
         // Delaying the dialogue until the pieces moved in the right position

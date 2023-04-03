@@ -9,11 +9,7 @@ public class CardDeckInteract : MonoBehaviour, IObjectInteraction, IMouseEnter, 
 
     public void Interact()
     {
-        if (transform.childCount == 0) return;
-
         if (!GameManager.instance.ReadyToContinue()) return;
-
-        GameManager.instance.SetStatus(GameManager.GameStatus.PlayingCard);
 
         ToggleOutlineOff();
 
@@ -57,5 +53,10 @@ public class CardDeckInteract : MonoBehaviour, IObjectInteraction, IMouseEnter, 
                 _childOutline.SetToggle(false);
             }
         }
+    }
+
+    public bool isObjectActive()
+    {
+        return transform.childCount != 0;
     }
 }

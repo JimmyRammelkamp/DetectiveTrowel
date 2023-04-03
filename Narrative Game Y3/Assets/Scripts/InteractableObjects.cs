@@ -29,12 +29,13 @@ public class InteractableObjects : MonoBehaviour
 
     public void Interact()
     {
+        if (transform.TryGetComponent(out IObjectInteraction _target))
+
+        if (_target.isObjectActive() == false) return;
+
         if (changeStatusToThis != GameManager.GameStatus.None) GameManager.instance.SetStatus(changeStatusToThis);
 
-        if (transform.TryGetComponent(out IObjectInteraction _target))
-        {
-            _target.Interact();
-        }
+        if(_target != null) _target.Interact();
     }
 
     public void MouseEnter()

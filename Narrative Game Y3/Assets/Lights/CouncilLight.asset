@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e616afea2ff8a144beb56998864ea01, type: 3}
   m_Name: CouncilLight
   m_EditorClassIdentifier: 
-  intensity: 0.3
+  intensity: 1
   lightXDirection: 137
   lightYDirection: 85
   temperature: 4338

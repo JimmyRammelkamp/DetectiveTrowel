@@ -15,6 +15,7 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private RectTransform finalButton;
     [SerializeField] private RectTransform cigUI;
     [SerializeField] private RectTransform taskWindow;
+    [SerializeField] private RectTransform cardObtained;
 
     private GameManager.GameStatus tempStatus; // for updating the UI elements
 
@@ -40,6 +41,7 @@ public class HUDManager : MonoBehaviour
         cigUI.gameObject.SetActive(false);
         backButton.gameObject.SetActive(false);
         finalButton.gameObject.SetActive(false);
+        cardObtained.gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -216,6 +218,11 @@ public class HUDManager : MonoBehaviour
             }
 
         }
+    }
+
+    public void NewCardObtainedAnimTrigger()
+    {
+        cardObtained.gameObject.SetActive(true);
     }
 
     IEnumerator TaskListUpdatedAnim()

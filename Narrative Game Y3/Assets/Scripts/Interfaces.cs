@@ -10,6 +10,7 @@ using UnityEngine;
 public interface IObjectInteraction // Trigger this when the player interact with an interactable object
 {
     void Interact();
+    bool isObjectActive();
 }
 
 public interface IMouseEnter
