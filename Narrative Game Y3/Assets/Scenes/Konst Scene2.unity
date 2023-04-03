@@ -21958,6 +21958,31 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   isUnique: 0
+--- !u!114 &1989120729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662214622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5052cb16a34b2024c973412ca5ab1ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AvailableSongs:
+  - {fileID: 8300000, guid: 464b542da0f379c48b7a642640b8cddb, type: 3}
+  - {fileID: 8300000, guid: 95812cf8937541e48b3474761453ffc4, type: 3}
+  - {fileID: 8300000, guid: c5ef76942b1031b45b365da40690f6f6, type: 3}
+  - {fileID: 8300000, guid: c19df508827795a42945f9968d8482c3, type: 3}
+  - {fileID: 8300000, guid: ea368d07c22a8da4d852e013cde95b54, type: 3}
+  - {fileID: 8300000, guid: bb11dda2c6eae1e4cba7497167f6b9c5, type: 3}
+  - {fileID: 8300000, guid: 30f4e0fae71e44540b783f975ce1925d, type: 3}
+  - {fileID: 8300000, guid: 68ce5ce340c18c14d87af522ee535080, type: 3}
+  - {fileID: 8300000, guid: ab688a806f2c76e4d854d1678592a6f1, type: 3}
+  - {fileID: 8300000, guid: cb69997f00830824aa199f19e02363cd, type: 3}
+  radioAudioSource: {fileID: 16129849}
+  interactSound: {fileID: 0}
 --- !u!1 &1990156668
 GameObject:
   m_ObjectHideFlags: 3
