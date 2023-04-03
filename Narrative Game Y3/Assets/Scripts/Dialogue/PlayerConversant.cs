@@ -194,7 +194,7 @@ namespace NarrativeGame.Dialogue
 
                 if (currentNode.GetAudio() != null)
                 {
-                    dialogueAudioSource.PlayOneShot(currentNode.GetAudio(), playbackVolume);
+                    if (UI.DialogueUI.instance.GetIsDialogueFinished()) dialogueAudioSource.PlayOneShot(currentNode.GetAudio(), playbackVolume);
                 }
 
                 targetManager.ResetFocus();
