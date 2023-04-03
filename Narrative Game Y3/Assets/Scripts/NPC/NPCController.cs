@@ -44,12 +44,11 @@ namespace NarrativeGame.Dialogue
             playerConversant = FindObjectOfType<PlayerConversant>();
             ChangeStatus(InteractStatus.Unknown);
             ProgressionManager.instance.AddNPC(this);
+            if (!statusIcons) statusIcons = Instantiate(GameManager.instance.GetNPCIcons(), HUDManager.instance.GetStatusIconParent());
         }
 
         private void OnEnable() // Shows the NPC icon when the NPC object is active
         {
-            if (!GameManager.instance) return;
-            if (!statusIcons) statusIcons = Instantiate(GameManager.instance.GetNPCIcons(), HUDManager.instance.GetStatusIconParent());
             if (statusIcons) statusIcons.gameObject.SetActive(true);
         }
 
@@ -194,6 +193,8 @@ namespace NarrativeGame.Dialogue
         /// </summary>
         public void ChangeStatus(InteractStatus _status)
         {
+            if (!statusIcons) return;
+
             characterStatus = _status;
 
             DisableAllIcons();
