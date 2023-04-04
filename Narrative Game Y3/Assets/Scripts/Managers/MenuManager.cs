@@ -9,7 +9,6 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
-        settingsUI = GameObject.FindObjectOfType<SettingsManager>().gameObject;
         AudioManager.instance.PlayAudio("Lurking in the Shadows");
     }
     public void StartButton()
