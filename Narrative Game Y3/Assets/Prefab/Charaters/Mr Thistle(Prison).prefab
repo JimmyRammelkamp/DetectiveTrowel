@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7896990342520962578}
   - component: {fileID: 7896990342520962577}
   - component: {fileID: 7896990342520962576}
+  - component: {fileID: 2626481082997791457}
   m_Layer: 0
   m_Name: Mr Thistle(Prison)
   m_TagString: Untagged
@@ -139,6 +140,8 @@ MonoBehaviour:
   progressionDialogueList:
   - task: {fileID: 11400000, guid: d00c4517eb8c2794f926ff0abc1600a1, type: 2}
     dialogue: {fileID: 11400000, guid: 8302b3c9b86186842bc0c384ae68babb, type: 2}
+  - task: {fileID: 11400000, guid: 33a444bf9b16dca4e96ed93b77087145, type: 2}
+    dialogue: {fileID: 11400000, guid: 38ea82bed77e8c0448d1f6b9434b9ee3, type: 2}
 --- !u!114 &7896990342520962577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,6 +175,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeStatusToThis: 0
   availableInState: 03000000
+--- !u!114 &2626481082997791457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5869234686162217729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f153ddbe7edb8224d8f9648ac3076562, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: SmokeBlackScreen
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: BlackSmokeScreen, Assembly-CSharp
+        m_MethodName: TriggerBlackScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6751700718357223623
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Q2 Thistle after Rhubarb Unlocking Tulip and Rose
   m_EditorClassIdentifier: 
   taskDescription: 
-  isHidden: 0
+  isHidden: 1

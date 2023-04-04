@@ -27,7 +27,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6131a39233c664a96c408ecb7767ce, type: 3}
   m_Name: f388840d-2248-4050-8273-7ec55d5f192b
   m_EditorClassIdentifier: 
-  dialogueStatus: 0
+  dialogueStatus: 2
   text: Peering past the curtains reveals a chaotic space. Brimming with plants of
     all shapes and sizes. Many strung from the ceiling to dry. Dotted around are
     a number of suspicious bottles. Infusions of all sorts.

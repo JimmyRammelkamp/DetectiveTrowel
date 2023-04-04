@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7896990342520962578}
   - component: {fileID: 7896990342520962577}
   - component: {fileID: 7896990342520962576}
+  - component: {fileID: 613562985651615746}
   m_Layer: 0
   m_Name: Mr Thistle
   m_TagString: Untagged
@@ -161,8 +162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handPosOffset: {fileID: 6751700719962716874}
-  statusIcons: {fileID: 6243902107820977552, guid: f33fee12271fab847a03a8bcd8ce6d8d,
-    type: 3}
   startDialogue: {fileID: 11400000, guid: 89382ff9a75ccd64c8dc6ddccd8e3169, type: 2}
   conversantName: ???
   wrongCardDialogue: {fileID: 11400000, guid: 9eaf97594b6d2974dae89fc193dfc45c, type: 2}
@@ -205,6 +204,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeStatusToThis: 0
   availableInState: 03000000
+--- !u!114 &613562985651615746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5869234686162217729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f153ddbe7edb8224d8f9648ac3076562, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: SmokeBlackScreen
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: BlackSmokeScreen, Assembly-CSharp
+        m_MethodName: TriggerBlackScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6751700718357223623
 GameObject:
   m_ObjectHideFlags: 0

@@ -202,7 +202,7 @@ MonoBehaviour:
     width: 250
     height: 100
   completedTask: {fileID: 0}
-  evidenceCard: {fileID: 0}
+  evidenceCard: {fileID: 11400000, guid: ba905a794b385e34b905ca2d29429817, type: 2}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
@@ -441,11 +441,11 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 2009
-    y: 537
+    x: 2027
+    y: 577
     width: 250
     height: 100
-  completedTask: {fileID: 0}
+  completedTask: {fileID: 11400000, guid: d00c4517eb8c2794f926ff0abc1600a1, type: 2}
   evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 

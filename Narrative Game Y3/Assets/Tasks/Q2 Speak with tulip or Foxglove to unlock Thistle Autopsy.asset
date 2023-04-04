@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 199d46ddef1572247b4b17a6ab9244f4, type: 3}
-  m_Name: Q2 Return to Thistle for the Autopsy
+  m_Name: Q2 Speak with tulip or Foxglove to unlock Thistle Autopsy
   m_EditorClassIdentifier: 
   taskDescription: 
-  isHidden: 0
+  isHidden: 1

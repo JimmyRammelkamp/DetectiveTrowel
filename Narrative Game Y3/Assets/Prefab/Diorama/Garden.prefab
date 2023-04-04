@@ -996,6 +996,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mrs Foxglove
       objectReference: {fileID: 0}
+    - target: {fileID: 8977957998176894984, guid: 1f64e64e3e7e4ee4fb19d646e60fc141,
+        type: 3}
+      propertyPath: onTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f64e64e3e7e4ee4fb19d646e60fc141, type: 3}
 --- !u!4 &3600098726970381747 stripped

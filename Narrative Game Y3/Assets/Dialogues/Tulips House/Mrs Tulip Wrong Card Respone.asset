@@ -27,7 +27,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6131a39233c664a96c408ecb7767ce, type: 3}
   m_Name: 21697313-6e4c-4023-b169-7f3a0657a0b7
   m_EditorClassIdentifier: 
-  dialogueStatus: 0
+  dialogueStatus: 1
   text: "Please spare me Detective. I don\u2019t see how that has anything to do
     with my husbands death."
   children: []
@@ -40,6 +40,6 @@ MonoBehaviour:
   completedTask: {fileID: 0}
   evidenceCard: {fileID: 0}
   onEnterAction: 
-  onExitAction: 
+  onExitAction: SmokeBlackScreen
   aimTarget: 
   voiceoverAudio: {fileID: 0}

@@ -108,7 +108,7 @@ MonoBehaviour:
     y: 424
     width: 250
     height: 100
-  completedTask: {fileID: 0}
+  completedTask: {fileID: 11400000, guid: 1b82710b466e9cc48a2d757ed0b2b988, type: 2}
   evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
@@ -345,7 +345,7 @@ MonoBehaviour:
     y: 324
     width: 250
     height: 100
-  completedTask: {fileID: 0}
+  completedTask: {fileID: 11400000, guid: 33a444bf9b16dca4e96ed93b77087145, type: 2}
   evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 

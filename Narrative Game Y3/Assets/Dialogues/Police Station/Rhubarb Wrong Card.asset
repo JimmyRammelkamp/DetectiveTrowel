@@ -33,13 +33,13 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 0
-    y: 0
+    x: 1
+    y: 1
     width: 250
     height: 100
   completedTask: {fileID: 0}
   evidenceCard: {fileID: 0}
   onEnterAction: 
-  onExitAction: 
+  onExitAction: SmokeBlackScreen
   aimTarget: 
   voiceoverAudio: {fileID: 0}

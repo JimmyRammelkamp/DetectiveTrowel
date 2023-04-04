@@ -27,7 +27,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6131a39233c664a96c408ecb7767ce, type: 3}
   m_Name: ff420ca0-a07d-427b-9bd1-6ab1aadcfa15
   m_EditorClassIdentifier: 
-  dialogueStatus: 0
+  dialogueStatus: 2
   text: Two bedrooms, both clearly lived in. A curious sight, as the Tulips have
     neither child nor guests.
   children: []

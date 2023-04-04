@@ -923,6 +923,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5094489522192614930}
     m_Modifications:
+    - target: {fileID: 2626481082997791457, guid: f8c74f96f3e9b6242b6aa47619a86913,
+        type: 3}
+      propertyPath: onTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5869234686162217729, guid: f8c74f96f3e9b6242b6aa47619a86913,
         type: 3}
       propertyPath: m_Name
@@ -998,6 +1003,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5094489522192614930}
     m_Modifications:
+    - target: {fileID: 2613141055588839166, guid: 4ec79550f160d77488dc2f1cb78680ea,
+        type: 3}
+      propertyPath: onTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7247530023316077327, guid: 4ec79550f160d77488dc2f1cb78680ea,
         type: 3}
       propertyPath: m_RootOrder

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Q2 Speak with Tulip so you can look around her House
   m_EditorClassIdentifier: 
   taskDescription: 
-  isHidden: 0
+  isHidden: 1

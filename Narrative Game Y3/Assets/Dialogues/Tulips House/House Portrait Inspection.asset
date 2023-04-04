@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-5324759662235379686
+--- !u!114 &-8709555098073507702
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,19 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d6131a39233c664a96c408ecb7767ce, type: 3}
-  m_Name: 23aa005e-f77c-4d29-95ba-fb428c4a1cbf
+  m_Name: e841c9e0-bbe1-4f00-8db3-68d43cd1c268
   m_EditorClassIdentifier: 
   dialogueStatus: 2
-  text: 'Highly composed. Cleary grieving for her husband but not wholly stricken
-    by it as one might expect. Dressed in an understated but elegant way. A tulip
-    shaped pendant loosely hangs around her neck. The artisanship of it gives away
-    the extent of her wealth. That and the carefully manicured talons she has for
-    nails. '
+  text: "Mr Tulips presence is persistent and still as overbearing. A curious spot
+    to hang a painting of oneself. A couple's portrait would seem more appropriate
+    but looking around the room it could easily be mistaken for that of a bachelor\u2019s."
   children: []
   rect:
     serializedVersion: 2
-    x: 35
-    y: 216
+    x: 0
+    y: 0
     width: 250
     height: 100
   completedTask: {fileID: 0}
@@ -41,8 +39,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6fe46c859e4e47544b10ad23a1ec5b59, type: 3}
-  m_Name: Tulip Inspection
+  m_Name: House Portrait Inspection
   m_EditorClassIdentifier: 
   nodes:
-  - {fileID: -5324759662235379686}
+  - {fileID: -8709555098073507702}
   newNodeOffset: {x: 300, y: 0}

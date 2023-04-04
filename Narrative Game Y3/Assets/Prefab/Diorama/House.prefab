@@ -1359,7 +1359,7 @@ GameObject:
   - component: {fileID: 4038026970833583387}
   - component: {fileID: 925313269326701802}
   m_Layer: 6
-  m_Name: Tonic Inspect (1)
+  m_Name: Portrait Inspect
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1396,7 +1396,7 @@ MonoBehaviour:
   inspectCamera: {fileID: 3941688548411306814}
   interactIcon: {fileID: 6243902107820977552, guid: b707e9d16a58cab4b84da0b38e1dc22c,
     type: 3}
-  dialogue: {fileID: 0}
+  dialogue: {fileID: 11400000, guid: 6a173ae346f7c104d9213389d3dfb89f, type: 2}
 --- !u!1001 &6803114008511150959
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1404,6 +1404,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6573331598999486085}
     m_Modifications:
+    - target: {fileID: 3782605673958093477, guid: 3a64f8072d45ee4478d37a28ecf7b7fe,
+        type: 3}
+      propertyPath: onTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7247530023316077327, guid: 3a64f8072d45ee4478d37a28ecf7b7fe,
         type: 3}
       propertyPath: m_RootOrder

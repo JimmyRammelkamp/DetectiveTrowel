@@ -1822,40 +1822,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: baf1b9438ec28a84b94ba0e0a967dfb7, type: 3}
---- !u!1 &567522632491712586 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5869234686162217729, guid: baf1b9438ec28a84b94ba0e0a967dfb7,
-    type: 3}
-  m_PrefabInstance: {fileID: 6238482785845144395}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2747956549685368533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 567522632491712586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f153ddbe7edb8224d8f9648ac3076562, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action: SmokeBlackScreen
-  onTrigger:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BlackSmokeScreen, Assembly-CSharp
-        m_MethodName: TriggerBlackScreen
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!4 &913085580128656112 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6501057615943561659, guid: baf1b9438ec28a84b94ba0e0a967dfb7,
