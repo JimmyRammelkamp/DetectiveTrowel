@@ -24,7 +24,7 @@ MonoBehaviour:
     width: 250
     height: 100
   completedTask: {fileID: 0}
-  evidenceCard: {fileID: 0}
+  evidenceCard: {fileID: 11400000, guid: ef2e70a9d8d103648b4bc614563d543e, type: 2}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
@@ -224,7 +224,7 @@ MonoBehaviour:
     y: 462
     width: 250
     height: 100
-  completedTask: {fileID: 0}
+  completedTask: {fileID: 11400000, guid: 66c7d8d13d7b5b24a8597cbed711bb1e, type: 2}
   evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
@@ -254,7 +254,7 @@ MonoBehaviour:
     width: 250
     height: 100
   completedTask: {fileID: 0}
-  evidenceCard: {fileID: 0}
+  evidenceCard: {fileID: 11400000, guid: ef2e70a9d8d103648b4bc614563d543e, type: 2}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
