@@ -9,6 +9,13 @@ public class DioramaManager : MonoBehaviour
 
     [SerializeField] private Transform animationTransform;
 
+    [Header("Sound")]
+    [SerializeField] AudioSource dioramaAudioSource;
+    [SerializeField] AudioClip scrapeSound;
+
+    [SerializeField] float playbackVolume = 1f;
+    [SerializeField] float playbackDelay = 1f;
+
     private Animator anim;
     private Transform newDiorama;
 
@@ -23,9 +30,9 @@ public class DioramaManager : MonoBehaviour
 
     private void Start()
     {
-        Initalize();
+        Initialize();
     }
-    private void Initalize()
+    private void Initialize()
     {
         anim = GetComponent<Animator>();
         GetCurrentDiorama().GetComponent<Diorama>().ChangeDioramaLight();
@@ -84,6 +91,8 @@ public class DioramaManager : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         HandManager.instance.ChangeHandParent(newDiorama.GetComponent<Diorama>().GetLeftHandOffset(), HandManager.instance.GetLeftHand());
         HandManager.instance.ChangeHandParent(newDiorama.GetComponent<Diorama>().GetRightHandOffset(), HandManager.instance.GetRightHand());
+        yield return new WaitForSecondsRealtime(playbackDelay);
+        dioramaAudioSource.PlayOneShot(scrapeSound, playbackVolume);
     }
 
     /// <summary>

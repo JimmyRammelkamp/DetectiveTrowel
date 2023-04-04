@@ -384,7 +384,7 @@ public class HandManager : MonoBehaviour
         }
 
         _hand.SetParent(_to);
-        handAudioSource.PlayOneShot(audioClip, playbackVolume);
+        handAudioSource.PlayOneShot(audioClip, playbackVolume * 0.5f);
 
         isAnimating = false;
 
@@ -430,7 +430,7 @@ public class HandManager : MonoBehaviour
         Vector3 endPos = _to;
 
         float delta = Time.deltaTime / 0.5f;
-        if(playOrder == 1) handAudioSource.PlayOneShot(audioClip, playbackVolume * 0.1f);
+        if(playOrder == 1) handAudioSource.PlayOneShot(audioClip, playbackVolume * 0.5f);
 
         while (lerp < 1)
         {
@@ -445,7 +445,7 @@ public class HandManager : MonoBehaviour
             _piece.position += transform.up * y;
         }
 
-        if (playOrder == 2) handAudioSource.PlayOneShot(audioClip, playbackVolume * 0.1f);
+        if (playOrder == 2) handAudioSource.PlayOneShot(audioClip, playbackVolume * 0.5f);
         _piece.position = _to;
 
 
