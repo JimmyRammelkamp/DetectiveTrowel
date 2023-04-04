@@ -65,12 +65,25 @@ public class HUDManager : MonoBehaviour
         {
             npcInteractiveButtons.position = Camera.main.WorldToScreenPoint(GameManager.instance.GetSelectedNPC().transform.position);
             npcInteractiveButtons.position += new Vector3(Screen.height / 8, 0, 0);
+            StartCoroutine(InteractiveButtonsUpdate());
 
             npcInteractiveButtons.gameObject.SetActive(true);
         }
         else
         {
             npcInteractiveButtons.gameObject.SetActive(false);
+        }
+    }
+
+    IEnumerator InteractiveButtonsUpdate()
+    {
+        yield return new WaitForSeconds(0.001f);
+        while (!GameManager.instance.ReadyToContinue())
+        {
+            if (!npcInteractiveButtons) yield break;
+            yield return new WaitForSeconds(Time.deltaTime);
+            npcInteractiveButtons.position = Camera.main.WorldToScreenPoint(GameManager.instance.GetSelectedNPC().transform.position);
+            npcInteractiveButtons.position += new Vector3(Screen.height / 8, 0, 0);
         }
     }
 

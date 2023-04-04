@@ -204,6 +204,8 @@ public class PlayingCardManager : MonoBehaviour
 
     public void InteractWithDeck(CardType _type)
     {
+        if (ReturnCurrentCardList() != null) SetCardsBack();
+
         currentCardType = _type;
 
         if (_type == CardType.All)
@@ -212,9 +214,7 @@ public class PlayingCardManager : MonoBehaviour
             if (GameManager.instance.GetStatus() == GameManager.GameStatus.InspectEvidence) evidenceSlot.gameObject.SetActive(true);
         }
 
-        if (GameManager.instance.GetStatus() == GameManager.GameStatus.PlayingCard) cardSlots.gameObject.SetActive(true);
-
-        if (ReturnCurrentCardList() != null) SetCardsBack();
+        //if (GameManager.instance.GetStatus() == GameManager.GameStatus.PlayingCard) cardSlots.gameObject.SetActive(true);
 
         PlaceCardsToHand();
         LoadCards();
@@ -268,6 +268,7 @@ public class PlayingCardManager : MonoBehaviour
         SetCardTypes();
 
         int counter = 0;
+
         foreach (var card in ReturnCurrentCardList())
         {
             card.GetComponent<PlayingCard>().SetIsCardHovered(false);

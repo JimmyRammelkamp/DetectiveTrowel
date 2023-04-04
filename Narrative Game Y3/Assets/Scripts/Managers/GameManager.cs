@@ -79,6 +79,8 @@ public class GameManager : MonoBehaviour
 
     private void Initialize()
     {
+        Application.targetFrameRate = 300;
+
         SetStatus(GameStatus.Table);
 
         stressLevel = maxStressLevel;
