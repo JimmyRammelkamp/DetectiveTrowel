@@ -33,13 +33,13 @@ public class GameManager : MonoBehaviour
     }
 
     [SerializeField] private GameStatus gameStatus;
-    [SerializeField] private int maxStressLevel;
+    [SerializeField] private int startingCigarettes;
     [SerializeField] private List<Transform> cigList = new();
     [SerializeField] private RectTransform NPCIcons;
 
     public event Action onStatusUpdated;
 
-    private int stressLevel;
+    private int remainingCigarettes;
 
     private InputActions input;
 
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
 
     public RectTransform GetNPCIcons() { return NPCIcons; }
     public InputActions GetInputs() { return input; }
-    public int GetStressLevel() { return stressLevel; }
+    public int GetRemainingCigarettes() { return remainingCigarettes; }
     public NPCController GetSelectedNPC() { return selectedNPC; }
     public void SetNPC(NPCController _npc) { selectedNPC = _npc; }
     public GameStatus GetStatus() { return gameStatus; }
@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
 
         SetStatus(GameStatus.Table);
 
-        stressLevel = maxStressLevel;
+        remainingCigarettes = startingCigarettes;
 
         input = new InputActions();
         input.GameInput.Enable();
@@ -96,12 +96,13 @@ public class GameManager : MonoBehaviour
         //input.GameInput.ScrollWheel.performed += ScrollNavigation;
     }
 
-    public void ReduceStressLevel()
+    public void ConsumeCigarette()
     {
-        int index = maxStressLevel - stressLevel;
-        stressLevel -= 1;
+        int index = startingCigarettes - remainingCigarettes;
 
-        cigList[index].gameObject.SetActive(false);
+        if(remainingCigarettes > 0) cigList[index].gameObject.SetActive(false);
+
+        remainingCigarettes -= 1;
     }
 
     /// <summary>

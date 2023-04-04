@@ -8,7 +8,7 @@ public class CigUI : MonoBehaviour, IMouseEnter, IMouseExit
     {
         if (!GameManager.instance.ReadyToContinue()) return;
 
-        HUDManager.instance.ShowAndSetCigUI(GameManager.instance.GetStressLevel(), transform.position);
+        HUDManager.instance.ShowAndSetCigUI(GameManager.instance.GetRemainingCigarettes(), transform.position);
     }
 
     public void MouseExit()

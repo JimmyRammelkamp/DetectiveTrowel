@@ -13,23 +13,24 @@ public class RadioManager : MonoBehaviour, IObjectInteraction
 
     Animator animator;
 
-    private void Start()
+    private void Start() //Get animator & find max song list index
     {
         animator = GetComponent<Animator>();
         maxSongindex = AvailableSongs.Length;
     }
 
-    public void Interact()
+    private void Update() //Cycle song when finished & radio still active
+    {
+        if (isOn && !radioAudioSource.isPlaying && Application.isFocused) CycleSong();
+    }
+
+    public void Interact() //Click in scene to toggle radio on/off, cycles song when turning on
     {
         isOn = !isOn;
 
-        if(isOn) {
-            songIndex += 1;
-            songIndex %= maxSongindex;
-
-            animator.enabled = true;
-            radioAudioSource.clip = AvailableSongs[songIndex];
-            radioAudioSource.Play();
+        if(isOn)
+        {
+            CycleSong();
         }
         else
         {
@@ -37,6 +38,16 @@ public class RadioManager : MonoBehaviour, IObjectInteraction
             animator.enabled = false;
         }
         radioAudioSource.PlayOneShot(interactSound, 0.1f);
+    }
+
+    private void CycleSong() //Cycle song according to elements in the song list array
+    {
+        songIndex += 1;
+        songIndex %= maxSongindex;
+
+        animator.enabled = true;
+        radioAudioSource.clip = AvailableSongs[songIndex];
+        radioAudioSource.Play();
     }
 
     public bool isObjectActive()

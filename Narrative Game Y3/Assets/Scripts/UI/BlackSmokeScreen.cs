@@ -10,6 +10,11 @@ public class BlackSmokeScreen : MonoBehaviour
 
     [SerializeField] private GameObject smokeEffect;
 
+    [Header("Smoke Sound")]
+    [SerializeField] AudioSource smokeAudioSource;
+    [SerializeField] AudioClip smokeAudio;
+    [SerializeField] float playbackVolume = 1f;
+
     private Animator anim;
 
     void Awake()
@@ -46,6 +51,7 @@ public class BlackSmokeScreen : MonoBehaviour
     IEnumerator TriggerSmoke()
     {
         smokeEffect.gameObject.SetActive(true);
+        smokeAudioSource.PlayOneShot(smokeAudio);
         yield return new WaitForSeconds(5);
         smokeEffect.gameObject.SetActive(false);
     }

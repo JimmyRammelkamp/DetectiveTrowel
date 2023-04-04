@@ -160,7 +160,7 @@ namespace NarrativeGame.Dialogue
 
             if (tempDialogue == null)
             {
-                GameManager.instance.ReduceStressLevel();
+                GameManager.instance.ConsumeCigarette();
                 tempDialogue = wrongCardDialogue;
             }
 
