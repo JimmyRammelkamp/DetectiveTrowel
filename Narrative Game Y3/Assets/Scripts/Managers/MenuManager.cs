@@ -7,19 +7,27 @@ public class MenuManager : MonoBehaviour
 {
     public GameObject settingsUI;
 
+    private void Start()
+    {
+        settingsUI = GameObject.FindObjectOfType<SettingsManager>().gameObject;
+        AudioManager.instance.PlayAudio("Lurking in the Shadows");
+    }
     public void StartButton()
     {
-        AudioManager.instance.StopAudio("Menu Music");
+        AudioManager.instance.PlayAudio("Switch Click 1");
+        AudioManager.instance.StopAudio("Lurking in the Shadows");
         SceneManager.LoadScene(1);
     }
 
     public void SettingsButton()
     {
+        AudioManager.instance.PlayAudio("Switch Click 1");
         settingsUI.SetActive(true);
     }
 
     public void QuitButton()
     {
+        AudioManager.instance.PlayAudio("Switch Click 1");
         Application.Quit();
     }
 }

@@ -14,20 +14,6 @@ public class VolumeClass
 
 public class SettingsManager : MonoBehaviour
 {
-    #region Instance
-    public static SettingsManager instance;
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else Destroy(gameObject);
-    }
-    #endregion
-
     public AudioMixer audioMixer;
 
     public VolumeClass[] volumeClass = new VolumeClass[4];
@@ -74,15 +60,20 @@ public class SettingsManager : MonoBehaviour
         resolutionDropdown.RefreshShownValue();
 
         SoundSettingsStart();
+
+        settingsUI = this.gameObject;
     }
 
     public void BackButton()
     {
+
+        AudioManager.instance.PlayAudio("Switch Click 1");
         settingsUI.SetActive(false);
     }
 
     public void FullscreenToggle(bool toggleOn)
     {
+        AudioManager.instance.PlayAudio("Switch Click 1");
         isFullScreen = toggleOn;
         SetResolution(resolutionDropdown.value);
     }
