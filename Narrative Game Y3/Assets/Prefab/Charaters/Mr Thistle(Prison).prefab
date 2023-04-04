@@ -30,16 +30,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5869234686162217729}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: -0.162, y: 1.1953, z: 0.368}
-  m_LocalScale: {x: 115.91, y: 115.91, z: 115.91}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 109, y: 109, z: 109}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6751700719962716874}
   - {fileID: 6751700718833115000}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &7896990342520962590
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -132,15 +132,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handPosOffset: {fileID: 6751700719962716874}
-  startDialogue: {fileID: 11400000, guid: 89382ff9a75ccd64c8dc6ddccd8e3169, type: 2}
+  startDialogue: {fileID: 11400000, guid: eb97f4ba7d8996f4f991732b1ed684ae, type: 2}
   conversantName: Constable Thistle
-  wrongCardDialogue: {fileID: 11400000, guid: 9eaf97594b6d2974dae89fc193dfc45c, type: 2}
-  InspectCardDialogueList:
-  - triggerCard: {fileID: 11400000, guid: 8c11bfdb45706fb4895b6c1e932f857d, type: 2}
-    dialogue: {fileID: 11400000, guid: 855c2ab07623c2e47b3c27d4a17b9257, type: 2}
+  wrongCardDialogue: {fileID: 11400000, guid: 5244b5e3add56ba4dab1aa1eab26f6f8, type: 2}
+  InspectCardDialogueList: []
   progressionDialogueList:
-  - task: {fileID: 11400000, guid: 463333ac5fd538646842b29cfa1e6b09, type: 2}
-    dialogue: {fileID: 11400000, guid: cfe0020e2e690894f91e4641fc3020fc, type: 2}
+  - task: {fileID: 11400000, guid: d00c4517eb8c2794f926ff0abc1600a1, type: 2}
+    dialogue: {fileID: 11400000, guid: 8302b3c9b86186842bc0c384ae68babb, type: 2}
 --- !u!114 &7896990342520962577
 MonoBehaviour:
   m_ObjectHideFlags: 0

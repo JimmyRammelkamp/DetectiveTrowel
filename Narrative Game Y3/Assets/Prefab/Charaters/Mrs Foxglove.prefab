@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 7142391617265147584}
   - component: {fileID: 7142391617265147585}
   m_Layer: 0
-  m_Name: Mr Rhubarb
+  m_Name: Mrs Foxglove
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -229,8 +229,8 @@ Transform:
   m_GameObject: {fileID: 8061362538753548725}
   m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: 0.385, y: 1.194, z: 0.298}
-  m_LocalScale: {x: 107.84475, y: 107.84475, z: 107.84475}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 107, y: 107, z: 107}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7142391616083304936}
   - {fileID: 7142391615848785486}
@@ -315,7 +315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inspectCamera: {fileID: 7142391615848785487}
   interactIcon: {fileID: 0}
-  dialogue: {fileID: 0}
+  dialogue: {fileID: 11400000, guid: 19a4a3e0faa5dac41b2c172502ff0638, type: 2}
 --- !u!114 &7142391617265147591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,10 +329,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handPosOffset: {fileID: 7142391616083304936}
-  startDialogue: {fileID: 11400000, guid: 9b24469115674c64795cef5353cf20ee, type: 2}
-  conversantName: Mr Rhubarb
-  wrongCardDialogue: {fileID: 11400000, guid: 2a7aba2634f19fb46abc1ce7e15e495a, type: 2}
-  InspectCardDialogueList: []
+  startDialogue: {fileID: 11400000, guid: f5787a314dbb64b4181fd11f7ce821c4, type: 2}
+  conversantName: Mrs Foxglove
+  wrongCardDialogue: {fileID: 11400000, guid: 280b6e970d664ec48b78829720113895, type: 2}
+  InspectCardDialogueList:
+  - triggerCard: {fileID: 11400000, guid: ba905a794b385e34b905ca2d29429817, type: 2}
+    dialogue: {fileID: 11400000, guid: a4f801f4963156047803eca16d79b201, type: 2}
+  - triggerCard: {fileID: 11400000, guid: c05cf1938379413499f28a72e0f0eeac, type: 2}
+    dialogue: {fileID: 11400000, guid: 9adfe408a6882c94884b2b2afc3b701a, type: 2}
   progressionDialogueList: []
 --- !u!114 &7142391617265147584
 MonoBehaviour:

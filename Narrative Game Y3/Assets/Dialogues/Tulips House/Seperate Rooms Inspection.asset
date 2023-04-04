@@ -38,7 +38,7 @@ MonoBehaviour:
     width: 250
     height: 100
   completedTask: {fileID: 0}
-  evidenceCard: {fileID: 0}
+  evidenceCard: {fileID: 11400000, guid: cb926e9c8dd44f543a23d44d55844dbc, type: 2}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
