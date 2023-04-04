@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Autopsy
   m_EditorClassIdentifier: 
   itemID: 0
-  type: 1
+  type: 3
   image: {fileID: 0}
   title: Autopsy
   description: 

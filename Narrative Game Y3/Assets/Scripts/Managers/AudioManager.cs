@@ -34,7 +34,7 @@ public class AudioManager : MonoBehaviour
         s.source.outputAudioMixerGroup = s.outputAudioMixerGroup;
         if (s.Default)
         {
-            s.source.volume = 1f;                       //  Sets Volume on AudioSource to the default value on the Sound Class
+            s.source.volume = 0.1f;                       //  Sets Volume on AudioSource to the default value on the Sound Class
             s.source.pitch = 1f;                        //  Sets Pitch on AudioSource to the default value on the Sound Class
             s.source.spatialBlend = 0f;                 //  Sets Spatial Blend (2D(0) or 3D(1) Sound) on AudioSource to the default value on the Sound Class
         }

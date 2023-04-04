@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Konst Scene2.unity
-    guid: 9a6fac047888bc145ab7a686af0933fe
+    path: Assets/Scenes/MainMenu.unity
+    guid: a19b38fa2826fcc47a178e0efb32f398
+  - enabled: 1
+    path: Assets/Scenes/Konst Scene2 now with added Jimmy Progression.unity
+    guid: d09680b6854a8ae42bdba6ed5e22ada8
   m_configObjects: {}
