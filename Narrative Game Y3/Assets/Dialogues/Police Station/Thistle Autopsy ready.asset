@@ -28,7 +28,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: daa16fc9d80373f4592b254c255eea3d, type: 3}
 --- !u!114 &-4144227273207494893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55,7 +55,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 9b0996f8477871e41b5d0d3257530231, type: 3}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,7 +106,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: b21e41c0194638d42a4342826accfa19, type: 3}
 --- !u!114 &620582803648384137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,7 +135,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: c422cc5039fee8549b3fe1bd9524c8e0, type: 3}
 --- !u!114 &1308920945535282802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,7 +164,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 10e4af56f7166674a8b9c9f86f1742d6, type: 3}
 --- !u!114 &3275824785252894094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,7 +193,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 44cd47d52a97d424c83d9457fb21512f, type: 3}
 --- !u!114 &3860767732493557722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,7 +222,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 20b39d3272669be40973df867bced873, type: 3}
 --- !u!114 &8619551880612177887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,4 +250,4 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 4030d2d33862b744fae03523e279af17, type: 3}

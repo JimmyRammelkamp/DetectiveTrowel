@@ -54,7 +54,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 07b3198d0017cc84cb523405ada6801d, type: 3}
 --- !u!114 &1985035561843858109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,7 +84,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 604d0659867bd8e4ea5e66a39c683ab2, type: 3}
 --- !u!114 &2132887869193326948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,7 +114,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: cd78d3a3795996e4b9b7d357970d3130, type: 3}
 --- !u!114 &2398845411884218397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,7 +143,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 17ad4c6c81181d442bcc73cead33ce22, type: 3}
 --- !u!114 &2907023190609665087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,7 +170,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 7c0a003b46be40e4dbde0538f850c20a, type: 3}
 --- !u!114 &3127401388187348508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,7 +201,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: aeba4ec74f4063c45990c3f89b1e65cd, type: 3}
 --- !u!114 &3380067691122393649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,7 +232,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: afe067128e79db94fbafad68e22eaacf, type: 3}
 --- !u!114 &4840440025092284394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,7 +263,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: f3f68985770f6b34aa76d87bd2bab493, type: 3}
 --- !u!114 &8563342752045918785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,4 +291,4 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: b77b4358fc5ac8b4a851d5454d81cf0a, type: 3}

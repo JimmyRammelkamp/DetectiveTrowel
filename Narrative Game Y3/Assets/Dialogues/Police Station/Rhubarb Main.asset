@@ -27,7 +27,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 5790cd404e58fc749a2835837d1c7af0, type: 3}
 --- !u!114 &-6806114056553910268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,7 +87,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: a31cf0b88c3136643a84c81f9e37f7d8, type: 3}
 --- !u!114 &-3903628615843908462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +115,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 5ce4871b39facc34c838efd2c5752e4f, type: 3}
 --- !u!114 &-3065304435152714183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,7 +135,7 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: 1997
-    y: 255
+    y: 254
     width: 250
     height: 100
   completedTask: {fileID: 0}
@@ -143,7 +143,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 668805a7cdff3cf4b87d15e63432bc70, type: 3}
 --- !u!114 &-2653412660812149383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,7 +175,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 87f8931a7c319de44871437e11b6fff2, type: 3}
 --- !u!114 &-1083441492308301039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,11 +202,11 @@ MonoBehaviour:
     width: 250
     height: 100
   completedTask: {fileID: 0}
-  evidenceCard: {fileID: 11400000, guid: ba905a794b385e34b905ca2d29429817, type: 2}
+  evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: e3e07376163066e458668f30d5445102, type: 3}
 --- !u!114 &-850468615307262881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,7 +237,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 0c66d6c667678e846bd9b1da2ed13c68, type: 3}
 --- !u!114 &-9238563059012817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,7 +267,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: d0e8ea4f661bc5244929558c09f68834, type: 3}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,7 +333,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 975f3d15daeb8e149bdaf2a2cba3ca83, type: 3}
 --- !u!114 &2247833083203055928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,7 +363,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 24396c8294c0fac459a36ab4c72aff38, type: 3}
 --- !u!114 &3220470936280982917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,7 +395,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: d3e1d3c8eaad9aa4496f26d5dd4c863d, type: 3}
 --- !u!114 &3412650473121263246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,16 +441,16 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 2027
-    y: 577
+    x: 2009
+    y: 537
     width: 250
     height: 100
-  completedTask: {fileID: 11400000, guid: d00c4517eb8c2794f926ff0abc1600a1, type: 2}
+  completedTask: {fileID: 0}
   evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 814db0c096eea8144be7a780f087dda9, type: 3}
 --- !u!114 &3993775522773557736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,7 +478,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 629002fc9908e7d418ea838d8205697b, type: 3}
 --- !u!114 &5977205629130257742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,7 +497,7 @@ MonoBehaviour:
   - 09719d18-6c21-4318-8269-8507f0850a3d
   rect:
     serializedVersion: 2
-    x: 618
+    x: 619
     y: 358
     width: 250
     height: 100
@@ -506,7 +506,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: f81768688893c2147bbd863a0c74e7a1, type: 3}
 --- !u!114 &6661556244900372885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -562,7 +562,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: a19b64c94d988354495cf9bbe59b6944, type: 3}
 --- !u!114 &7981779837755967565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,4 +595,4 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 93cad97f96e8b6d4c94362177880efa3, type: 3}

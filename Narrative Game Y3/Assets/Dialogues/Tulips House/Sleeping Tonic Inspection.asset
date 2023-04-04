@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: 0fcaa61b-34f3-4836-a1db-eb786a3d1123
   m_EditorClassIdentifier: 
   dialogueStatus: 2
-  text: A curious bottle on Mrs Tulips night stand. Seemingly to help with sleep.
-    It possesses a pungent aroma. A calming blend of freshly cut grass and lavender.
+  text: A night stand with a bottle of some kind of tonic. Seemingly to help with
+    sleep. It possesses a pungent aroma. A calming blend of freshly cut grass and
+    lavender.
   children: []
   rect:
     serializedVersion: 2
-    x: 85
-    y: 99
+    x: 82
+    y: 100
     width: 250
     height: 100
   completedTask: {fileID: 0}

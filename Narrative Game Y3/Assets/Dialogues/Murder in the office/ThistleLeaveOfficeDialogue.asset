@@ -27,7 +27,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: fc9481c004a24cf4888ae33ec88f5c04, type: 3}
 --- !u!114 &-1613285126882716560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,4 +99,4 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: e0d89ffdbd96a2642818900a2837cbcc, type: 3}

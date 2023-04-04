@@ -24,11 +24,11 @@ MonoBehaviour:
     width: 250
     height: 100
   completedTask: {fileID: 0}
-  evidenceCard: {fileID: 11400000, guid: ef2e70a9d8d103648b4bc614563d543e, type: 2}
+  evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 5dc6bdcaa8751be479a0268ca5676ddc, type: 3}
 --- !u!114 &-4013284763542667241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,7 +58,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 7cc209e06912e8f4c8fa0fc5bdec608a, type: 3}
 --- !u!114 &-2117656569668841474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,7 +85,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: e2a32ad91abdd7145af802550b0def1f, type: 3}
 --- !u!114 &-2050819820149547896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +115,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: f61889df6577da54c8b1cc3dbf23fbfd, type: 3}
 --- !u!114 &-95912122251091690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 446575d520b96f742a3af9e5ff02877e, type: 3}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,16 +220,16 @@ MonoBehaviour:
   - f6ac955b-847c-49b0-8309-ceef6dbb18cf
   rect:
     serializedVersion: 2
-    x: 1408
-    y: 461
+    x: 1407
+    y: 462
     width: 250
     height: 100
-  completedTask: {fileID: 11400000, guid: 66c7d8d13d7b5b24a8597cbed711bb1e, type: 2}
+  completedTask: {fileID: 0}
   evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: 263b9438faae84349b6fb5076e28fc0e, type: 3}
 --- !u!114 &7047720532674213738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,11 +254,11 @@ MonoBehaviour:
     width: 250
     height: 100
   completedTask: {fileID: 0}
-  evidenceCard: {fileID: 11400000, guid: ef2e70a9d8d103648b4bc614563d543e, type: 2}
+  evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: b8f380b6f527f4146bcab4d51a2e3936, type: 3}
 --- !u!114 &7482297784044232978
 MonoBehaviour:
   m_ObjectHideFlags: 0

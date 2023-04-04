@@ -23,12 +23,12 @@ MonoBehaviour:
     y: 156
     width: 250
     height: 100
-  completedTask: {fileID: 11400000, guid: 4452248c437d48347a4052dccb6a506d, type: 2}
+  completedTask: {fileID: 0}
   evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
   aimTarget: 
-  voiceoverAudio: {fileID: 0}
+  voiceoverAudio: {fileID: 8300000, guid: a6407c679ed2d0a4eacef030d088683f, type: 3}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

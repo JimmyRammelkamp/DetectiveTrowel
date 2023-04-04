@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6131a39233c664a96c408ecb7767ce, type: 3}
   m_Name: bbb96cc5-1386-4da2-aa66-68aa981e5a51
   m_EditorClassIdentifier: 
-  dialogueStatus: 0
+  dialogueStatus: 2
   text: "Mr Tulips presence is persistent and still as overbearing. A curious spot
     to hang a painting of oneself. A couple's portrait would seem more appropriate
     but looking around the room it could easily be mistaken for that of a bachelor\u2019s."
