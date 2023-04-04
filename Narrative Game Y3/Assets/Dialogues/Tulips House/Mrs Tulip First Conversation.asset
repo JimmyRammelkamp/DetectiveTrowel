@@ -104,8 +104,8 @@ MonoBehaviour:
   - 4fabfef1-7c6e-44ce-8598-52aef036827d
   rect:
     serializedVersion: 2
-    x: 1360
-    y: 424
+    x: 1368
+    y: 453
     width: 250
     height: 100
   completedTask: {fileID: 0}
@@ -132,8 +132,8 @@ MonoBehaviour:
   - 43a0c2b8-fef5-452d-ba93-7c885f123a50
   rect:
     serializedVersion: 2
-    x: 1057
-    y: 424
+    x: 1029
+    y: 451
     width: 250
     height: 100
   completedTask: {fileID: 0}
@@ -426,8 +426,8 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 1645
-    y: 425
+    x: 1709
+    y: 435
     width: 250
     height: 100
   completedTask: {fileID: 11400000, guid: 1b82710b466e9cc48a2d757ed0b2b988, type: 2}

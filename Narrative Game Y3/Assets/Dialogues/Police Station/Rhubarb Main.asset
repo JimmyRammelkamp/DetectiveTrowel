@@ -259,10 +259,10 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: -16
-    y: 354
+    y: 353
     width: 250
     height: 100
-  completedTask: {fileID: 0}
+  completedTask: {fileID: 11400000, guid: 4452248c437d48347a4052dccb6a506d, type: 2}
   evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 
