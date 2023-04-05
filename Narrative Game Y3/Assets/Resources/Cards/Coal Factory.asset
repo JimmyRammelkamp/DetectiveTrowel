@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 0
   type: 2
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: b00b9d83f15d4cd47981f4671ff1452c, type: 3}
   title: Coal Factory
   description: Coal Factory just outside the bloomsted area. Mr Tulip seemed to have
     a relationship with the company. Possibly responsible for the waste being dumped.

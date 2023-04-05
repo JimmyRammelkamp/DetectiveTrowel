@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 300
   type: 2
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 43a21e6076d57b445912ca8ef56bdecb, type: 3}
   title: River Dumping
   description: Mr Tulip seems to have been involved with large companies, offering
     for them to dump their waste in the local waters in return for funding his campaigns.
