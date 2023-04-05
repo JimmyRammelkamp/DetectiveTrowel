@@ -213,8 +213,8 @@ MonoBehaviour:
   - f7154a1c-b71a-4e8d-92c9-2fe7c5b4d54b
   rect:
     serializedVersion: 2
-    x: 1176
-    y: 819
+    x: 1178
+    y: 820
     width: 250
     height: 100
   completedTask: {fileID: 0}
