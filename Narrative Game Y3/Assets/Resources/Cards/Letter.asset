@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 0
   type: 2
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: c8c5772fe2708b84dab94c2c7075c149, type: 3}
   title: Mr Tulips Letter
   description: An ominous letter from Mr Tulip to Mr Rhubarb. An attempt at bribery
     in exchange for Rhubarb's silence.

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 0
   type: 3
-  image: {fileID: 21300000, guid: b47c3405f23686f4aa64856ed9be5a36, type: 3}
+  image: {fileID: 21300000, guid: bfa2610bebbc90640892f50d5fef6686, type: 3}
   title: Foxglove Patch
   description: A bounty of Foxgloves. Their pleasant appearance is betrayed by a
     less than pleasant odour. A warning of just how deadly they can be when ingested.
