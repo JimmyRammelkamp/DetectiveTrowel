@@ -27,7 +27,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6131a39233c664a96c408ecb7767ce, type: 3}
   m_Name: 567269ad-f5e6-43ab-acb4-ce3600e8e73d
   m_EditorClassIdentifier: 
-  dialogueStatus: 0
+  dialogueStatus: 1
   text: "Really now detective, I\u2019m not usually one to admit it but I\u2019ve
     not got much time left on this earth. I\u2019d appreciate you not wasting it."
   children: []
@@ -40,6 +40,6 @@ MonoBehaviour:
   completedTask: {fileID: 0}
   evidenceCard: {fileID: 0}
   onEnterAction: 
-  onExitAction: 
+  onExitAction: SmokeBlackScreen
   aimTarget: 
   voiceoverAudio: {fileID: 8300000, guid: 44dc837da98ac434fa250cdc56593524, type: 3}
