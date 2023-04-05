@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.007651674, g: 0.001384933, b: 0.0007317897, a: 1}
+  m_IndirectSpecularColor: {r: 0.0076516736, g: 0.001384933, b: 0.0007317896, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8177,19 +8177,24 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 7976073fad8c78349868f7c5975c085b, type: 2}
     - {fileID: 11400000, guid: 463333ac5fd538646842b29cfa1e6b09, type: 2}
     - {fileID: 11400000, guid: eea5aa1fd0261f043bc4eb3794287ef9, type: 2}
-  - taskName: Rooting through Bloomsted
+  - taskName: Wringing out Rhubarb
     taskDescription:
     - {fileID: 11400000, guid: 4452248c437d48347a4052dccb6a506d, type: 2}
     - {fileID: 11400000, guid: d00c4517eb8c2794f926ff0abc1600a1, type: 2}
     - {fileID: 11400000, guid: 66c7d8d13d7b5b24a8597cbed711bb1e, type: 2}
-    - {fileID: 11400000, guid: 1b82710b466e9cc48a2d757ed0b2b988, type: 2}
+  - taskName: Rooting through Bloomsted
+    taskDescription:
     - {fileID: 11400000, guid: 33a444bf9b16dca4e96ed93b77087145, type: 2}
+    - {fileID: 11400000, guid: 1b82710b466e9cc48a2d757ed0b2b988, type: 2}
+    - {fileID: 11400000, guid: 375dcbbf72b3b564e929ec88bac6d4d4, type: 2}
+    - {fileID: 11400000, guid: e5a526d1b8605c849b7b856771ab5e4e, type: 2}
   unlockObjects:
   - task: {fileID: 11400000, guid: 3e473bdfb99cddc419aec9fd817a8ca6, type: 2}
     objects:
     - {fileID: 7030177308582209869}
     - {fileID: 4376812}
     - {fileID: 462482027}
+    - {fileID: 1206064230}
   - task: {fileID: 11400000, guid: 7976073fad8c78349868f7c5975c085b, type: 2}
     objects:
     - {fileID: 919132149426688297}
@@ -9705,7 +9710,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 722869630}
-  m_LocalRotation: {x: 0.0012314937, y: 0.9898643, z: -0.14175062, w: 0.008599691}
+  m_LocalRotation: {x: 0.001231489, y: 0.9898643, z: -0.14175063, w: 0.008599657}
   m_LocalPosition: {x: 0.048, y: 3.972, z: 4.362}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -18109,6 +18114,12 @@ MonoBehaviour:
   m_AmplitudeGain: 1
   m_FrequencyGain: 0.005
   mNoiseOffsets: {x: 0, y: 0, z: 0}
+--- !u!1 &1206064230 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3642400934476862149, guid: 3f5510fe6e998df4185d2d67d4e1007d,
+    type: 3}
+  m_PrefabInstance: {fileID: 802017875107297808}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1220517249 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fb3081fa7018a534a8ba1141b10e7bb5,
@@ -23554,6 +23565,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1302260131080607968, guid: 3f5510fe6e998df4185d2d67d4e1007d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.00105
+      objectReference: {fileID: 0}
     - target: {fileID: 2747956549685368533, guid: 3f5510fe6e998df4185d2d67d4e1007d,
         type: 3}
       propertyPath: onTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -23563,7 +23579,8 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogue
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 6fe3266a4155f474695c75dae78f08f6,
+        type: 2}
     - target: {fileID: 6778017781115245385, guid: 3f5510fe6e998df4185d2d67d4e1007d,
         type: 3}
       propertyPath: onTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -25247,7 +25264,8 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogue
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 6fe3266a4155f474695c75dae78f08f6,
+        type: 2}
     - target: {fileID: 7125993829024250303, guid: b11dbaa2beeb4304abfc9c02f4c36cf6,
         type: 3}
       propertyPath: m_Mesh
@@ -25957,7 +25975,7 @@ PrefabInstance:
     - target: {fileID: 7644587640031562186, guid: 97e07f0f55f4e904099b030fbde85072,
         type: 3}
       propertyPath: onTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TriggerGameOver
+      value: TriggerBlackScreen
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97e07f0f55f4e904099b030fbde85072, type: 3}

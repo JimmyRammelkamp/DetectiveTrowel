@@ -16,4 +16,5 @@ MonoBehaviour:
   type: 1
   image: {fileID: 21300000, guid: b47c3405f23686f4aa64856ed9be5a36, type: 3}
   title: Jane Foxglove
-  description: sample text
+  description: Kindly old lady of the village. Knows everything there is to know
+    about plants.

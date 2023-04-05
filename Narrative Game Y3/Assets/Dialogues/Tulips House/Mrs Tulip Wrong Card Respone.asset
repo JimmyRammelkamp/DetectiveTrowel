@@ -40,6 +40,6 @@ MonoBehaviour:
   completedTask: {fileID: 0}
   evidenceCard: {fileID: 0}
   onEnterAction: 
-  onExitAction: 
+  onExitAction: SmokeBlackScreen
   aimTarget: 
   voiceoverAudio: {fileID: 8300000, guid: 97d789d960f0dd942a6ea0e2fd7fc0d7, type: 3}

@@ -120,7 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftHandOffset: {fileID: 663555077}
   rightHandOffset: {fileID: 2074983433}
-  environmentLight: {fileID: 0}
+  environmentLight: {fileID: 11400000, guid: bf3539ca6a3e5fd43a83075219600d9c, type: 2}
 --- !u!114 &919132147659704906
 MonoBehaviour:
   m_ObjectHideFlags: 0

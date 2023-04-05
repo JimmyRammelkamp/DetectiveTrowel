@@ -1156,7 +1156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftHandOffset: {fileID: 6679844567721262201}
   rightHandOffset: {fileID: 6679844567726270762}
-  environmentLight: {fileID: 0}
+  environmentLight: {fileID: 11400000, guid: 2d336b23f2beb1541bf8306dc7b4c481, type: 2}
 --- !u!1 &6679844567721262200
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,8 +19,8 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 811
-    y: 336
+    x: 703
+    y: 358
     width: 250
     height: 100
   completedTask: {fileID: 11400000, guid: 4452248c437d48347a4052dccb6a506d, type: 2}

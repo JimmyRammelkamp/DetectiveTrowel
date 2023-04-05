@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: 23aa005e-f77c-4d29-95ba-fb428c4a1cbf
   m_EditorClassIdentifier: 
   dialogueStatus: 2
-  text: 'Highly composed. Cleary grieving for her husband but not wholly stricken
-    by it as one might expect. Dressed in an understated but elegant way. A tulip
+  text: Highly composed. Cleary grieving for her husband but not wholly stricken
+    by it as one might expect. Dressed in an understated but elegant way.  A tulip
     shaped pendant loosely hangs around her neck. The artisanship of it gives away
-    the extent of her wealth. That and the carefully manicured talons she has for
-    nails. '
+    the extent of her wealth. That and her pin sharp manicured nails.
   children: []
   rect:
     serializedVersion: 2

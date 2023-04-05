@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Coal Factory
   m_EditorClassIdentifier: 
   itemID: 0
-  type: 0
+  type: 2
   image: {fileID: 0}
   title: Coal Factory
-  description: 
+  description: Coal Factory just outside the bloomsted area. Mr Tulip seemed to have
+    a relationship with the company. Possibly responsible for the waste being dumped.

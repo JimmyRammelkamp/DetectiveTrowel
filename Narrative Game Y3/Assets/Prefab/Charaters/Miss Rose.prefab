@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7142391615848785485
+--- !u!1 &2736933661472268236
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7142391615848785486}
-  - component: {fileID: 7142391615848785487}
+  - component: {fileID: 8803700439130165868}
+  - component: {fileID: 4475099142977807749}
   m_Layer: 0
   m_Name: InspectCam
   m_TagString: Untagged
@@ -17,29 +17,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7142391615848785486
+--- !u!4 &8803700439130165868
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7142391615848785485}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.000086, y: -0.00306, z: 0.00197}
-  m_LocalScale: {x: 0.0033333322, y: 0.0033333334, z: 0.003333333}
+  m_GameObject: {fileID: 2736933661472268236}
+  m_LocalRotation: {x: 0.2565096, y: -0.7885434, z: -0.53251064, w: 0.16980766}
+  m_LocalPosition: {x: 0.00010110125, y: -0.0017029856, z: 0.0020239127}
+  m_LocalScale: {x: 0.003307222, y: 0.0033072229, z: 0.0033072224}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7142391616013766371}
+  - {fileID: 1090250115317063704}
   m_Father: {fileID: 7247530023316077327}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7142391615848785487
+--- !u!114 &4475099142977807749
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7142391615848785485}
+  m_GameObject: {fileID: 2736933661472268236}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
@@ -70,8 +70,8 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   m_LegacyBlendHint: 0
-  m_ComponentOwner: {fileID: 7142391616013766371}
---- !u!1 &7142391616013766370
+  m_ComponentOwner: {fileID: 1090250115317063704}
+--- !u!1 &5571193153679507411
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -79,10 +79,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7142391616013766371}
-  - component: {fileID: 7142391616013766174}
-  - component: {fileID: 7142391616013766173}
-  - component: {fileID: 7142391616013766172}
+  - component: {fileID: 1090250115317063704}
+  - component: {fileID: 6666178075463770304}
+  - component: {fileID: 27861884440121736}
+  - component: {fileID: 4087321860640237476}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -90,40 +90,40 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7142391616013766371
+--- !u!4 &1090250115317063704
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7142391616013766370}
+  m_GameObject: {fileID: 5571193153679507411}
   m_LocalRotation: {x: -0.013583588, y: -0.86899096, z: 0.49418998, w: -0.021129955}
   m_LocalPosition: {x: 0.690735, y: -1.5589833, z: 5.546907}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7142391615848785486}
+  m_Father: {fileID: 8803700439130165868}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7142391616013766174
+--- !u!114 &6666178075463770304
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7142391616013766370}
+  m_GameObject: {fileID: 5571193153679507411}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7142391616013766173
+--- !u!114 &27861884440121736
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7142391616013766370}
+  m_GameObject: {fileID: 5571193153679507411}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
@@ -144,13 +144,13 @@ MonoBehaviour:
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
---- !u!114 &7142391616013766172
+--- !u!114 &4087321860640237476
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7142391616013766370}
+  m_GameObject: {fileID: 5571193153679507411}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
@@ -233,7 +233,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7142391616083304936}
-  - {fileID: 7142391615848785486}
+  - {fileID: 8803700439130165868}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -313,9 +313,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c8366329f8f51c4fadc32055ea07398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inspectCamera: {fileID: 7142391615848785487}
+  inspectCamera: {fileID: 4475099142977807749}
   interactIcon: {fileID: 0}
-  dialogue: {fileID: 0}
+  dialogue: {fileID: 11400000, guid: cd32f127d90d022408b9c6067fa7a49f, type: 2}
 --- !u!114 &7142391617265147591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,8 +329,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handPosOffset: {fileID: 7142391616083304936}
-  statusIcons: {fileID: 6243902107820977552, guid: f33fee12271fab847a03a8bcd8ce6d8d,
-    type: 3}
   startDialogue: {fileID: 11400000, guid: 30b4fcd9158bb924b8a1bc7af076043e, type: 2}
   conversantName: Miss Rose
   wrongCardDialogue: {fileID: 0}

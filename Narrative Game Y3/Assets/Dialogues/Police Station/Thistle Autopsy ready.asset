@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 417fb424-8288-4e88-922f-9be36a05f9b5
   m_EditorClassIdentifier: 
   dialogueStatus: 1
-  text: "You're in luck detective. I\u2019ve got it right here. Hot off the corners
+  text: "You're in luck detective. I\u2019ve got it right here. Hot off the coroner's
     presses. Have a flip through now. I\u2019m curious what you think."
   children:
   - c04d4f52-2cb0-4f5e-8d28-fb4391a7f4ac
@@ -50,7 +50,7 @@ MonoBehaviour:
     y: 820
     width: 250
     height: 100
-  completedTask: {fileID: 0}
+  completedTask: {fileID: 11400000, guid: e5a526d1b8605c849b7b856771ab5e4e, type: 2}
   evidenceCard: {fileID: 0}
   onEnterAction: 
   onExitAction: 

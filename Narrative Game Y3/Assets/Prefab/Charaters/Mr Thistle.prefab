@@ -148,7 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inspectCamera: {fileID: 6751700718833115007}
   interactIcon: {fileID: 0}
-  dialogue: {fileID: 11400000, guid: 2daccdac706e46b4487f656abc8eab53, type: 2}
+  dialogue: {fileID: 11400000, guid: 6fe3266a4155f474695c75dae78f08f6, type: 2}
 --- !u!114 &7896990342520962578
 MonoBehaviour:
   m_ObjectHideFlags: 0

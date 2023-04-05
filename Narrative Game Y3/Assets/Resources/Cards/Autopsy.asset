@@ -15,5 +15,6 @@ MonoBehaviour:
   itemID: 0
   type: 3
   image: {fileID: 0}
-  title: Autopsy
-  description: 
+  title: Autopsy Report
+  description: Death by Cardiac arrest. Recent Lacerations to the chest. Possible
+    signs of poisoning.
