@@ -369,7 +369,7 @@ public class PlayingCardManager : MonoBehaviour
 
             currentAngle += angleStep;
             //startZ += cardThickness * 2.0f;
-            startZ += 0.001f;
+            startZ += 0.01f;
         }
 
         LerpCards();

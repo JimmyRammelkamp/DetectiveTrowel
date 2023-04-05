@@ -181,6 +181,8 @@ public class PlayingCard : MonoBehaviour
 
         startPosition = transform.position;
 
+        if (isLerping) return;////
+
         isLerpingUP = true;
 
         lerpIE = LerpCard(transform.position + transform.up * 0.2f + transform.forward * 0.15f, false);
